@@ -1,4 +1,4 @@
-# Fit Click
+# Bit Fit
 
 This is the submission for final project at Lighthouse Labs' Web Bootcamp
 (September 16, 2019 cohort) for the following students:
