@@ -25,10 +25,13 @@ put to use many of the technologies we learned during the bootcamp.
    [rvm](https://rvm.io) to install)
 1. After installing Ruby, install Bundler (`gem install bundler`)
 1. [Yarn](https://yarnpkg.com/lang/en/docs/install)
+1. [Potgres](https://www.postgresql.org)
 
 ## Installation
 
 1. Clone the repo and change into its directory
 1. Run `bundle install`
 1. Run `yarn install --check-files`
+1. Run `bundle exec rails db:create`
+1. Run `bundle exec rails db:migrate`
 1. Run `rails server` and visit [http://localhost:3000](http://localhost:3000)
