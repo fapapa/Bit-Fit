@@ -24,9 +24,11 @@ put to use many of the technologies we learned during the bootcamp.
 1. Ruby 2.6.5 (use [rbenv](https://github.com/rbenv/rbenv) or
    [rvm](https://rvm.io) to install)
 1. After installing Ruby, install Bundler (`gem install bundler`)
+1. [Yarn](https://yarnpkg.com/lang/en/docs/install)
 
 ## Installation
 
-After cloning, change into the project directory and `bundle install` to install
-all project dependencies. Then run `rails server` and head to
-[http://localhost:3000](http://localhost:3000) on your browser.
+1. Clone the repo and change into its directory
+1. Run `bundle install`
+1. Run `yarn install --check-files`
+1. Run `rails server` and visit [http://localhost:3000](http://localhost:3000)
