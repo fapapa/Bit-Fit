@@ -34,4 +34,9 @@ put to use many of the technologies we learned during the bootcamp.
 1. Run `yarn install --check-files`
 1. Run `bundle exec rails db:create`
 1. Run `bundle exec rails db:migrate`
-1. Run `rails server` and visit [http://localhost:3000](http://localhost:3000)
+
+## Running the app in development
+
+1. Run `bin/rails server`
+1. In a seperate terminal window, run `bin/webpac-dev-server`
+1. visit [http://localhost:3000](http://localhost:3000)
