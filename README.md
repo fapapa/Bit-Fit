@@ -25,7 +25,7 @@ put to use many of the technologies we learned during the bootcamp.
    [rvm](https://rvm.io) to install)
 1. After installing Ruby, install Bundler (`gem install bundler`)
 1. [Yarn](https://yarnpkg.com/lang/en/docs/install)
-1. [Potgres](https://www.postgresql.org)
+1. [Postgres](https://www.postgresql.org)
 
 ## Installation
 
@@ -38,5 +38,5 @@ put to use many of the technologies we learned during the bootcamp.
 ## Running the app in development
 
 1. Run `bin/rails server`
-1. In a seperate terminal window, run `bin/webpac-dev-server`
+1. In a seperate terminal window, run `bin/webpack-dev-server`
 1. visit [http://localhost:3000](http://localhost:3000)
