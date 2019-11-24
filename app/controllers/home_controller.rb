@@ -3,9 +3,10 @@ class HomeController < ApplicationController
     if session[:user_id]
       @user = User.find(session[:user_id])
       if !@user.token.current?
-        @user.token.update
+        @user.refresh_token
       end
       # Get data and render
+      @user.calories_burned
     else
       redirect_to authenticate_path
     end

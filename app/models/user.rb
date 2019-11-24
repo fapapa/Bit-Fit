@@ -2,33 +2,28 @@ require 'base64'
 require 'httparty'
 
 class User < ApplicationRecord
+  has_one :token, dependent: :destroy
+
+  def calories_burned
+    return activities['caloriesOut'] 
+  end
+
+  def steps_taken
+    return activities['steps'] 
+  end
+
+  
+  def refresh_token
+    parsed_response = Fitbit.refresh_tokens
+    access_token = parsed_response[:access_token]
+    refresh_token = parsed_response[:refresh_token]
+
+    save
+  end
+
   def self.fitbit_auth(code)
-    config = Rails.application.credentials.config
-    client_id = config[:client_id]
-    client_secret = config[:client_secret]
-    redirect_uri = config[:redirect_uri]
-    auth_code = Base64.encode64("#{client_id}:#{client_secret}")
+    parsed_response = Fitbit.get_tokens(code)
 
-    query = {
-      'clientId' => client_id,
-      'grant_type' => 'authorization_code',
-      'redirect_uri' => redirect_uri,
-      'code' => code
-    }
-
-    headers = {
-      'Authorization' => "Basic #{auth_code}",
-      'Content-Type' => 'application/x-www-form-urlencoded'
-    }
-
-    res = HTTParty.post(
-      'https://api.fitbit.com/oauth2/token',
-      query: query,
-      headers: headers,
-      format: :plain
-    )
-
-    parsed_response = JSON.parse(res, symbolize_names: true)
     access_token = parsed_response[:access_token]
     refresh_token = parsed_response[:refresh_token]
 
@@ -44,10 +39,17 @@ class User < ApplicationRecord
       user.last_name = parsed_profile['lastName']
       user.last_login = Time.now
       user.username = parsed_profile['displayName']
-      user.access_token = access_token
-      user.refresh_token = refresh_token
     end
-
+    user.create_token(access_token: access_token, refresh_token: refresh_token)
     return user
+  end
+
+  private
+
+  def activities
+    @activities ||= HTTParty.get(
+      "https://api.fitbit.com/1/user/-/activities/date/#{DateTime.now.strftime('%Y-%m-%d')}.json",
+      headers: {'Authorization' => "Bearer #{token.access_token}"}
+    ).parsed_response['summary']
   end
 end
