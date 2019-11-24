@@ -12,8 +12,8 @@ class Fitbit
     res = make_request(query)
     JSON.parse(res, symbolize_names: true)
   end
- 
-  def self.refresh_tokens
+
+  def self.refresh_tokens(refresh_token)
     query = {
       'clientId' => client_id,
       'grant_type' => 'refresh_token',

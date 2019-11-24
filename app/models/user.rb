@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def refresh_token
-    parsed_response = Fitbit.refresh_tokens
+    parsed_response = Fitbit.refresh_tokens(token.refresh_token)
     access_token = parsed_response[:access_token]
     refresh_token = parsed_response[:refresh_token]
 
