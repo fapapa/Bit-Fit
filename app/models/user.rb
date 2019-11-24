@@ -1,37 +1,39 @@
+# frozen_string_literal: true
+
 require 'base64'
 require 'httparty'
 
 class User < ApplicationRecord
   has_one :token, dependent: :destroy
 
-  def calories_burned(date='today', period='1d')
+  def calories_burned(date = 'today', period = '1d')
     calories = activities('tracker/calories', date, period)['activities-tracker-calories']
-    calories.inject(0) do |sum,day|
-      sum += day['value'].to_i
+    calories.inject(0) do |sum, day|
+      sum + day['value'].to_i
     end
   end
 
-  def steps_taken(date='today', period='1d')
+  def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
-    steps.inject(0) do |sum,day|
-      puts day['dateTime']
-      sum += day['value'].to_i
+    steps.inject(0) do |sum, day|
+      sum + day['value'].to_i
     end
   end
 
   def refresh_token
-    parsed_response = Fitbit.refresh_tokens(token.refresh_token)
-    access_token = parsed_response[:access_token]
-    refresh_token = parsed_response[:refresh_token]
+    new_tokens = Fitbit.refresh_tokens(token.refresh_token)
 
-    save
+    token.access_token = new_tokens[:access_token]
+    token.refresh_token = new_tokens[:refresh_token]
+
+    token.save
   end
 
   def self.fitbit_auth(code)
-    parsed_response = Fitbit.get_tokens(code)
+    tokens = Fitbit.get_tokens(code)
 
-    access_token = parsed_response[:access_token]
-    refresh_token = parsed_response[:refresh_token]
+    access_token = tokens[:access_token]
+    refresh_token = tokens[:refresh_token]
 
     profile = HTTParty.get(
       'https://api.fitbit.com/1/user/-/profile.json',
