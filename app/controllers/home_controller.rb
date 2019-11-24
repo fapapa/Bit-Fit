@@ -6,7 +6,6 @@ class HomeController < ApplicationController
         @user.refresh_token
       end
       # Get data and render
-      @user.calories_burned
     else
       redirect_to authenticate_path
     end

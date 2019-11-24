@@ -4,15 +4,21 @@ require 'httparty'
 class User < ApplicationRecord
   has_one :token, dependent: :destroy
 
-  def calories_burned
-    return activities['caloriesOut'] 
+  def calories_burned(date='today', period='1d')
+    calories = activities('tracker/calories', date, period)['activities-tracker-calories']
+    calories.inject(0) do |sum,day|
+      sum += day['value'].to_i
+    end
   end
 
-  def steps_taken
-    return activities['steps'] 
+  def steps_taken(date='today', period='1d')
+    steps = activities('tracker/steps', date, period)['activities-tracker-steps']
+    steps.inject(0) do |sum,day|
+      puts day['dateTime']
+      sum += day['value'].to_i
+    end
   end
 
-  
   def refresh_token
     parsed_response = Fitbit.refresh_tokens
     access_token = parsed_response[:access_token]
@@ -46,10 +52,10 @@ class User < ApplicationRecord
 
   private
 
-  def activities
-    @activities ||= HTTParty.get(
-      "https://api.fitbit.com/1/user/-/activities/date/#{DateTime.now.strftime('%Y-%m-%d')}.json",
+  def activities(resource_path, date, period)
+    HTTParty.get(
+      "https://api.fitbit.com/1/user/-/activities/#{resource_path}/date/#{date}/#{period}.json",
       headers: {'Authorization' => "Bearer #{token.access_token}"}
-    ).parsed_response['summary']
+    ).parsed_response
   end
 end
