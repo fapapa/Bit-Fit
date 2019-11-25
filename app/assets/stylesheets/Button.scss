@@ -26,12 +26,12 @@
 
 .button:hover {
   background-color: #ee3253;
-  box-shadow: 0 11px #d0b400;
-  transform: translateY(1px);
+  box-shadow: 0 10px #d0b400;
+  transform: translateY(2px);
 }
 
 .button:active {
   background-color: #ee3253;
   box-shadow: 0 4px #d0b400;
-  transform: translateY(7px);
+  transform: translateY(6px);
 }
