@@ -1,0 +1,33 @@
+GET /api/calories - Total calories burned today
+GET /api/calories/:period - Calories burned daily in the period
+
+GET /api/steps - Total steps taken today
+GET /api/steps/:period - Steps taken daily in the period
+
+GET /api/heartrate - Average heartrate today
+GET /api/heartrate/:period - Average daily heartrate for the period
+
+GET /api/exp - Calculated experience factor
+
+GET /api/profile - Details on the user (name, gender, age, etc.)
+
+GET /api/fitigochi - Details on the Fitigochi (name, color, etc.)
+POST /api/fitigochi - Modify fitigochi details
+
+GET /api/friends - List of friends with their details
+GET /api/friends/search - Search for friends by name
+GET /api/friends/:id - Details of friend
+POST /api/friends/:id - Add a friend
+DELETE /api/friends/:id - Remove a friend
+
+GET /api/battles - Current battles with their details (includes completed battles not yet archived)
+POST /api/battles/:friend_id - Create a new battle with the specified friend
+GET /api/battles/completed - Completed battles
+GET /api/battles/:id - Show details of a battle
+DELETE /api/battles/:id - Archive a battle; only works if the battle is finished
+
+* All of these endpoints will be scoped to a single user
+
+* The :period parameter is one of 1d, 7d, 30d, 1w, 1m, and is based on Fitbit's
+  API. In all cases the end date of the period is the current day, and the
+  period specifies how far back to go.
