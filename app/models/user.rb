@@ -13,9 +13,7 @@ class User < ApplicationRecord
 
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
-    steps.inject(0) do |sum, day|
-      sum + day['value'].to_i
-    end
+    steps.size > 1 ? steps : steps[0]
   end
 
   def refresh_token
