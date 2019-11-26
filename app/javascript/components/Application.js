@@ -1,5 +1,6 @@
 import React from "react"
 import NavMenu from "./NavMenu"
+import Graph from "./Graph"
 
 export default function Application(props) {
 
@@ -13,6 +14,9 @@ export default function Application(props) {
   ];
 
   return (
-    <NavMenu buttons={homeButtons} />
+    <div>
+      <NavMenu buttons={homeButtons} />
+      <Graph />
+    </div>
   );
 }
