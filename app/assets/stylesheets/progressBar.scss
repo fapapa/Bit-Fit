@@ -9,20 +9,13 @@
 .filler {
   background: #2E86AB;
   background-image: url("https://www.transparenttextures.com/patterns/paven.png");
-  height: 100%;
-  border-radius: inherit;
-  transition: width 1.5s ease-in;
-}
-
-.filler--calories {
-  background: #2E86AB;
-  background-image: url("https://www.transparenttextures.com/patterns/paven.png");
   height: 92%;
   border-radius: inherit;
-  border: 1px solid rgba(20, 20, 20, 0.781);
   transition: width 1.9s ease-in;
+  border: 1px solid rgba(20, 20, 20, 0.781);
   box-shadow: -3px 2px 5px 6px rgba(0, 0, 0, 0.918);
 }
+
 
 
 

@@ -11,12 +11,21 @@ class User < ApplicationRecord
     calories.size > 1 ? calories : calories[0]
   end
 
+  def calories_daily_goal(period = 'daily')
+    calories = goals(period)['goals']['caloriesOut']
+  end
+
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
     steps.inject(0) do |sum, day|
       sum + day['value'].to_i
     end
   end
+  
+  def steps_daily_goal(period = 'daily')
+    steps = goals(period)['goals']['steps']
+  end
+  
 
   def refresh_token
     new_tokens = Fitbit.refresh_tokens(token.refresh_token)
@@ -58,4 +67,12 @@ class User < ApplicationRecord
       headers: {'Authorization' => "Bearer #{token.access_token}"}
     ).parsed_response
   end
+
+  def goals(period)
+    HTTParty.get(
+      "https://api.fitbit.com/1/user/-/activities/goals/#{period}.json",
+      headers: {'Authorization' => "Bearer #{token.access_token}"}
+    ).parsed_response
+  end
+
 end

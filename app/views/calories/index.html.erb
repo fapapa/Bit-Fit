@@ -1,8 +1,22 @@
 <h2>User Calories</h2>
 <%=@user.calories_burned%>
-<h2>Progress Bar</h2>
+
+<h2>Progress Bar-Calories</h2>
+<div class="progress-bar--calories">
 <%= react_component("ProgressBar", 
 { user: @user, 
-  calories: @user.calories_burned,
-  steps: @user.steps_taken
+  current_points: @user.calories_burned,
+  daily_goal: @user.calories_daily_goal
 }) %>
+</div>
+
+<h2>User Steps</h2>
+<%=@user.steps_taken%>
+<h2>Progress Bar-Steps</h2>
+<div class="progress-bar--steps">
+<%= react_component("ProgressBar", 
+{ user: @user, 
+  current_points: @user.steps_taken,
+  daily_goal: @user.steps_daily_goal
+}) %>
+</div>
