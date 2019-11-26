@@ -8,9 +8,7 @@ class User < ApplicationRecord
 
   def calories_burned(date = 'today', period = '1d')
     calories = activities('tracker/calories', date, period)['activities-tracker-calories']
-    calories.inject(0) do |sum, day|
-      sum + day['value'].to_i
-    end
+    calories.size > 1 ? calories : calories[0]
   end
 
   def steps_taken(date = 'today', period = '1d')
