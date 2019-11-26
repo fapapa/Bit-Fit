@@ -1,0 +1,23 @@
+.progress-bar {
+  position: relative;
+  height: 40px;
+  border-radius: 8px;
+  border: 10px solid #333;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.filler {
+  background: #1DA598;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 1.5s ease-in;
+}
+
+.filler--calories {
+  background: #1DA598;
+  height: 90%;
+  border-radius: inherit;
+  border: 1px solid gray;
+  transition: width 1.9s ease-in;
+  box-shadow: -2px 2px 7px 8px black;
+}

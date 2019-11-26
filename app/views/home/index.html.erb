@@ -8,4 +8,10 @@ Steps: <%= @user.steps_taken('today', '1m') %>
 
 <%= react_component('Application') %>
 <h2>Progress Bar</h2>
-<%= react_component("ProgressBar", props: { user: @user }) %>
+<div class="progress-bar--calories">
+<%= react_component("ProgressBar", 
+{ user: @user, 
+  calories: @user.calories_burned,
+  steps: @user.steps_taken
+}) %>
+</div>
