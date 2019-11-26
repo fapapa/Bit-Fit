@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     get 'calories/:period', to: 'calories#period'
 
     get 'steps', to: 'steps#index'
+    get 'steps/:period', to: 'steps#period'
   end
 end
