@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     get 'heartrate', to: 'heartrate#index'
     get 'heartrate/:period', to: 'heartrate#period'
   end
+  get 'sessions/test', to: 'test#show'
 end
