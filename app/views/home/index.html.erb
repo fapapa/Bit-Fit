@@ -1,9 +1,1 @@
-<h2>Today</h2>
-Calories: <%=@user.calories_burned%><br>
-Steps: <%= @user.steps_taken %>
-
-<h2>This Month</h2>
-Calories: <%=@user.calories_burned('today', '1m')%><br>
-Steps: <%= @user.steps_taken('today', '1m') %>
-
 <%= react_component('Application') %>

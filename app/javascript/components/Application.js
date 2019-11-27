@@ -1,22 +1,9 @@
 import React from "react"
-import NavMenu from "./NavMenu"
-import Graph from "./Graph"
+import Page from "./Page";
 
 export default function Application(props) {
 
-  const homeButtons = [
-    {
-      title: 'Battle'
-    },
-    {
-      title: 'Fitness'
-    }
-  ];
-
   return (
-    <div>
-      <NavMenu buttons={homeButtons} />
-      <Graph maxValue={40} titlex={'This Week'} titley={'Calories'}/>
-    </div>
+    <Page /> 
   );
 }
