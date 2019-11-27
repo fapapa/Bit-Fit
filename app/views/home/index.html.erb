@@ -1,21 +1,11 @@
-<h2>Today</h2>
-Calories: <%=@user.calories_burned['value']%><br>
-Steps: <%= @user.steps_taken %><br>
-Avg Heartrate in fat_burn: <%= @user.average_heartrate%>
-
-<h2>This Month</h2>
-Calories: <%=@user.calories_burned('today', '1m')%><br>
-Steps: <%= @user.steps_taken('today', '1m') %>
 
 
 
 <%= react_component('Application') %>
 
-<h2>Progress Bar-Calories</h2>
-<div class="progress-bar--calories">
 <%= react_component("ProgressBar", 
-{ user: @user, 
+{ user:           @user, 
   current_points: @user.calories_burned['value'],
-  daily_goal: @user.calories_daily_goal
-}) %>
-</div>
+  daily_goal:     @user.calories_daily_goal
+}) 
+%>

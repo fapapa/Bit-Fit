@@ -1,14 +1,14 @@
-class Api::CaloriesController < ApplicationController
+class Api::HeartrateController < ApplicationController
   def index
     return not_authenticated unless current_user
-    
+
     render json: current_user.calories_burned
   end
 
   def period
     return not_authenticated unless current_user
 
-    render json: current_user.calories_burned('today', params[:period])
+    render json: current_user.average_heartrate('today', params[:period])
   end
 
   private

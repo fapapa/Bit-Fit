@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     get 'calories', to: 'calories#index'
     get 'calories/:period', to: 'calories#period'
     get 'heartrate', to: 'heartrate#index'
+    get 'heartrate/:period', to: 'heartrate#period'
   end
 end

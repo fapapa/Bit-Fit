@@ -1,24 +1,58 @@
 .progress-bar {
   position: relative;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 5px;
   border: 10px solid rgba(0, 0, 0, 0.76);
   box-shadow: 0 8px 6px -6px black;
+  z-index: 2;
 }
 
 .filler {
-  background: #2E86AB;
-  background-image: url("https://www.transparenttextures.com/patterns/paven.png");
-  height: 92%;
-  border-radius: inherit;
-  transition: width 1.9s ease-in;
+  
+  height: 100%;
+  border-radius: 2px;
   border: 1px solid rgba(20, 20, 20, 0.781);
-  box-shadow: -3px 2px 5px 6px rgba(0, 0, 0, 0.918);
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  // display: flex;
 }
 
+.filler-increment {
+  height: 100%;
+  // border-radius: 2px;
+  // transition: width 1.9s ease-in;
+  // border: 1px solid rgba(20, 20, 20, 0.781);
+  // z-index: 0;
+  // position: relative;
+  // display: inline-block;
+  float: left;
+}
 
+.steps {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+  width: 100%;
+  height: inherit;
+  z-index: 1;
+}
 
+.current {
+  background: orange;
+  width: 10px
+}
 
+.goal {
+  background: orange;
+  width: 10px
+}
 
-
+.done {
+  background: orange;
+  width: 10px
+}
 
