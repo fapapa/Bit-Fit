@@ -1,2 +1,16 @@
-.graph-series:hover {
+@font-face {
+  font-family: 'Kenny';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    font_url(Kenney-Future)
+}
+
+
+.y-axis {
+  font-family: 'Kenny';
+}
+
+.x-axis {
+  font-family: 'Kenny';
 }
