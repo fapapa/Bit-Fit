@@ -1,0 +1,12 @@
+.menu-container {
+  width: 400px;
+  height: 100vh;
+  overflow-x: scroll;
+  scrollbar-width: none;
+
+  // Hide the scroll bar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}
