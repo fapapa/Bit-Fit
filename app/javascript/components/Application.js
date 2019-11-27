@@ -1,18 +1,9 @@
 import React from "react"
-import NavMenu from "./NavMenu"
+import Page from "./Page";
 
 export default function Application(props) {
 
-  const homeButtons = [
-    {
-      title: 'Battle'
-    },
-    {
-      title: 'Fitness'
-    }
-  ];
-
   return (
-    <NavMenu buttons={homeButtons} />
+    <Page /> 
   );
 }
