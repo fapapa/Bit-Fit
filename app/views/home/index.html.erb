@@ -1,7 +1,7 @@
 <h2>Today</h2>
 Calories: <%=@user.calories_burned['value']%><br>
-Steps: <%= @user.steps_taken %>
-
+Steps: <%= @user.steps_taken %><br>
+Avg Heartrate in fat_burn: <%= @user.average_heartrate%>
 
 <h2>This Month</h2>
 Calories: <%=@user.calories_burned('today', '1m')%><br>

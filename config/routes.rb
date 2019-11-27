@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   namespace :api do
     get 'calories', to: 'calories#index'
     get 'calories/:period', to: 'calories#period'
+    get 'heartrate', to: 'heartrate#index'
   end
 end
