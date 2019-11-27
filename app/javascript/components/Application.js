@@ -16,7 +16,7 @@ export default function Application(props) {
   return (
     <div>
       <NavMenu buttons={homeButtons} />
-      <Graph />
+      <Graph titlex={'This Week'} titley={'Calories'}/>
     </div>
   );
 }
