@@ -18,7 +18,7 @@ export default function Graph(props) {
       y: day.y,
       label: day.label,
       xOffset: -(((width)/(data2.length*4))-12), //-((day.x-day.x0)/2),
-      yOffset: (height-50)*(day.y/maxValue),//(day.y === 0 ? 20 : -day.y0/2)
+      yOffset: 20,//(height-50)*(day.y/maxValue),
       rotation: 270
     }
     return dayLabel

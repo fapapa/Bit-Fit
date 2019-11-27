@@ -1,12 +1,8 @@
-
-
-
 <%= react_component('Application') %>
 
-
-<%= react_component("ProgressBar", 
-{ user:           @user, 
+<%= react_component("ProgressBar",
+{ user:           @user,
   current_points: @user.calories_burned['value'],
   daily_goal:     @user.calories_daily_goal
-}) 
+})
 %>
