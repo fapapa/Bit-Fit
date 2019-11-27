@@ -5,7 +5,7 @@ export default function Options(props) {
   const buttons = [
     {
       title: "Home",
-      onClick: props.onHome,
+      onClick: props.onHome
     },
     {
       title: "Find a Foe",
@@ -24,7 +24,7 @@ export default function Options(props) {
       onClick: () => {
         console.log("Friends");
       }
-    },
+    }
   ];
 
   return (
@@ -37,7 +37,7 @@ export default function Options(props) {
           <a>Status</a>
         </section>
         <section className="fitigochi-container">
-          <a>Battle</a>
+          <a>Options</a>
         </section>
       </section>
     </main>
