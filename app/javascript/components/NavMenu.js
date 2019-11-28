@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import AwesomeButton from "./AwesomeButton";
+import Axios from "axios";
 
 export default function Application(props) {
+  const fetchUserName = () => {
+    Axios.get("/api/profile")
+      .then(res => {
+        setUserName(res.data["displayName"]);
+      })
+      .catch(err => console.error("Error:", err));
+  };
+
+  const [userName, setUserName] = useState(fetchUserName());
+
   const buttons = props.buttons.map((button, index) => {
     return (
       <AwesomeButton
@@ -14,7 +25,7 @@ export default function Application(props) {
 
   return (
     <section className="navmenu">
-      <div className="username">Fabio</div>
+      <div className="username">{userName}</div>
       {buttons}
     </section>
   );

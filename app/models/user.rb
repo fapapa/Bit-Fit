@@ -33,6 +33,12 @@ class User < ApplicationRecord
     return average = (fat_burn["max"] + fat_burn["min"]) / 2
   end
 
+  def fitbit_profile
+    @profile ||= HTTParty.get(
+      "https://api.fitbit.com/1/user/-/profile.json",
+      headers: headers
+    ).parsed_response["user"]
+  end
 
   def refresh_token
     new_tokens = Fitbit.refresh_tokens(token.refresh_token)
