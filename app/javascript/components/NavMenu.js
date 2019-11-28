@@ -12,5 +12,10 @@ export default function Application(props) {
     );
   });
 
-  return <section className="navmenu">{buttons}</section>;
+  return (
+    <section className="navmenu">
+      <div className="username">Fabio</div>
+      {buttons}
+    </section>
+  );
 }
