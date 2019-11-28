@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
     get 'steps', to: 'steps#index'
     get 'steps/:period', to: 'steps#period'
+    get 'heartrate', to: 'heartrate#index'
+    get 'heartrate/:period', to: 'heartrate#period'
   end
 end

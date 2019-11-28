@@ -1,5 +1,6 @@
 import React from "react"
 import NavMenu from "./NavMenu"
+import ProgressBar from "./ProgressBar";
 
 export default function Application(props) {
 
@@ -14,5 +15,6 @@ export default function Application(props) {
 
   return (
     <NavMenu buttons={homeButtons} />
+
   );
 }
