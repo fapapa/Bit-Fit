@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'sessions/create', to: 'sessions#create'
   get 'sessions/logout', to: 'sessions#logout'
 
+  get 'sessions/test', to: 'test#show'
+
   namespace :api do
     get 'calories', to: 'calories#index'
     get 'calories/:period', to: 'calories#period'

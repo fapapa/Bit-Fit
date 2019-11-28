@@ -1,24 +1,31 @@
 import React from "react";
+import BattleBox from "./BattleBox"
 import AwesomeButton from "./AwesomeButton";
 
 export default function MenuContainer(props) {
-  const buttons = [
-    { title: "Battle" },
-    { title: "Fitness" },
-    { title: "Gym" },
-    { title: "Coffee" },
-    { title: "Stats" },
-    { title: "These" },
-    { title: "Are" },
-    { title: "More" },
-    { title: "Buttons" }
-  ];
+
+  function renderBattleBoxes() {
+    return props.boxes.map((box, index) => (
+      <BattleBox
+        key={index}
+        old={false}
+        active={true} 
+      />
+    ))
+  }
+
+  function renderDayBoxes() {
+    return props.boxes.map(() => (
+      <AwesomeButton key={index} title={button.title} />
+    ))
+  }
+
+  const finalBoxes = props.boxType === "Battle" ? renderBattleBoxes() : renderDayBoxes()
+
 
   return (
     <nav className="menu-container">
-      {buttons.map((button, index) => (
-        <AwesomeButton key={index} title={button.title} />
-      ))}
+      {finalBoxes}
     </nav>
   );
 }
