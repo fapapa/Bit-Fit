@@ -11,16 +11,12 @@ export default function ProgressBar(props) {
   //       setPoints(95)
   //     }, 3000)
   //   }, 4000);
-
   // }, [])
 
   const barScale = () => {
-    if (props.current_points >= props.stretch_goal) {
-      // Round up to the neerest 100
-      return (Math.floor(props.current_points / 100) + 1) * 100;
-    } else {
-      return props.stretch_goal;
-    }
+    if (props.current_points < props.stretch_goal) return props.stretch_goal;
+
+    return (Math.floor(props.current_points / 100) + 1) * 100;
   };
 
   return (
@@ -33,7 +29,7 @@ export default function ProgressBar(props) {
       <div
         className="goal"
         style={{
-          marginLeft: `${(props.daily_goal / barScale()) * 100}%`
+          marginLeft: `${(props.daily_goal / barScale()) * 100}%`,
         }}
       ></div>
     </div>

@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
-    steps.size > 1 ? steps : steps[0]
+    steps.size > 1 ? steps : steps[0]["value"]
   end
 
 
