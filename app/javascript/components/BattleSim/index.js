@@ -4,7 +4,7 @@ import Versus from "./Versus";
 import Battlefield from "./Battlefield";
 import useVisualMode from "hooks/useVisualMode";
 
-export default function Application(props) {
+export default function BattleSim(props) {
   // DIFFERENT MODES FOR MODE SELECTOR
   const LOADING = "LOADING";
   const VERSUS = "VERSUS";
