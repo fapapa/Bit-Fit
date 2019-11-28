@@ -71,7 +71,7 @@ class User < ApplicationRecord
   def activities(resource_path, date, period)
     HTTParty.get(
       "https://api.fitbit.com/1/user/-/activities/#{resource_path}/date/#{date}/#{period}.json",
-      headers: {'Authorization' => "Bearer #{token.access_token}"}
+      headers: headers
     ).parsed_response
   end
 
@@ -81,7 +81,4 @@ class User < ApplicationRecord
       headers: {'Authorization' => "Bearer #{token.access_token}"}
     ).parsed_response
   end
-
-
-
 end
