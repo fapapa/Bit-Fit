@@ -1,8 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import Filler from './Filler';
-
-
-
+import React, { useEffect, useState } from "react";
+import Filler from "./Filler";
 
 export default function ProgressBar(props) {
   // const [points, setPoints] = useState(90)
@@ -17,18 +14,28 @@ export default function ProgressBar(props) {
 
   // }, [])
 
-  return ( 
+  const barScale = () => {
+    if (props.current_points >= props.stretch_goal) {
+      // Round up to the neerest 100
+      return (Math.floor(props.current_points / 100) + 1) * 100;
+    } else {
+      return props.stretch_goal;
+    }
+  };
+
+  return (
     <div className="progress-bar">
-      <Filler 
+      <Filler
         current_points={props.current_points}
         daily_goal={props.daily_goal}
+        stretch_goal={barScale()}
       />
-      <div className="steps">
-        <div className="done"></div>
-        <div className="current"></div>
-        <div className="goal"></div>
-      </div>
+      <div
+        className="goal"
+        style={{
+          marginLeft: `${(props.daily_goal / barScale()) * 100}%`
+        }}
+      ></div>
     </div>
-  )
+  );
 }
-

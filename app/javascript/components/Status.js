@@ -19,14 +19,14 @@ export default function Status(props) {
         setCurrentSteps(res.data);
       })
       .catch(err => console.error(err));
-    // setCurrentSteps(8321);
   }, []);
 
   return (
     <section className="status-area">
       <ProgressBar
         current_points={currentCalories}
-        daily_goal={Math.max(500, currentCalories)}
+        daily_goal={500}
+        stretch_goal={600}
       />
       <ProgressBar current_points={currentSteps} daily_goal={10000} />
     </section>
