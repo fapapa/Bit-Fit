@@ -1,27 +1,28 @@
 import React from "react";
 import NavMenu from "../NavMenu";
+import Status from "../Status";
 
 export default function Home(props) {
   const buttons = [
     {
       title: "Battle",
-      onClick: props.onBattle,
+      onClick: props.onBattle
     },
     {
       title: "Fitness",
-      onClick: props.onFitness,
+      onClick: props.onFitness
     },
     {
       title: "The Gym",
-      onClick: props.onTheGym,
+      onClick: props.onTheGym
     },
     {
       title: "Friends",
-      onClick: props.onFriends,
+      onClick: props.onFriends
     },
     {
       title: "Options",
-      onClick: props.onOptions,
+      onClick: props.onOptions
     }
   ];
 
@@ -32,7 +33,7 @@ export default function Home(props) {
       </section>
       <section className="content-container">
         <section className="user-status-container">
-          <a>Status</a>
+          <Status />
         </section>
         <section className="fitigochi-container">
           <a>Home</a>
