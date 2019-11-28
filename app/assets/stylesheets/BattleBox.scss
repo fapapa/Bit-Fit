@@ -58,6 +58,19 @@
   font-size: 120px;
 }
 
+.waiting-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffe70b;
+  width: 100%;
+}
+
+.waiting-message {
+  font-family: 'Kenny';
+  font-size: 100px;
+}
+
 .battle-box-center-spot {
   height: 100%;
   display: flex;
@@ -72,5 +85,5 @@
 
 .battle-box-center-spot-text-solo {
   font-family: 'Kenny';
-  font-size: 90px;
+  font-size: 60px;
 }
