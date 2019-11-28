@@ -5,7 +5,10 @@ require 'httparty'
 
 class User < ApplicationRecord
   has_one :token, dependent: :destroy
+  has_one :fitogachi, dependent: :destroy
+  has_many :day, dependent: :destroy
 
+  after_create :create_fitogachi
 
   def calories_burned(date = 'today', period = '1d')
     calories = activities('tracker/calories', date, period)['activities-tracker-calories']
@@ -13,19 +16,14 @@ class User < ApplicationRecord
   end
 
 
-  def calories_daily_goal(period = 'daily')
-    calories = goals(period)['goals']['caloriesOut']
+  def get_active_calories(date = 'today')
+    return active_calories = goal(date)['summary']['activityCalories']
   end
 
 
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
     steps.size > 1 ? steps : steps[0]
-  end
-
-
-  def steps_daily_goal(period = 'daily')
-    steps = goals(period)['goals']['steps']
   end
 
 
@@ -77,11 +75,13 @@ class User < ApplicationRecord
     ).parsed_response
   end
 
-  def goals(period)
+  def goal(date)
     HTTParty.get(
-      "https://api.fitbit.com/1/user/-/activities/goals/#{period}.json",
+      "https://api.fitbit.com/1/user/-/activities/date/#{date}.json",
       headers: {'Authorization' => "Bearer #{token.access_token}"}
     ).parsed_response
   end
+
+
 
 end

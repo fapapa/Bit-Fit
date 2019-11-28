@@ -1,4 +1,4 @@
-class Api::HeartrateController < ApplicationController
+class Api::HeartrateController < Api::ApiController
   def index
     return not_authenticated unless current_user
 

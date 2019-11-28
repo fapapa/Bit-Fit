@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_225357) do
+ActiveRecord::Schema.define(version: 2019_11_28_034406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.integer "avg_heart_rate"
+    t.integer "calories"
+    t.integer "steps"
+    t.date "stats_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_days_on_user_id"
+  end
+
+  create_table "fitogachis", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "color"
+    t.integer "level"
+    t.integer "current_exp"
+    t.integer "current_energy"
+    t.date "died_on"
+    t.integer "resurrection_days"
+    t.integer "last_experience"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_fitogachis_on_user_id"
+  end
 
   create_table "tokens", force: :cascade do |t|
     t.string "access_token"
@@ -34,5 +60,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_225357) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "days", "users"
+  add_foreign_key "fitogachis", "users"
   add_foreign_key "tokens", "users", on_delete: :cascade
 end
