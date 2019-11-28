@@ -1,5 +1,6 @@
 import React from "react";
 import NavMenu from "../NavMenu";
+import MenuContainer from "../MenuContainer";
 
 export default function Battle(props) {
   const buttons = [
@@ -33,10 +34,15 @@ export default function Battle(props) {
         <NavMenu buttons={buttons} />
       </section>
       <section className="content-container">
-        <section className="user-status-container">
-          <a>Status</a>
+        <section className="battle-content-container">
+          <div className="battle-menu-container">
+          <MenuContainer
+          boxType={'Battle'}
+          boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+          />
+          </div>
         </section>
-        <section className="fitigochi-container">
+        <section className="battle-fitigochi-container">
           <a>Battle</a>
         </section>
       </section>
