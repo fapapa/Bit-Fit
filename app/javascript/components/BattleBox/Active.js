@@ -7,7 +7,10 @@ export default function Active(props) {
     <div className="battle-box-content">
       <Icon color={'blue'} user={1}/>
       <a className='bbox-username'>{props.username1}</a>
-      <img className='versus' src={versus}></img>
+      <div className="battle-box-center-spot">
+        <img className='versus' src={versus}></img>
+        <a className="battle-box-center-spot-text">Days Left</a>
+      </div>
       <a className='bbox-username'>{props.username2}</a>
       <Icon color={'blue'} user={2}/>
     </div>
