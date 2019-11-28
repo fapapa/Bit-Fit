@@ -9,15 +9,11 @@ export default function Status(props) {
 
   useEffect(() => {
     Axios.get("/api/calories")
-      .then(res => {
-        setCurrentCalories(res.data);
-      })
+      .then(res => setCurrentCalories(res.data))
       .catch(err => console.error(err));
 
     Axios.get("/api/steps")
-      .then(res => {
-        setCurrentSteps(res.data);
-      })
+      .then(res => setCurrentSteps(res.data))
       .catch(err => console.error(err));
   }, []);
 
@@ -28,7 +24,11 @@ export default function Status(props) {
         daily_goal={500}
         stretch_goal={600}
       />
-      <ProgressBar current_points={currentSteps} daily_goal={10000} />
+      <ProgressBar
+        current_points={currentSteps}
+        daily_goal={10000}
+        stretch_goal={12000}
+      />
     </section>
   );
 }
