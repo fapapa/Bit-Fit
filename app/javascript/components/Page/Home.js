@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import NavMenu from "../NavMenu";
 import Status from "../Status";
 import Fitogachi from "../Fitogachi";
 
 export default function Home(props) {
+  const [notifications, setNotifications] = useState(3);
+
   const buttons = [
     {
+      notifications,
       title: "Battle",
       onClick: props.onBattle,
     },
