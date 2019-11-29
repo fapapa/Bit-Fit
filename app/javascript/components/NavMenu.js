@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import AwesomeButton from "./AwesomeButton";
 import Axios from "axios";
 
-export default function Application(props) {
+export default function NavMenu(props) {
   const fetchUserName = () => {
     Axios.get("/api/profile")
-      .then(res => {
-        setUserName(res.data["displayName"]);
-      })
+      .then(res => setUserName(res.data["displayName"]))
       .catch(err => console.error("Error:", err));
   };
 

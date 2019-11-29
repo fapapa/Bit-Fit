@@ -6,24 +6,24 @@ export default function Home(props) {
   const buttons = [
     {
       title: "Battle",
-      onClick: props.onBattle
+      onClick: props.onBattle,
     },
     {
       title: "Fitness",
-      onClick: props.onFitness
+      onClick: props.onFitness,
     },
     {
       title: "The Gym",
-      onClick: props.onTheGym
+      onClick: props.onTheGym,
     },
     {
       title: "Friends",
-      onClick: props.onFriends
+      onClick: props.onFriends,
     },
     {
       title: "Options",
-      onClick: props.onOptions
-    }
+      onClick: props.onOptions,
+    },
   ];
 
   return (
