@@ -69,7 +69,6 @@ class User < ApplicationRecord
     )
     parsed_profile = profile.parsed_response['user']
     
-    byebug
     user = find_or_create_by(fitbit_id: parsed_profile['encodedId']) do |user|
       user.first_name = parsed_profile['firstName']
       user.last_name = parsed_profile['lastName']
