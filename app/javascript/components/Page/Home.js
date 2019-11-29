@@ -1,6 +1,7 @@
 import React from "react";
 import NavMenu from "../NavMenu";
 import Status from "../Status";
+import Fitogachi from "../Fitogachi";
 
 export default function Home(props) {
   const buttons = [
@@ -36,7 +37,7 @@ export default function Home(props) {
           <Status />
         </section>
         <section className="fitigochi-container">
-          <a>Home</a>
+          <Fitogachi />
         </section>
       </section>
     </main>
