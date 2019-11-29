@@ -19,39 +19,6 @@ export default function HomePage(props) {
   // SELECTOR HOOK
   const { mode, transition, back } = useVisualMode(HOME);
 
-  const buttons = [
-    {
-      title: "Battle",
-      onClick: () => {
-        console.log("Battle");
-      }
-    },
-    {
-      title: "Fitness",
-      onClick: () => {
-        console.log("Fitness");
-      }
-    },
-    {
-      title: "The Gym",
-      onClick: () => {
-        console.log("The Gym");
-      }
-    },
-    {
-      title: "Friends",
-      onClick: () => {
-        console.log("Friends");
-      }
-    },
-    {
-      title: "Options",
-      onClick: () => {
-        console.log("Options");
-      }
-    }
-  ];
-
   return (
     <div className="page-container">
       {mode === HOME && (

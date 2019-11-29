@@ -12,9 +12,15 @@ Rails.application.routes.draw do
 
     get 'steps', to: 'steps#index'
     get 'steps/:period', to: 'steps#period'
+
     get 'heartrate', to: 'heartrate#index'
     get 'heartrate/:period', to: 'heartrate#period'
+
     get 'experience', to: 'experience#index'
+
+    get 'profile', to: 'profile#index'
+
+    get 'fitogachi', to: 'fitogachi#show'
   end
   get 'sessions/test', to: 'test#show'
 end
