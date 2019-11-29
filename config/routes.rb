@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get 'experience', to: 'experience#index'
 
     get 'profile', to: 'profile#index'
+
+    get 'fitogachi', to: 'fitogachi#show'
   end
   get 'sessions/test', to: 'test#show'
 end
