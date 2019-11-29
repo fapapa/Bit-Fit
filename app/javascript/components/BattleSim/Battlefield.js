@@ -16,7 +16,7 @@ export default function Battlefield(props) {
         <div>Bar2</div>
       </div>
       <div className="battlefield-container">
-        <div className="character1">Character(1)</div>
+        <div className="character1">props.battleInfo</div>
         <div className="character2">Character(2)</div>
       </div>
     </div>
