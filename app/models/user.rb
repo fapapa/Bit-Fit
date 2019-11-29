@@ -28,6 +28,7 @@ class User < ApplicationRecord
     friends['data']
   end
 
+
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
     steps.size > 1 ? steps : steps[0]["value"]
@@ -60,14 +61,15 @@ class User < ApplicationRecord
       'https://api.fitbit.com/1/user/-/profile.json',
       headers: {'Authorization' => "Bearer #{access_token}"}
     )
-
     parsed_profile = profile.parsed_response['user']
-
+    
+    byebug
     user = find_or_create_by(fitbit_id: parsed_profile['encodedId']) do |user|
       user.first_name = parsed_profile['firstName']
       user.last_name = parsed_profile['lastName']
       user.last_login = Time.now
       user.username = parsed_profile['displayName']
+      user.fitbit_id = parsed_profile['encodedId']
     end
     user.create_token(access_token: access_token, refresh_token: refresh_token)
     return user
