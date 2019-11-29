@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import Versus from "./Versus";
 import Battlefield from "./Battlefield";
 import useVisualMode from "hooks/useVisualMode";
-import Axios from "axios";
+import axios from "axios";
 
 export default function BattleSim(props) {
   // DIFFERENT MODES FOR MODE SELECTOR
@@ -20,8 +20,8 @@ export default function BattleSim(props) {
     Promise.resolve(axios.get("/api/battle"))
     .then(res => {
       transition(VERSUS);
-      setBattleinfo(res);
-      setTimeout(() => transition(BATTLEFIELD), 1500);
+      setBattleInfo(res.data.last_name);
+      setTimeout(() => transition(BATTLEFIELD), 2000);
     })
   }, [])
 
