@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     config = Rails.application.credentials.config
     client_id = config[:client_id]
-    scopes = config[:scopes]
+    scopes = "activity profile heartrate social"
     redirect_uri = config[:redirect_uri]
 
     query = {

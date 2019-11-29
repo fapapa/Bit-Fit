@@ -10,19 +10,9 @@ class User < ApplicationRecord
   has_many :created_battles, foreign_key: "creator_id", class_name: "Battle"
   has_many :opponent_battles, foreign_key: "opponent_id", class_name: "Battle"
   has_many :winner_battles, foreign_key: "winner_id", class_name: "Battle"
-  has_many :friendships
-  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
 
 
   after_create :create_fitogachi
-
-  # returns all of the other users who are connected to the given
-  # user via a friendship or inverse friendship.
-  def friends
-    friends_array = friendships.map{|friendship| friendship.friend }
-    friends_array + inverse_friendships.map{|friendship| friendship.user }
-    friends_array.compact
-  end
 
   def calories_burned(date = 'today', period = '1d')
     calories = activities('tracker/calories', date, period)['activities-tracker-calories']
@@ -34,6 +24,9 @@ class User < ApplicationRecord
     return active_calories = goal(date)['summary']['activityCalories']
   end
 
+  def get_friends
+    friends['data']
+  end
 
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
@@ -92,6 +85,13 @@ class User < ApplicationRecord
   def goal(date)
     HTTParty.get(
       "https://api.fitbit.com/1/user/-/activities/date/#{date}.json",
+      headers: headers
+    ).parsed_response
+  end
+
+  def friends
+    HTTParty.get(
+      "https://api.fitbit.com/1.1/user/-/friends.json",
       headers: headers
     ).parsed_response
   end

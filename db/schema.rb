@@ -54,15 +54,6 @@ ActiveRecord::Schema.define(version: 2019_11_28_224400) do
     t.index ["user_id"], name: "index_fitogachis_on_user_id"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "friend_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
-  end
-
   create_table "tokens", force: :cascade do |t|
     t.string "access_token"
     t.string "refresh_token"
