@@ -1,0 +1,59 @@
+.battlefield-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.battlefield-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 20vh;
+}
+
+.battlefield-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 80vh;
+}
+
+.KO-icon-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 1px 1px 3px black;
+}
+
+.KO-icon-inner {
+  display: flex;
+  margin: 5px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.KO-text {
+  color:red;
+  font-size: 40px;
+  font-style: bold;
+  padding: 3px;
+}
+
+.character1 {
+
+}
+
+.character2 {
+
+}

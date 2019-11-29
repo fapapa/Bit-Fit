@@ -15,6 +15,8 @@ export default function BattleSim(props) {
     LOADING
   );
 
+  
+
   return (<div className="battle-page">
     {mode === LOADING && (
       <Loading />
