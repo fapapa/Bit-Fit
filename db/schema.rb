@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_034406) do
+ActiveRecord::Schema.define(version: 2019_11_28_224400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "battles", force: :cascade do |t|
+    t.bigint "creator_id", null: false
+    t.bigint "opponent_id", null: false
+    t.bigint "winner_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_battles_on_creator_id"
+    t.index ["opponent_id"], name: "index_battles_on_opponent_id"
+    t.index ["winner_id"], name: "index_battles_on_winner_id"
+  end
 
   create_table "days", force: :cascade do |t|
     t.integer "avg_heart_rate"
@@ -41,6 +54,15 @@ ActiveRecord::Schema.define(version: 2019_11_28_034406) do
     t.index ["user_id"], name: "index_fitogachis_on_user_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
   create_table "tokens", force: :cascade do |t|
     t.string "access_token"
     t.string "refresh_token"
@@ -60,7 +82,12 @@ ActiveRecord::Schema.define(version: 2019_11_28_034406) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "battles", "users", column: "creator_id"
+  add_foreign_key "battles", "users", column: "opponent_id"
+  add_foreign_key "battles", "users", column: "winner_id"
   add_foreign_key "days", "users"
   add_foreign_key "fitogachis", "users"
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "tokens", "users", on_delete: :cascade
 end
