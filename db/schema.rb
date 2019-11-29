@@ -78,7 +78,5 @@ ActiveRecord::Schema.define(version: 2019_11_28_224400) do
   add_foreign_key "battles", "users", column: "winner_id"
   add_foreign_key "days", "users"
   add_foreign_key "fitogachis", "users"
-  add_foreign_key "friendships", "users"
-  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "tokens", "users", on_delete: :cascade
 end
