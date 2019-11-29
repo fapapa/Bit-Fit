@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
     get 'friends', to: 'friends#index'
     get 'friends/search', to: 'friends#search'
+    get 'battle', to: 'battles#battleData'
   end
   get 'sessions/test', to: 'test#show'
 end
