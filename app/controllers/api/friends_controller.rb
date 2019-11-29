@@ -5,6 +5,6 @@ class Api::FriendsController < Api::ApiController
   end
 
   def search
-    render json: current_user.get_friends_by_name(params[:name])
+    render json: current_user.search_friends(params[:name])
   end
 end

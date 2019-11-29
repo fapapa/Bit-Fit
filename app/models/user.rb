@@ -28,6 +28,14 @@ class User < ApplicationRecord
     friends['data']
   end
 
+  def search_friends(name)
+    found_user = User.find_by(first_name: name)
+    friends_arr = friends['data']
+    is_friend = friends_arr.each { |n|
+      return found_user unless n['id'] != found_user['fitbit_id']
+    }
+  end
+
 
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
@@ -68,7 +76,7 @@ class User < ApplicationRecord
       headers: {'Authorization' => "Bearer #{access_token}"}
     )
     parsed_profile = profile.parsed_response['user']
-    
+
     user = find_or_create_by(fitbit_id: parsed_profile['encodedId']) do |user|
       user.first_name = parsed_profile['firstName']
       user.last_name = parsed_profile['lastName']
