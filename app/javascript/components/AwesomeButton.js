@@ -10,13 +10,13 @@ export default function AwesomeButton(props) {
 
   return (
     <button
-      className={"button"}
+      className={props.current ? "currentButton" : "button"}
       onMouseDown={() => {
         tone.play();
       }}
       onClick={props.onClick}
     >
-      <a className={"buttonText"}>
+      <a className={props.current ? "currentButtonText" : "buttonText"}>
         {props.title}
         {props.notifications ? `(${props.notifications})` : ""}
       </a>

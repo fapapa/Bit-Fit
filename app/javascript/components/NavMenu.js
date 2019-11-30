@@ -15,6 +15,7 @@ export default function NavMenu(props) {
     return (
       <AwesomeButton
         key={index}
+        current={button.title === props.currentButton}
         title={button.title}
         notifications={button.notifications}
         onClick={button.onClick || null}
