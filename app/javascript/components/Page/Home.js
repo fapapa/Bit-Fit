@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import NavMenu from "../NavMenu";
 import Status from "../Status";
 import Fitogachi from "../Fitogachi";
 
 export default function Home(props) {
-  const [notifications, setNotifications] = useState(3);
+  const [notifications, setNotifications] = useState(0);
+  useEffect(() => {
+    Axios.get("/api/battles/notifications")
+      .then(res => {
+        setNotifications(res.data);
+      })
+      .catch(err => {
+        console.error("Error", err);
+      });
+  }, []);
 
   const buttons = [
     {

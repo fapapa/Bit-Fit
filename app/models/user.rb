@@ -14,6 +14,13 @@ class User < ApplicationRecord
 
   after_create :create_fitogachi
 
+  def battle_notifications
+    @notifications ||= created_battles.where(accepted: true, viewed_accepted: false).count +
+      created_battles.where("end_date < :today AND creator_viewed = FALSE", {today: Date.today}).count +
+      opponent_battles.where("start_date > :today AND accepted = FALSE", {today: Date.today}).count +
+      opponent_battles.where("end_date < :today AND opponent_viewed = FALSE", {today: Date.today}).count
+  end
+
   def calories_burned(date = 'today', period = '1d')
     calories = activities('tracker/calories', date, period)['activities-tracker-calories']
     calories.size > 1 ? calories : calories[0]

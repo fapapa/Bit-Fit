@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_203809) do
+ActiveRecord::Schema.define(version: 2019_11_29_234553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,15 @@ ActiveRecord::Schema.define(version: 2019_11_29_203809) do
   create_table "battles", force: :cascade do |t|
     t.bigint "creator_id", null: false
     t.bigint "opponent_id", null: false
-    t.bigint "winner_id", null: false
+    t.bigint "winner_id"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "accepted", default: false
+    t.boolean "viewed_accepted", default: false
+    t.boolean "creator_viewed", default: false
+    t.boolean "opponent_viewed", default: false
     t.index ["creator_id"], name: "index_battles_on_creator_id"
     t.index ["opponent_id"], name: "index_battles_on_opponent_id"
     t.index ["winner_id"], name: "index_battles_on_winner_id"
