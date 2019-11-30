@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import NavMenu from "../NavMenu";
 import useVisualMode from "hooks/useVisualMode";
 import MenuContainer from "../MenuContainer";
 import BattleSim from "../BattleSim";
 
 export default function Battle(props) {
-
   const CURRENTBATTLES = "CURRENTBATTLES";
   const FOEFINDRULES = "FOEFINDRULES";
-  const FORFINDWAIT = "FORFINDWAIT";
+  const FOEFINDWAIT = "FORFINDWAIT";
   const FOEFINDFOUND = "FOEFINDFOUND";
   const FRIENDS = "FRIENDS";
   const FISTORY = "FISTORY";
+  const MENU = "MENU";
   const BATTLESIM = "BATTLESIM";
 
-  const { mode, transition, back } = useVisualMode(
-    CURRENTBATTLES
-  );
+  const [buttonMode, setButtonMode] = useState(CURRENTBATTLES);
+  const [screenMode, setScreenMode] = useState(MENU);
+  const [battleSimId, setBattleSimId] = useState(0);
 
   const buttons = [
     {
@@ -26,159 +26,114 @@ export default function Battle(props) {
     {
       title: "Current Battles",
       onClick: () => {
-        transition(CURRENTBATTLES);
+        setButtonMode(CURRENTBATTLES);
       }
     },
     {
       title: "Find a Foe",
       onClick: () => {
-        transition(FOEFINDRULES);
+        setButtonMode(FOEFINDRULES);
       }
     },
     {
       title: "Fight a Friend",
       onClick: () => {
-        transition(FRIENDS);
+        setButtonMode(FRIENDS);
       }
     },
     {
       title: "Fistory",
       onClick: () => {
-        transition(FISTORY);
+        setButtonMode(FISTORY);
       }
     },
     {
       title: "BattleTest",
       onClick: () => {
-        transition(BATTLESIM);
+        setScreenMode(BATTLESIM);
       }
     },
   ];
 
+  function onSimulationEnd() {
+    setBattleSimId(null);
+    setScreenMode(MENU);
+  }
+
   return (
     <main className="page-container">
-      {mode === CURRENTBATTLES && (
+      {screenMode === MENU && (
         <div className="page">
         <section className="nav-menu-container">
           <NavMenu buttons={buttons} />
         </section>
         <section className="content-container">
-          <section className="battle-content-container">
-            <div className="battle-menu-container">
-            <MenuContainer
-            boxType={'Battle'}
-            boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            />
-            </div>
-          </section>
+          {buttonMode === CURRENTBATTLES && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                <MenuContainer
+                  onAccept={() => onAccept(id)}
+                  onComplete={() => onComplete(id)}
+                  boxType={'Battle'}
+                  boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                />
+              </div>
+            </section>
+          )}
+          {buttonMode === FOEFINDRULES && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                Need a component with rules and FIND A FOR button.
+              </div>
+            </section>
+          )}
+          {buttonMode === FOEFINDWAIT && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                NEEDS a simple animation component.. actually you we might be able to just copy guts of BattleSim/Loading
+              </div>
+            </section>
+          )}
+          {buttonMode === FOEFINDFOUND && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                Simple Message component.
+              </div>
+            </section>
+          )}
+          {buttonMode === FRIENDS && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                <MenuContainer
+                boxType={'Battle'}
+                boxes={[1, 2]}
+                />
+                needs friend boxes
+              </div>
+            </section>
+          )}
+          {buttonMode === FISTORY && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                <MenuContainer
+                  boxType={'Battle'}
+                  boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                />
+                needs a data endpoint for only past battles
+              </div>
+            </section>
+          )}
           <section className="battle-fitigochi-container">
-            <a>Battle</a>
+            <a>Fitogachi</a>
           </section>
         </section>
         </div>
-      )}
-      {mode === FOEFINDRULES && (
-       <div className="page">
-       <section className="nav-menu-container">
-         <NavMenu buttons={buttons} />
-       </section>
-       <section className="content-container">
-         <section className="battle-content-container">
-           <div className="battle-menu-container">
-           <MenuContainer
-           boxType={'Battle'}
-           boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-           />
-           </div>
-         </section>
-         <section className="battle-fitigochi-container">
-           <a>Battle</a>
-         </section>
-       </section>
-       </div>
-      )}
-      {mode === FORFINDWAIT && (
-        <div className="page">
-        <section className="nav-menu-container">
-          <NavMenu buttons={buttons} />
-        </section>
-        <section className="content-container">
-          <section className="battle-content-container">
-            <div className="battle-menu-container">
-            <MenuContainer
-            boxType={'Battle'}
-            boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            />
-            </div>
-          </section>
-          <section className="battle-fitigochi-container">
-            <a>Battle</a>
-          </section>
-        </section>
-        </div>
-      )}
-      {mode === FOEFINDFOUND && (
-        <div className="page">
-        <section className="nav-menu-container">
-          <NavMenu buttons={buttons} />
-        </section>
-        <section className="content-container">
-          <section className="battle-content-container">
-            <div className="battle-menu-container">
-            <MenuContainer
-            boxType={'Battle'}
-            boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            />
-            </div>
-          </section>
-          <section className="battle-fitigochi-container">
-            <a>Battle</a>
-          </section>
-        </section>
-        </div>
-      )}
-      {mode === FRIENDS && (
-        <div className="page">
-        <section className="nav-menu-container">
-          <NavMenu buttons={buttons} />
-        </section>
-        <section className="content-container">
-          <section className="battle-content-container">
-            <div className="battle-menu-container">
-            <MenuContainer
-            boxType={'Battle'}
-            boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            />
-            </div>
-          </section>
-          <section className="battle-fitigochi-container">
-            <a>Battle</a>
-          </section>
-        </section>
-        </div>
-      )}
-      {mode === FISTORY && (
-        <div className="page">
-        <section className="nav-menu-container">
-          <NavMenu buttons={buttons} />
-        </section>
-        <section className="content-container">
-          <section className="battle-content-container">
-            <div className="battle-menu-container">
-            <MenuContainer
-            boxType={'Battle'}
-            boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            />
-            </div>
-          </section>
-          <section className="battle-fitigochi-container">
-            <a>Battle</a>
-          </section>
-        </section>
-        </div>
-      )}
-      {mode === BATTLESIM && (
-        <BattleSim />
+        )}
+      {screenMode === BATTLESIM && (
+        <BattleSim
+          battleId={battleSimId}
+          onSimulationEnd={() => onSimulationEnd()}
+        />
       )}
     </main>
   );
