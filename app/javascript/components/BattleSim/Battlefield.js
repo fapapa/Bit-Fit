@@ -64,7 +64,7 @@ export default function Battlefield(props) {
   }
 
   useEffect(() => {
-    setTimeout(() => playDays(), 2000);
+    //setTimeout(() => playDays(), 2000);
   }, [])
 
 
@@ -74,6 +74,7 @@ export default function Battlefield(props) {
         <HealthBar 
           percentage={`${healthOne}%`}
           mirror={true}
+          username={props.users[0][0]}
         />
         <div className="KO-icon-outer">
           <div className="KO-icon-inner">
@@ -83,6 +84,7 @@ export default function Battlefield(props) {
         <HealthBar 
           percentage={`${healthTwo}%`}
           mirror={false}
+          username={props.users[1][0]}
           />
       </div>
       <div className="battlefield-container">

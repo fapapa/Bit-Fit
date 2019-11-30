@@ -18,7 +18,6 @@
   border-radius: 0 10px 10px 0;
   height: 39px;
   width: 594px;
-  box-shadow: transparentize($color: #000000, $amount: 1);
   z-index: 3;
   box-shadow: 3px 5px 5px rgb(54, 52, 52);
 }
@@ -27,4 +26,39 @@
   height: 100%;
   transition: width 1.5s;
   z-index: 2;
+}
+
+.health-username{
+  height: 40px;
+  width: 200px;
+  border: 6px solid white;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 3px 5px 5px rgb(54, 52, 52);
+  background-color: rgba($color: #eed35d, $alpha: 1.0);
+  color: black;
+  font-family: 'Kenny';
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+  overflow: hidden;
+}
+
+.health-username-mirror{
+  height: 40px;
+  width: 200px;
+  border: 6px solid white;
+  border-radius: 0 0 10px 10px;
+  box-shadow: -3px 5px 5px rgb(54, 52, 52);
+  background-color: rgba($color: #eed35d, $alpha: 1.0);
+  color: black;
+  font-family: 'Kenny';
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+  overflow: hidden;
+  transform: scaleX(-1);
 }

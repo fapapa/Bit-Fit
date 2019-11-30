@@ -8,6 +8,9 @@ export default function HealthBar(props) {
       <div className="health-inner" style={{width: props.percentage}}>
         <div className="health-outer"></div>
       </div>
+      <div className={props.mirror ? "health-username-mirror" : "health-username"}>
+        {props.username}
+      </div>
     </div>
   );
 }
