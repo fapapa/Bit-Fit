@@ -34,7 +34,9 @@ export default function BattleSim(props) {
     )}
     {mode === BATTLEFIELD && (
       <Battlefield
-        battleInfo={battleInfo}
+        // winner={battleInfo.winner}
+        // users={battleInfo.users}
+        // days={battleInfo.days}
       />
     )}
   </div>);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import NavMenu from "../NavMenu";
 import Status from "../Status";
-import Fitogachi from "../Fitogachi";
+import FitogachiStatus from "../FitogachiStatus";
 
 export default function Home(props) {
   const [notifications, setNotifications] = useState(0);
@@ -50,7 +50,7 @@ export default function Home(props) {
           <Status />
         </section>
         <section className="fitigochi-container">
-          <Fitogachi />
+          <FitogachiStatus />
         </section>
       </section>
     </main>

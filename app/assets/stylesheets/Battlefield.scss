@@ -7,6 +7,7 @@
   background-size: 100vw 100vh;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .battlefield-status {
@@ -52,10 +53,6 @@
   padding: 3px;
 }
 
-.character1 {
-
-}
-
-.character2 {
-
+.character-container {
+  padding-top: 21vw;
 }

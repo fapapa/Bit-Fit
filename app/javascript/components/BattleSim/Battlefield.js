@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import Fitogachi from "../Fitogachi"
 
 export default function Battlefield(props) {
+  const PHASE1 = ["attack", "hurt"];
+  const PHASE2 = ["hurt", "attack"];
+  const IDLE = ["idle", "idle"];
+
+  const [gif, setGif] = useState(IDLE);
 
 
 
@@ -16,8 +22,18 @@ export default function Battlefield(props) {
         <div>Bar2</div>
       </div>
       <div className="battlefield-container">
-        <div className="character1">{props.battleInfo}</div>
-        <div className="character2">Character(2)</div>
+        <div className="character-container">
+          <Fitogachi 
+           state={gif[0]}
+           mirrow={false}
+          />
+        </div>
+        <div className="character-container">
+          <Fitogachi
+            state={gif[1]}
+            mirror={true}
+          />
+        </div>
       </div>
     </div>
   );
