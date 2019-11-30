@@ -25,5 +25,6 @@
 .health-inner {
   background-color: rgba($color: #eed35d, $alpha: 1.0);
   height: 100%;
+  transition: width 1.5s;
   z-index: 2;
 }

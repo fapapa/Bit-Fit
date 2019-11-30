@@ -12,10 +12,10 @@ export default function Versus(props) {
       </div>
       <div className="pillar-holder shake-once">
         <div className="left-pillar left-pillar-animation">
-          <a className="big-username">{"username2"}</a>
+          <a className="big-username">{props.usernames[0]}</a>
         </div>
         <div className="right-pillar right-pillar-animation">
-          <a className="big-username">{"username1"}</a>
+          <a className="big-username">{props.usernames[1]}</a>
         </div>
       </div>
     </div>

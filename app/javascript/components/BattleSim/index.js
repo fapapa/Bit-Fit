@@ -19,8 +19,8 @@ export default function BattleSim(props) {
   useEffect(()=> {
     Promise.resolve(axios.get("/api/battle"))
     .then(res => {
-      transition(VERSUS);
       setBattleInfo(res.data.last_name);
+      transition(VERSUS);
       setTimeout(() => transition(BATTLEFIELD), 2000);
     })
   }, [])
@@ -30,13 +30,16 @@ export default function BattleSim(props) {
       <Loading />
     )}
     {mode === VERSUS && (
-      <Versus />
+      <Versus 
+        usernames={["Jake", "John"]}
+      />
     )}
     {mode === BATTLEFIELD && (
       <Battlefield
-        // winner={battleInfo.winner}
-        // users={battleInfo.users}
-        // days={battleInfo.days}
+        winner={1}
+        users={[["Jake", 6, '0deg'],["John", 6, '0deg']]}
+        days={[[0, 0],[50, 50]]}
+        onSimulationEnd={props.onSimulationEnd}
       />
     )}
   </div>);

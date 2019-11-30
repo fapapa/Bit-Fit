@@ -1,21 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Fitogachi from "../Fitogachi"
 import HealthBar from "./HealthBar"
 
 export default function Battlefield(props) {
-  const PHASE1 = ["attack", "hurt"];
-  const PHASE2 = ["hurt", "attack"];
+  const ATTACK1 = ["attack", "hurt"];
+  const ATTACK2 = ["hurt", "attack"];
   const IDLE = ["idle", "idle"];
+  const LOSS1 = ["loss", "idle"];
+  const LOSS2 = ["idle", "loss"];
 
   const [gif, setGif] = useState(IDLE);
+  const [days, setDays] = useState(props.days);
+  const [healthOne, setHealthOne] = useState('100%');
+  const [healthTwo, setHealthTwo] = useState('100%');
 
+  function playDays() {
+    if(days.length === 0){
+      playDead();
+    } else {
+      const day = days.pop();
+      console.log(day);
+      setTimeout((day) => {attack1(day)}, 1000, day);
+      setDays(prev => prev.slice(0, prev.length - 1));
+    }
+  }
+
+  function attack1(day) {
+    setGif(ATTACK1);
+    setTimeout(() => setGif(IDLE), 1000);
+    setTimeout((day) => {healthChange1(day)}, 1000, day);
+  }
+
+  function healthChange1(day) {
+    setHealthTwo(`${day[0]}%`)
+    setTimeout((day) => {attack2(day)}, 2000, day);
+  }
+
+  function attack2(day) {
+    setGif(ATTACK2);
+    setTimeout(() => setGif(IDLE), 1000);
+    setTimeout((day) => {healthChange2(day)}, 1000, day);
+  }
+
+  function healthChange2(day) {
+    setHealthOne(`${day[1]}%`)
+    setTimeout(() => {playDays()}, 1000);
+  }
+
+  function playDead() {
+    setGif(props.winner === 1 ? LOSS2 : LOSS1);
+    setTimeout((props) => props.onSimulationEnd, 2000, props);
+  }
+
+  useEffect(() => {
+    setTimeout(() => playDays(), 2000);
+  }, [])
 
 
   return (
     <div className="battlefield-background">
       <div className="battlefield-status">
         <HealthBar 
-          percentage={'50%'}
+          percentage={healthOne}
           mirror={true}
         />
         <div className="KO-icon-outer">
@@ -24,21 +70,23 @@ export default function Battlefield(props) {
           </div>
         </div>
         <HealthBar 
-          percentage={'50%'}
+          percentage={healthTwo}
           mirror={false}
-        />
+          />
       </div>
       <div className="battlefield-container">
         <div className="character-container">
           <Fitogachi 
            state={gif[0]}
-           mirrow={false}
+           mirror={false}
+           level={props.users[0][1]}
           />
         </div>
         <div className="character-container">
           <Fitogachi
             state={gif[1]}
             mirror={true}
+            level={props.users[1][1]}
           />
         </div>
       </div>
