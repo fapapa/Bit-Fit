@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get 'friends', to: 'friends#index'
     get 'friends/search', to: 'friends#search'
 
-    get 'battle', to: 'battles#battleData'
+    get 'battle', to: 'battles#battle_data'
     get 'battles/notifications', to: 'battles#notifications'
   end
   get 'sessions/test', to: 'test#show'

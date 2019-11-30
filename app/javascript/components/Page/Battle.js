@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import NavMenu from "../NavMenu";
-import useVisualMode from "hooks/useVisualMode";
 import MenuContainer from "../MenuContainer";
 import BattleSim from "../BattleSim";
 
@@ -137,7 +136,7 @@ export default function Battle(props) {
       {screenMode === BATTLESIM && (
         <BattleSim
           battleId={battleSimId}
-          onSimulationEnd={() => onSimulationEnd()}
+          onSimulationEnd={onSimulationEnd}
         />
       )}
     </main>

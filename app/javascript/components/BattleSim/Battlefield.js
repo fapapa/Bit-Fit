@@ -11,8 +11,8 @@ export default function Battlefield(props) {
 
   const [gif, setGif] = useState(IDLE);
   const [days, setDays] = useState(props.days);
-  const [healthOne, setHealthOne] = useState('100%');
-  const [healthTwo, setHealthTwo] = useState('100%');
+  const [healthOne, setHealthOne] = useState(100);
+  const [healthTwo, setHealthTwo] = useState(100);
 
   function playDays() {
     if(days.length === 0){
@@ -20,7 +20,11 @@ export default function Battlefield(props) {
     } else {
       const day = days.pop();
       console.log(day);
-      setTimeout((day) => {attack1(day)}, 1000, day);
+      if(props.winner === 1){
+        setTimeout((day) => {attack2(day)}, 1000, day);
+      } else {
+        setTimeout((day) => {attack1(day)}, 2000, day);
+      }
       setDays(prev => prev.slice(0, prev.length - 1));
     }
   }
@@ -32,8 +36,12 @@ export default function Battlefield(props) {
   }
 
   function healthChange1(day) {
-    setHealthTwo(`${day[0]}%`)
-    setTimeout((day) => {attack2(day)}, 2000, day);
+    setHealthTwo(prev => prev-day[0])
+    if(props.winner === 1){
+      setTimeout(() => {playDays()}, 1000);
+    } else {
+      setTimeout((day) => {attack2(day)}, 2000, day);
+    }
   }
 
   function attack2(day) {
@@ -43,8 +51,12 @@ export default function Battlefield(props) {
   }
 
   function healthChange2(day) {
-    setHealthOne(`${day[1]}%`)
-    setTimeout(() => {playDays()}, 1000);
+    setHealthOne(prev => prev-day[1])
+    if(props.winner === 1){
+      setTimeout((day) => {attack1(day)}, 2000, day);
+    }else{
+      setTimeout(() => {playDays()}, 1000);
+    }
   }
 
   function playDead() {
@@ -61,7 +73,7 @@ export default function Battlefield(props) {
     <div className="battlefield-background">
       <div className="battlefield-status">
         <HealthBar 
-          percentage={healthOne}
+          percentage={`${healthOne}%`}
           mirror={true}
         />
         <div className="KO-icon-outer">
@@ -70,7 +82,7 @@ export default function Battlefield(props) {
           </div>
         </div>
         <HealthBar 
-          percentage={healthTwo}
+          percentage={`${healthTwo}%`}
           mirror={false}
           />
       </div>
