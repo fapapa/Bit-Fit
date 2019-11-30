@@ -6,18 +6,13 @@ import {
   XAxis,
   YAxis,
   VerticalRectSeries,
-  LabelSeries
+  LabelSeries,
 } from "react-vis";
 
 export default function Graph(props) {
   const { height, width } = useWindowDimensions();
   const maxValue = props.maxValue;
-  const data2 = [
-    { x: 1, x0: 0, y: 20, y0: 0, label: "day1" },
-    { x: 2, x0: 1, y: 5, y0: 0, label: "day2" },
-    { x: 3, x0: 2, y: 15, y0: 0, label: "day3" },
-    { x: 4, x0: 3, y: 10, y0: 0, label: "day4" }
-  ];
+  const data2 = props.data;
   const data3 = data2.map(day => {
     const dayLabel = {
       x: day.x,
@@ -25,7 +20,7 @@ export default function Graph(props) {
       label: day.label,
       xOffset: -(width / (data2.length * 4) - 12), //-((day.x-day.x0)/2),
       yOffset: 20, //(height-50)*(day.y/maxValue),
-      rotation: 270
+      rotation: 270,
     };
     return dayLabel;
   });
