@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
+import Axios from "axios";
 import Home from "./Home";
 import Battle from "./Battle";
 import Fitness from "./Fitness";
@@ -18,11 +19,21 @@ export default function HomePage(props) {
 
   // SELECTOR HOOK
   const { mode, transition, back } = useVisualMode(HOME);
+  
+  const fetchUserName = () => {
+    Axios.get("/api/profile")
+      .then((res) => {setUserName(res.data["displayName"])})
+      .catch(err => console.error("Error:", err));
+  };
+  
+  const [userName, setUserName] = useState(fetchUserName());
+  
 
   return (
     <div className="page-container">
       {mode === HOME && (
         <Home
+          username={userName || '\u00A0'}
           onBattle={() => transition(BATTLE)}
           onFitness={() => transition(FITNESS)}
           onTheGym={() => transition(THEGYM)}
@@ -30,11 +41,11 @@ export default function HomePage(props) {
           onOptions={() => transition(OPTIONS)}
         />
       )}
-      {mode === BATTLE && <Battle onHome={() => back()} />}
-      {mode === FITNESS && <Fitness onHome={() => back()} />}
-      {mode === THEGYM && <TheGym onHome={() => back()} />}
-      {mode === FRIENDS && <Friends onHome={() => back()} />}
-      {mode === OPTIONS && <Options onHome={() => back()} />}
+      {mode === BATTLE && <Battle onHome={() => back() } username={userName || '\u00A0'} />}
+      {mode === FITNESS && <Fitness onHome={() => back()} username={userName || '\u00A0'} />}
+      {mode === THEGYM && <TheGym onHome={() => back()} username={userName || '\u00A0'} />}
+      {mode === FRIENDS && <Friends onHome={() => back()} username={userName || '\u00A0'} />}
+      {mode === OPTIONS && <Options onHome={() => back()} username={userName || '\u00A0'} />}
     </div>
   );
 }

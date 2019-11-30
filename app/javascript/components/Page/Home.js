@@ -43,7 +43,7 @@ export default function Home(props) {
   return (
     <main className="page">
       <section className="nav-menu-container">
-        <NavMenu buttons={buttons} />
+        <NavMenu buttons={buttons} username={props.username} />
       </section>
       <section className="content-container">
         <section className="user-status-container">

@@ -69,7 +69,7 @@ export default function Battle(props) {
       {screenMode === MENU && (
         <div className="page">
         <section className="nav-menu-container">
-          <NavMenu buttons={buttons} currentButton={currentButton} />
+          <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
         </section>
         <section className="content-container">
           {buttonMode === CURRENTBATTLES && (
