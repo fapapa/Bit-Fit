@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import NavMenu from "../NavMenu";
 import Graph from "../Graph";
@@ -30,16 +30,24 @@ export default function Fitness(props) {
   ];
 
   const [graphData, setGraphData] = useState({
-    data: [
-      { x: 1, x0: 0, y: 20, y0: 0, label: "day1" },
-      { x: 2, x0: 1, y: 5, y0: 0, label: "day2" },
-      { x: 3, x0: 2, y: 15, y0: 0, label: "day3" },
-      { x: 4, x0: 3, y: 10, y0: 0, label: "day4" },
-    ],
     maxValue: 30,
     titleX: "X-Axis Title",
     titleY: "Y-Axis Title",
   });
+
+  useEffect(() => {
+    getFitnessData("week");
+  }, []);
+
+  const getFitnessData = period => {
+    Axios.get(`/api/fitness/${period}`)
+      .then(res => {
+        setGraphData({ ...graphData, data: res.data });
+      })
+      .catch(err => {
+        console.error("Error:", err);
+      });
+  };
 
   return (
     <main className="page">
