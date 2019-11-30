@@ -1,6 +1,7 @@
 class Api::BattlesController < Api::ApiController
   def battleData
-    render json: current_user
+    @battle = Battle.find(params[:id])
+    render json: @battle.battle_results(params[:id])
   end
 
   def notifications

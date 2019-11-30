@@ -26,6 +26,9 @@ class User < ApplicationRecord
     calories.size > 1 ? calories : calories[0]
   end
 
+  def battle_calories(user_id, base_date, end_date)
+    calories = battle_activities(user_id, 'tracker/calories', base_date, end_date)['activities-tracker-calories']
+  end
 
   def get_active_calories(date = 'today')
     return active_calories = goal(date)['summary']['activityCalories']
@@ -104,6 +107,13 @@ class User < ApplicationRecord
     ).parsed_response
   end
 
+  def battle_activities(user_id, resource_path, base_date, end_date)
+    HTTParty.get(
+      "https://api.fitbit.com/1/user/#{user_id}/activities/#{resource_path}/date/#{base_date}/#{end_date}.json",
+      headers: headers
+    ).parsed_response
+  end
+
   def goal(date)
     HTTParty.get(
       "https://api.fitbit.com/1/user/-/activities/date/#{date}.json",
@@ -117,6 +127,7 @@ class User < ApplicationRecord
       headers: headers
     ).parsed_response
   end
+
 
   def headers
     {'Authorization' => "Bearer #{token.access_token}"}
