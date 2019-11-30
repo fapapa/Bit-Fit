@@ -12,7 +12,9 @@ export default function AwesomeButton(props) {
     <button
       className={props.current ? "currentButton" : "button"}
       onMouseDown={() => {
-        tone.play();
+        if(!props.current){
+          tone.play();
+        }
       }}
       onClick={props.onClick}
     >
