@@ -16,6 +16,7 @@ export default function Battle(props) {
 
   const [buttonMode, setButtonMode] = useState(CURRENTBATTLES);
   const [screenMode, setScreenMode] = useState(MENU);
+  const [currentButton, setCurrentButton] = useState("Current Battles")
   const [battleSimId, setBattleSimId] = useState(0);
 
   const buttons = [
@@ -27,24 +28,28 @@ export default function Battle(props) {
       title: "Current Battles",
       onClick: () => {
         setButtonMode(CURRENTBATTLES);
+        setCurrentButton("Current Battles");
       }
     },
     {
       title: "Find a Foe",
       onClick: () => {
         setButtonMode(FOEFINDRULES);
+        setCurrentButton("Find a Foe");
       }
     },
     {
       title: "Fight a Friend",
       onClick: () => {
         setButtonMode(FRIENDS);
+        setCurrentButton("Fight a Friend");
       }
     },
     {
       title: "Fistory",
       onClick: () => {
         setButtonMode(FISTORY);
+        setCurrentButton("Fistory");
       }
     },
     {
@@ -65,7 +70,7 @@ export default function Battle(props) {
       {screenMode === MENU && (
         <div className="page">
         <section className="nav-menu-container">
-          <NavMenu buttons={buttons} />
+          <NavMenu buttons={buttons} currentButton={currentButton} />
         </section>
         <section className="content-container">
           {buttonMode === CURRENTBATTLES && (
