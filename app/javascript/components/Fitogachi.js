@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Application(props) {
+export default function Fitogachi(props) {
 
   const source = `/images/Blue-6-${props.state}.gif`;
 

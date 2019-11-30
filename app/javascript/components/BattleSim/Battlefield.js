@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Fitogachi from "../Fitogachi"
+import HealthBar from "./HealthBar"
 
 export default function Battlefield(props) {
   const PHASE1 = ["attack", "hurt"];
@@ -13,13 +14,19 @@ export default function Battlefield(props) {
   return (
     <div className="battlefield-background">
       <div className="battlefield-status">
-        <div>Bar1</div>
+        <HealthBar 
+          percentage={'50%'}
+          mirror={true}
+        />
         <div className="KO-icon-outer">
           <div className="KO-icon-inner">
             <a className="KO-text">K.O</a>
           </div>
         </div>
-        <div>Bar2</div>
+        <HealthBar 
+          percentage={'50%'}
+          mirror={false}
+        />
       </div>
       <div className="battlefield-container">
         <div className="character-container">

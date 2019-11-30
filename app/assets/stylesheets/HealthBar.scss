@@ -1,0 +1,29 @@
+.health-background {
+  background-color: rgba($color: #f00e0e, $alpha: 0.6);
+  height: 46px;
+  width: 600px;
+}
+
+.health-background-mirror {
+  background-color: rgba($color: #f00e0e, $alpha: 0.6);
+  height: 46px;
+  width: 600px;
+  transform: scaleX(-1);
+  z-index: 1;
+}
+
+.health-outer {
+  background-color: transparent;
+  border: 6px solid white;
+  border-radius: 0 10px 10px 0;
+  height: 39px;
+  width: 594px;
+  box-shadow: transparentize($color: #000000, $amount: 1);
+  z-index: 3;
+  box-shadow: 3px 5px 5px rgb(54, 52, 52);
+}
+.health-inner {
+  background-color: rgba($color: #eed35d, $alpha: 1.0);
+  height: 100%;
+  z-index: 2;
+}
