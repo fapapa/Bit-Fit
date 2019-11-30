@@ -19,7 +19,6 @@ export default function Battlefield(props) {
       playDead();
     } else {
       const day = days.pop();
-      console.log(day);
       if(props.winner === 1){
         setTimeout((day) => {attack2(day)}, 1000, day);
       } else {
@@ -61,7 +60,7 @@ export default function Battlefield(props) {
 
   function playDead() {
     setGif(props.winner === 1 ? LOSS2 : LOSS1);
-    setTimeout((props) => props.onSimulationEnd, 2000, props);
+    setTimeout((props) => props.onSimulationEnd(), 2000, props);
   }
 
   useEffect(() => {
