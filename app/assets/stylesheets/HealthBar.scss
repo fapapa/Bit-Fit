@@ -19,13 +19,15 @@
   height: 39px;
   width: 594px;
   z-index: 3;
-  box-shadow: 3px 5px 5px rgb(54, 52, 52);
+  box-shadow: 3px 3px 5px rgb(54, 52, 52);
 }
 .health-inner {
   background-color: rgba($color: #eed35d, $alpha: 1.0);
   height: 100%;
   transition: width 1.5s;
   z-index: 2;
+  position: relative;
+  top: -53px;
 }
 
 .health-username{
@@ -33,16 +35,19 @@
   width: 200px;
   border: 6px solid white;
   border-radius: 0 0 10px 10px;
-  box-shadow: 3px 5px 5px rgb(54, 52, 52);
-  background-color: rgba($color: #eed35d, $alpha: 1.0);
+  box-shadow: 3px 3px 5px rgb(54, 52, 52);
+  background-color: rgba($color: salmon, $alpha: 1.0);
   color: black;
   font-family: 'Kenny';
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 42px;
+  font-size: 35px;
   overflow: hidden;
+  position: relative;
+  top: 44px;
+  left: 13px;
 }
 
 .health-username-mirror{
@@ -50,15 +55,18 @@
   width: 200px;
   border: 6px solid white;
   border-radius: 0 0 10px 10px;
-  box-shadow: -3px 5px 5px rgb(54, 52, 52);
-  background-color: rgba($color: #eed35d, $alpha: 1.0);
+  box-shadow: -3px 3px 5px rgb(54, 52, 52);
+  background-color: rgba($color: salmon, $alpha: 1.0);
   color: black;
   font-family: 'Kenny';
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 42px;
+  font-size: 35px;
   overflow: hidden;
+  position: relative;
+  top: 44px;
+  left: 13px;
   transform: scaleX(-1);
 }

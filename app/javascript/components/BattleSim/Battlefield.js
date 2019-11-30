@@ -64,7 +64,7 @@ export default function Battlefield(props) {
   }
 
   useEffect(() => {
-    //setTimeout(() => playDays(), 2000);
+    setTimeout(() => playDays(), 2000);
   }, [])
 
 
