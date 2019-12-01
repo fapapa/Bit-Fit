@@ -12,19 +12,19 @@ export default function Fitness(props) {
     {
       title: "Week",
       onClick: () => {
-        console.log("Fitness");
+        getFitnessData("week");
       },
     },
     {
       title: "Month",
       onClick: () => {
-        console.log("The Gym");
+        getFitnessData("month");
       },
     },
     {
       title: "Year",
       onClick: () => {
-        console.log("Friends");
+        getFitnessData("year");
       },
     },
   ];
