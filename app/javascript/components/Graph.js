@@ -72,14 +72,14 @@ export default function Graph(props) {
           />
           <XAxis
             hideTicks
-            title={props.titlex}
+            title={props.titleX}
             position="middle"
             top={height * 0.7}
             className="x-axis"
           />
           <YAxis
             hideTicks
-            title={props.titley}
+            title={props.titleY}
             position="middle"
             left={-40}
             className="y-axis"

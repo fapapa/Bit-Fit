@@ -30,8 +30,8 @@ export default function Fitness(props) {
   ];
 
   const [graphData, setGraphData] = useState({
-    titleX: "X-Axis Title",
-    titleY: "Y-Axis Title",
+    titleX: "Days",
+    titleY: "Calories",
   });
 
   useEffect(() => {
