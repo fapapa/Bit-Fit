@@ -20,18 +20,21 @@ export default function ProgressBar(props) {
   };
 
   return (
-    <div className="progress-bar">
-      <Filler
-        current_points={props.current_points}
-        daily_goal={props.daily_goal}
-        stretch_goal={barScale()}
-      />
-      <div
-        className="goal"
-        style={{
-          marginLeft: `${(props.daily_goal / barScale()) * 100}%`,
-        }}
-      ></div>
-    </div>
+    <>
+      <label>{props.label}</label>
+      <div className="progress-bar">
+        <Filler
+          current_points={props.current_points}
+          daily_goal={props.daily_goal}
+          stretch_goal={barScale()}
+        />
+        <div
+          className="goal"
+          style={{
+            marginLeft: `${(props.daily_goal / barScale()) * 100}%`,
+          }}
+        ></div>
+      </div>
+    </>
   );
 }

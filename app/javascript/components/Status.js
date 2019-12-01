@@ -20,11 +20,13 @@ export default function Status(props) {
   return (
     <section className="status-area">
       <ProgressBar
+        label="Calories"
         current_points={currentCalories}
         daily_goal={500}
         stretch_goal={600}
       />
       <ProgressBar
+        label="Steps"
         current_points={currentSteps}
         daily_goal={10000}
         stretch_goal={12000}
