@@ -1,6 +1,7 @@
 import React from "react";
 import BattleBox from "./BattleBox"
 import AwesomeButton from "./AwesomeButton";
+import SwatchBox from "./SwatchBox";
 
 export default function MenuContainer(props) {
 
@@ -28,12 +29,20 @@ export default function MenuContainer(props) {
 
   function renderSwatchBoxes() {
     return props.boxes.map((box, index) => (
-      <AwesomeButton key={index} title={index} />
+      <SwatchBox 
+        key={index} 
+        image={box.image} 
+        level={props.level}
+        requirement={box.requirement}
+        onClick={box.onClick}
+        current={props.current===box.requirement}
+        />
+
     ))
   }
 
   function renderNoneBoxes() {
-    return props.boxes.map((box, index) => (
+    return props.boxes.map((index) => (
       <AwesomeButton key={index} title={"none"} />
     ))
   }

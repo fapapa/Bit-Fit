@@ -16,7 +16,7 @@ export default function Fitogachi(props) {
       <img 
       className={props.mirror ? "fitogachi-mirror" : "fitogachi"} 
       src={source}
-      style={{filter: `hue-rotate(${props.color || '0deg'})`}}
+      style={{filter: `hue-rotate(${`${props.color}deg` || '0deg'})`}}
       ></img>
     )}
     </div>

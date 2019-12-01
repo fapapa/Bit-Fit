@@ -7,6 +7,31 @@
   align-items: center;
 }
 .swatch-container {
-  max-height: 71.55vh;
+  height: 71.55vh;
   width: 100%;
+}
+
+.gym-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80vw;
+  height: 100%;
+}
+
+.gym-wizard-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+}
+
+.gym-space {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 65vh;
+  justify-content: center;
+  align-items: center;
 }
