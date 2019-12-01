@@ -11,9 +11,6 @@ class User < ApplicationRecord
   has_many :opponent_battles, foreign_key: "opponent_id", class_name: "Battle"
   has_many :winner_battles, foreign_key: "winner_id", class_name: "Battle"
 
-
-  after_create :create_fitogachi
-
   def battle_notifications
     @notifications ||= created_battles.where(accepted: true, viewed_accepted: false).count +
       created_battles.where("end_date < :today AND creator_viewed = FALSE", {today: Date.today}).count +
