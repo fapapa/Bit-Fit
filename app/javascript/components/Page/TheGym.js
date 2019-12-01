@@ -1,5 +1,7 @@
 import React from "react";
 import NavMenu from "../NavMenu";
+import AwesomeButton from "../AwesomeButton";
+import MenuContainer from "../MenuContainer";
 
 export default function TheGym(props) {
   const buttons = [
@@ -29,8 +31,15 @@ export default function TheGym(props) {
 
   return (
     <main className="page">
-      <section className="nav-menu-container">
-        <NavMenu buttons={buttons} username={props.username} />
+      <section className="gym-menu-container">
+        <div className="username">{props.username}</div>
+        <AwesomeButton title="Home" onClick={props.onHome} />
+        <div className="swatch-container">
+        <MenuContainer 
+          boxType={"Swatch"}
+          boxes={[1,2,3,4,5,6]}
+        />
+        </div>
       </section>
       <section className="content-container">
         <section className="user-status-container">

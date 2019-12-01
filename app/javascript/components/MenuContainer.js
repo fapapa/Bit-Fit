@@ -15,17 +15,56 @@ export default function MenuContainer(props) {
   }
 
   function renderDayBoxes() {
-    return props.boxes.map(() => (
+    return props.boxes.map((box, index) => (
       <AwesomeButton key={index} title={button.title} />
     ))
   }
 
-  const finalBoxes = props.boxType === "Battle" ? renderBattleBoxes() : renderDayBoxes()
+  function renderFriendBoxes() {
+    return props.boxes.map((box, index) => (
+      <AwesomeButton key={index} title={index} />
+    ))
+  }
 
+  function renderSwatchBoxes() {
+    return props.boxes.map((box, index) => (
+      <AwesomeButton key={index} title={index} />
+    ))
+  }
+
+  function renderNoneBoxes() {
+    return props.boxes.map((box, index) => (
+      <AwesomeButton key={index} title={"none"} />
+    ))
+  }
+
+
+function renderBoxes() {
+  switch (props.boxType) {
+    case "Battle":
+      return renderBattleBoxes();
+
+    case "Friend":
+      return renderFriendBoxes();
+
+    case "Day":
+      return renderDayBoxes();
+    
+    case "Swatch":
+      return renderSwatchBoxes();
+
+    default:
+      if(props.boxes){
+        return renderNoneBoxes();
+      } else {
+        return "No props passed"
+      }
+  }
+}
 
   return (
     <nav className="menu-container">
-      {finalBoxes}
+      {renderBoxes()}
     </nav>
   );
 }
