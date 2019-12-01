@@ -7,8 +7,18 @@ export default function Fitogachi(props) {
 
   return (
     <div>
-      {source}
+    {props.simulation && (
+      <div>
+        {source}
+      </div>
+    )}
+    {!props.simulation && (
+      <img 
+      className={props.mirror ? "fitogachi-mirror" : "fitogachi"} 
+      src={source}
+      style={{filter: `hue-rotate(${props.color || '0deg'})`}}
+      ></img>
+    )}
     </div>
-    //  <img className={props.mirror ? "fitogachi-mirror" : "fitogachi"} src={source}></img>
   );
 }

@@ -93,6 +93,7 @@ export default function Battlefield(props) {
            state={gif[0]}
            mirror={false}
            level={props.users[0][1]}
+           simulation={true}
           />
         </div>
         <div className="character-container">
@@ -100,6 +101,7 @@ export default function Battlefield(props) {
             state={gif[1]}
             mirror={true}
             level={props.users[1][1]}
+            simulation={true}
           />
         </div>
       </div>
