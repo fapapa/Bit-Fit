@@ -46,17 +46,22 @@ class User < ApplicationRecord
     }
   end
 
-
   def steps_taken(date = 'today', period = '1d')
     steps = activities('tracker/steps', date, period)['activities-tracker-steps']
     steps.size > 1 ? steps : steps[0]["value"]
   end
 
-
   def average_heartrate(date = 'today', period = '1d')
     heart_rate = activities('heart', date, period)['activities-heart']
     fat_burn = heart_rate[0]['value']['heartRateZones'][1]
     return average = (fat_burn["max"] + fat_burn["min"]) / 2
+  end
+
+  def days_for(period)
+    return [] unless %w(week month year).include?(period)
+
+    beginning = 1.send(period).ago.to_date
+    days.where(stats_date: beginning...Date.today)
   end
 
   def fitbit_profile
