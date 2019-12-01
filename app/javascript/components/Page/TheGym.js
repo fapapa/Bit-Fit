@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import NavMenu from "../NavMenu";
 import AwesomeButton from "../AwesomeButton";
 import MenuContainer from "../MenuContainer";
+import Fitogachi from "../Fitogachi";
 
 export default function TheGym(props) {
-  const buttons = [
+  const [currentColor, setCurrentColor] = useState(props.color || 0)
+  const boxes = [
     {
       title: "Home",
       onClick: props.onHome
@@ -45,8 +47,14 @@ export default function TheGym(props) {
         <section className="user-status-container">
           <a>Status</a>
         </section>
-        <section className="fitigochi-container">
-          <a>The Gym</a>
+        <section className="gym-fitogachi">
+          <Fitogachi 
+            level={6}
+            state={"idle"}
+            color={currentColor}
+            mirror={true}
+            simulation={false}
+          />
         </section>
       </section>
     </main>
