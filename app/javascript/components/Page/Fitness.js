@@ -54,9 +54,6 @@ export default function Fitness(props) {
         <NavMenu buttons={buttons} username={props.username} />
       </section>
       <section className="content-container">
-        <section className="user-status-container">
-          <a>Status</a>
-        </section>
         <section className="fitigochi-container">
           <Graph
             data={graphData.data}

@@ -5,26 +5,26 @@ export default function Friends(props) {
   const buttons = [
     {
       title: "Home",
-      onClick: props.onHome
+      onClick: props.onHome,
     },
     {
       title: "Find a Foe",
       onClick: () => {
         console.log("Fitness");
-      }
+      },
     },
     {
       title: "Fight a Friend",
       onClick: () => {
         console.log("The Gym");
-      }
+      },
     },
     {
       title: "Fistory",
       onClick: () => {
         console.log("Friends");
-      }
-    }
+      },
+    },
   ];
 
   return (
@@ -33,9 +33,6 @@ export default function Friends(props) {
         <NavMenu buttons={buttons} username={props.username} />
       </section>
       <section className="content-container">
-        <section className="user-status-container">
-          <a>Status</a>
-        </section>
         <section className="fitigochi-container">
           <a>Friends</a>
         </section>
