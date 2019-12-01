@@ -61,7 +61,7 @@ class User < ApplicationRecord
     return [] unless %w(week month year).include?(period)
 
     beginning = 1.send(period).ago.to_date
-    days.where(stats_date: beginning...Date.today)
+    days.where(stats_date: beginning..Date.today)
   end
 
   def fitbit_profile
