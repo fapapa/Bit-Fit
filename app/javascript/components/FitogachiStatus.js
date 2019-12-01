@@ -18,21 +18,18 @@ export default function FitogachiStatus(props) {
         console.error("Error:", err);
       });
   };
-
+  
   const [properties, setProperties] = useState({});
   useEffect(() => {
     fetchFitogachi();
   }, []);
-            // properties
-            // <li>Current Exp: {properties["current_exp"]}</li>
-            // <li>Current Energy: {properties["current_energy"]}</li>
-            // <li>Last Experience: {properties["last_experience"]}</li>
+
 
   return (
     <section className="fitogachi-container-box">
-        <section className="fitogachi-container-name">
-          Fitogachi's Name{properties["name"]}
-        </section>
+      <section className="fitogachi-container-name">
+        Fitogachi's Name{properties["name"]}
+      </section>
         <section className="fitogachi-container-gif">
           <Fitogachi 
           level={properties["6"]}
@@ -47,7 +44,7 @@ export default function FitogachiStatus(props) {
       <section className="fitogachi-container-status-area">
         <section className="fitogachi-container-experience-bar">
           <ProgressBar
-            current_points={200}
+            current_points={properties["current_exp"]}
             daily_goal={500}
             stretch_goal={500}
           />
