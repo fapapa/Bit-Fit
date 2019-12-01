@@ -8,7 +8,7 @@
 
 .fitogachi-container-box {
   width: 500px;
-  height: 500px;
+  height: 470px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,7 +21,7 @@
     0 0 0 25px hsl(0, 0%, 80%),
     0 0 0 30px hsl(0, 0%, 90%);
     border-radius: 1px;
-}
+ }
 
 .fitogachi-container-name {
   display:flex;
@@ -37,6 +37,12 @@
   height: 275px;
   width: 400px;
   padding-left: 40px;
+  
+  .fitogachi {
+    transform: scale(0.8);
+    width: 380px;
+    height: 500px;
+  }
 }
 
 .fitogachi-container-hearts-bar {
@@ -44,6 +50,14 @@
   justify-content: flex-end;
   padding-right: 10px;
 
+  .progress-bar {
+    width: 130px;
+    border: 2px solid red;
+  }
+
+  .goal {
+    display: none;
+  }
 }
 
 .fitogachi-container-status-area {

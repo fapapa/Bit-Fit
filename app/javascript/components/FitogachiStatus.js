@@ -32,14 +32,18 @@ export default function FitogachiStatus(props) {
       </section>
         <section className="fitogachi-container-gif">
           <Fitogachi 
-          level={properties["6"]}
-          color={properties["0deg"]}
+          level={properties["level"] || 6}
+          color={'0deg'}
           state={"idle"}
           mirror={false}
           />
         </section>
         <section className="fitogachi-container-hearts-bar">
-          fitogachi hearts{properties["current_energy"]}
+          <ProgressBar
+            current_points={properties["current_energy"]}
+            daily_goal={500}
+            stretch_goal={500}
+          />
         </section>
       <section className="fitogachi-container-status-area">
         <section className="fitogachi-container-experience-bar">
@@ -52,7 +56,7 @@ export default function FitogachiStatus(props) {
         <section className="fitogachi-container-level">
           level 
           <div className="level-number">
-            7{properties["level"]}
+            6{properties["level"]}
           </div>
         </section>
       </section>
