@@ -5,13 +5,16 @@ import MenuContainer from "../MenuContainer";
 import Fitogachi from "../Fitogachi";
 
 export default function TheGym(props) {
-  const [currentColor, setCurrentColor] = useState(props.color || 0)
+  const [currentSwatch, setCurrentSwatch] = useState(props.color ? props.color/45 : 1)
+  const [currentColor, setCurrentColor] = useState(props.color || 0);
+  const [savedColor, setSavedColor] = useState(props.color || 0);
   const boxes = [
     {
       image: 1,
       requirement: 1,
       onClick: () => {
         setCurrentColor(0);
+        setCurrentSwatch(1);
       }
     },
     {
@@ -19,6 +22,7 @@ export default function TheGym(props) {
       requirement: 2,
       onClick: () => {
         setCurrentColor(45);
+        setCurrentSwatch(2);
       }
     },
     {
@@ -26,6 +30,7 @@ export default function TheGym(props) {
       requirement: 3,
       onClick: () => {
         setCurrentColor(90);
+        setCurrentSwatch(3);
       }
     },
     {
@@ -33,6 +38,7 @@ export default function TheGym(props) {
       requirement: 4,
       onClick: () => {
         setCurrentColor(145);
+        setCurrentSwatch(4);
       }
     },
     {
@@ -40,6 +46,7 @@ export default function TheGym(props) {
       requirement: 5,
       onClick: () => {
         setCurrentColor(180);
+        setCurrentSwatch(5);
       }
     },
     {
@@ -47,6 +54,7 @@ export default function TheGym(props) {
       requirement: 6,
       onClick: () => {
         setCurrentColor(225);
+        setCurrentSwatch(6);
       }
     },
     {
@@ -54,6 +62,7 @@ export default function TheGym(props) {
       requirement: 7,
       onClick: () => {
         setCurrentColor(270);
+        setCurrentSwatch(7);
       }
     },
     {
@@ -61,6 +70,7 @@ export default function TheGym(props) {
       requirement: 8,
       onClick: () => {
         setCurrentColor(315);
+        setCurrentSwatch(8);
       }
     },
   ];
@@ -69,12 +79,13 @@ export default function TheGym(props) {
     <main className="page">
       <section className="gym-menu-container">
         <div className="username">{props.username}</div>
-        <AwesomeButton title="Home" onClick={props.onHome} />
+        <AwesomeButton title={currentColor === savedColor ? "Home" : "Save/Home"} onClick={props.onHome} />
         <div className="swatch-container">
         <MenuContainer 
           boxType={"Swatch"}
           boxes={boxes}
           level={5}
+          current={currentSwatch}
         />
         </div>
       </section>

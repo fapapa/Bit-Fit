@@ -35,6 +35,7 @@ export default function MenuContainer(props) {
         level={props.level}
         requirement={box.requirement}
         onClick={box.onClick}
+        current={props.current===box.requirement}
         />
 
     ))
