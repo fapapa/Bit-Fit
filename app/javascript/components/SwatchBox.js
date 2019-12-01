@@ -9,19 +9,36 @@ export default function SwatchBox(props) {
   });
   const lock = props.level < props.requirement;
 
+  const styleCurrent = {
+    backgroundColor: "#ffe11d",
+  };
+  const styleNormal = {
+    backgroundColor: "transparent",
+  };
+
   return (
     <button
-      className={props.current ? "currentButton" : "button"}
+      className={props.current ? "currentSwatch" : "swatch"}
       onMouseDown={() => {
-        if(!props.current && !lock){
+        if (!props.current && !lock) {
           tone.play();
         }
       }}
-      onClick={lock || props.onClick}
+      onClick={lock ? null : props.onClick}
     >
-      <a>
-        {lock ? "lock" : props.image}
-      </a>
+      {lock && (
+        <div>
+          <img className="lock-image" src="/images/lock5.png"></img>
+          <div className="requirement-text">{props.requirement}</div>
+        </div>
+      )}
+      {!lock && (
+        <img
+          className="swatch-image"
+          src="/images/swatch3.png"
+          style={{ filter: `hue-rotate(${(props.requirement - 1) * 45}deg)` }}
+        ></img>
+      )}
     </button>
   );
 }
