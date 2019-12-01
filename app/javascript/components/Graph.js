@@ -10,13 +10,32 @@ import {
 } from "react-vis";
 
 export default function Graph(props) {
+  Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+  };
+
   const { height, width } = useWindowDimensions();
   const maxValue =
     props.data &&
     props.data.reduce((max, day) => {
       return Math.max(day.calories, max);
     }, 0);
-  const data2 = props.data || false;
+  const data2 = props.data
+    ? props.data.map(day => {
+        const date = new Date(day.stats_date);
+
+        const dayData = {
+          x: date.addDays(1),
+          x0: date,
+          y: day.calories,
+          y0: 0,
+          label: day.stats_date,
+        };
+        return dayData;
+      })
+    : false;
   const data3 =
     data2 &&
     data2.map(day => {
@@ -25,7 +44,7 @@ export default function Graph(props) {
         y: day.y,
         label: day.label,
         xOffset: -(width / (data2.length * 4) - 12), //-((day.x-day.x0)/2),
-        yOffset: 20, //(height-50)*(day.y/maxValue),
+        yOffset: (height * 0.7 - 50) * (day.y / maxValue) - height * 0.08,
         rotation: 270,
       };
       return dayLabel;
