@@ -11,7 +11,11 @@ import {
 
 export default function Graph(props) {
   const { height, width } = useWindowDimensions();
-  const maxValue = props.maxValue;
+  const maxValue =
+    props.data &&
+    props.data.reduce((max, day) => {
+      return Math.max(day.calories, max);
+    }, 0);
   const data2 = props.data || false;
   const data3 =
     data2 &&

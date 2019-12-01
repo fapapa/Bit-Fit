@@ -30,7 +30,6 @@ export default function Fitness(props) {
   ];
 
   const [graphData, setGraphData] = useState({
-    maxValue: 30,
     titleX: "X-Axis Title",
     titleY: "Y-Axis Title",
   });
