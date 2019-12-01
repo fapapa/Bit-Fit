@@ -8,27 +8,61 @@ export default function TheGym(props) {
   const [currentColor, setCurrentColor] = useState(props.color || 0)
   const boxes = [
     {
-      title: "Home",
-      onClick: props.onHome
-    },
-    {
-      title: "Find a Foe",
+      image: 1,
+      requirement: 1,
       onClick: () => {
-        console.log("Fitness");
+        setCurrentColor(0);
       }
     },
     {
-      title: "Fight a Friend",
+      image: 2,
+      requirement: 2,
       onClick: () => {
-        console.log("The Gym");
+        setCurrentColor(45);
       }
     },
     {
-      title: "Fistory",
+      image: 3,
+      requirement: 3,
       onClick: () => {
-        console.log("Friends");
+        setCurrentColor(90);
       }
-    }
+    },
+    {
+      image: 4,
+      requirement: 4,
+      onClick: () => {
+        setCurrentColor(145);
+      }
+    },
+    {
+      image: 5,
+      requirement: 5,
+      onClick: () => {
+        setCurrentColor(180);
+      }
+    },
+    {
+      image: 6,
+      requirement: 6,
+      onClick: () => {
+        setCurrentColor(225);
+      }
+    },
+    {
+      image: 7,
+      requirement: 7,
+      onClick: () => {
+        setCurrentColor(270);
+      }
+    },
+    {
+      image: 8,
+      requirement: 8,
+      onClick: () => {
+        setCurrentColor(315);
+      }
+    },
   ];
 
   return (
@@ -39,15 +73,17 @@ export default function TheGym(props) {
         <div className="swatch-container">
         <MenuContainer 
           boxType={"Swatch"}
-          boxes={[1,2,3,4,5,6]}
+          boxes={boxes}
+          level={5}
         />
         </div>
       </section>
-      <section className="content-container">
-        <section className="user-status-container">
+      <section className="gym-container">
+        <section className="gym-wizard-text">
           <a>Status</a>
         </section>
-        <section className="gym-fitogachi">
+        <section className="gym-space">
+          <div className="gym-fitogachi">
           <Fitogachi 
             level={6}
             state={"idle"}
@@ -55,6 +91,7 @@ export default function TheGym(props) {
             mirror={true}
             simulation={false}
           />
+          </div>
         </section>
       </section>
     </main>
