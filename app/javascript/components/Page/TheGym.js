@@ -5,7 +5,7 @@ import MenuContainer from "../MenuContainer";
 import Fitogachi from "../Fitogachi";
 
 export default function TheGym(props) {
-  const [currentSwatch, setCurrentSwatch] = useState(props.color ? props.color/45 : 1)
+  const [currentSwatch, setCurrentSwatch] = useState(props.color ? (props.color/45)+1 : 1)
   const [currentColor, setCurrentColor] = useState(props.color || 0);
   const [savedColor, setSavedColor] = useState(props.color || 0);
   const boxes = [
