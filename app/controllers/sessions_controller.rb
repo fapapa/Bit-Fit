@@ -18,7 +18,11 @@ class SessionsController < ApplicationController
     @user = User.fitbit_auth(params[:code])
 
     session[:user_id] = @user.id
-    redirect_to new_fitogachi_path
+    if @user.fitogachi
+      redirect_to root_path
+    else
+      redirect_to new_fitogachi_path
+    end
   end
 
   def logout
