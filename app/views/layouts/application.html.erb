@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   </head>
 
-  <body>
+  <body<%= " class=#{@body_class}" if @body_class %>>
     <%= yield %>
   </body>
 </html>

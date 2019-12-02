@@ -1,18 +1,23 @@
-<h1>Name Your Fitogachi</h1>
-<p>
-  Your new Fitogachi is hatching even as you read this. You can kiss it and hug
-  it and squeeze it and hug it and call it George. Or Sir Liftsalot. Or whatever
-  you want, really. Maybe not Sprinkles or Garbage. Those are cat names. But any
-  other name will do. Go for it!
-</p>
+<% @body_class = capture { "sign-in-page" } %>
 
-<% if flash[:notice] %>
-<div class="validation-errors">
-  <h1><%= flash[:notice] %></h1>
-<% end %>
+<main class="initial-sign-in">
+  <h1>Name Your Fitogachi</h1>
+  <p>
+    Your new Fitogachi is hatching even as you read this. You can kiss it and
+    hug it and squeeze it and hug it and call it George. Or Sir Liftsalot. Or
+    whatever you want, really. Maybe not Sprinkles or Garbage. Those are cat
+    names. But any other name will do. Go for it!
+  </p>
 
-<%= form_for @fitogachi, url: fitogachi_path(@fitogachi) do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.submit %>
-<% end %>
+  <% if flash[:notice] %>
+    <div class="validation-errors">
+      <h1><%= flash[:notice] %></h1>
+    <% end %>
+
+    <%= form_for @fitogachi, url: fitogachi_path(@fitogachi) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.submit %>
+    <% end %>
+
+</main>
