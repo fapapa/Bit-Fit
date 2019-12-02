@@ -6,6 +6,11 @@
     font_url(Kenney-Future)
 }
 
+.graph {
+  transform: scaleX(1.1);
+  padding-left: 20px;
+}
+
 .graph-series {
   margin-top: 60px;
 }
@@ -13,8 +18,10 @@
 
 .y-axis {
   font-family: 'Kenny';
+  font-size: 27px;
 }
 
 .x-axis {
   font-family: 'Kenny';
+  font-size: 32px;
 }

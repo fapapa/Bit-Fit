@@ -61,7 +61,7 @@ export default function Graph(props) {
           <VerticalRectSeries
             className={"graph-series"}
             data={data2}
-            fill={"red"}
+            fill={"#ee3253"}
             stroke={"white"}
           />
           <LabelSeries
@@ -81,7 +81,7 @@ export default function Graph(props) {
             hideTicks
             title={props.titleY}
             position="middle"
-            left={-40}
+            left={-30}
             className="y-axis"
           />
         </XYPlot>
