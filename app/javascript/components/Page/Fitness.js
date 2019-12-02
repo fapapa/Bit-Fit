@@ -2,42 +2,16 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import NavMenu from "../NavMenu";
 import Graph from "../Graph";
+import MenuContainer from "../MenuContainer";
 
 export default function Fitness(props) {
-  const buttons = [
-    {
-      title: "Home",
-      onClick: props.onHome,
-    },
-    {
-      title: "Week",
-      onClick: () => {
-        getFitnessData("week");
-      },
-    },
-    {
-      title: "Month",
-      onClick: () => {
-        getFitnessData("month");
-      },
-    },
-    {
-      title: "Year",
-      onClick: () => {
-        getFitnessData("year");
-      },
-    },
-  ];
-
+  const [currentButton, setCurrentButton] = useState("Week");
   const [graphData, setGraphData] = useState({
     titleX: "Days",
     titleY: "Calories",
   });
-
-  useEffect(() => {
-    getFitnessData("week");
-  }, []);
-
+  
+  
   const getFitnessData = period => {
     Axios.get(`/api/fitness/${period}`)
       .then(res => {
@@ -47,14 +21,48 @@ export default function Fitness(props) {
         console.error("Error:", err);
       });
   };
+  
+  const buttons = [
+    {
+      title: "Home",
+      onClick: props.onHome,
+    },
+    {
+      title: "Week",
+      onClick: () => {
+        getFitnessData("week");
+        setCurrentButton("Week");
+      },
+    },
+    {
+      title: "Month",
+      onClick: () => {
+        getFitnessData("month");
+        setCurrentButton("Month");
+      },
+    },
+    {
+      title: "Year",
+      onClick: () => {
+        getFitnessData("year");
+        setCurrentButton("Year");
+      },
+    },
+  ];
+
+
+  useEffect(() => {
+    getFitnessData("week");
+  }, []);
+
 
   return (
     <main className="page">
       <section className="nav-menu-container">
-        <NavMenu buttons={buttons} username={props.username} />
+        <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
       </section>
-      <section className="content-container">
-        <section className="fitigochi-container">
+      <section className="fitness-content-container">
+        <section className="graph-container">
           <Graph
             data={graphData.data}
             maxValue={graphData.maxValue}
@@ -62,6 +70,12 @@ export default function Fitness(props) {
             titleY={graphData.titleY}
           />
         </section>
+        <div className="daybox-menu">
+          <MenuContainer 
+            boxType={"Day"}
+            boxes={[1,2,3,4,5]}
+          />
+        </div>
       </section>
     </main>
   );

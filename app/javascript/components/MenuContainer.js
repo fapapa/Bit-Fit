@@ -2,6 +2,7 @@ import React from "react";
 import BattleBox from "./BattleBox"
 import AwesomeButton from "./AwesomeButton";
 import SwatchBox from "./SwatchBox";
+import DayBox from "./DayBox";
 
 export default function MenuContainer(props) {
 
@@ -18,7 +19,7 @@ export default function MenuContainer(props) {
 
   function renderDayBoxes() {
     return props.boxes.map((box, index) => (
-      <AwesomeButton key={index} title={button.title} />
+      <DayBox key={index}/>
     ))
   }
 
