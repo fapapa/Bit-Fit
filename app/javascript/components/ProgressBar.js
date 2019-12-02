@@ -20,8 +20,8 @@ export default function ProgressBar(props) {
   };
 
   return (
-    <div class="progress-bar-container">
-      <label for="progress-bar">{props.label}</label>
+    <div className="progress-bar-container">
+      <label>{props.label}</label>
       <div className="progress-bar">
         <Filler
           current_points={props.current_points}
