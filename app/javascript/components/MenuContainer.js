@@ -10,7 +10,8 @@ export default function MenuContainer(props) {
       <BattleBox
         key={index}
         old={false}
-        active={true} 
+        active={true}
+        color={props.color || 0}
       />
     ))
   }

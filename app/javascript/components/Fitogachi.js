@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Fitogachi(props) {
 
-  const source = `/images/Blue-${props.level}-${props.state}.gif`;
+  const source = `/images/${props.level}-${props.state}.gif`;
 
 
   return (
