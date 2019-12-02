@@ -105,12 +105,12 @@ body {
 
 @-webkit-keyframes versus-grow {
   0% {transform: scale(1) translate(0, 0);}
-  100% {transform: scale(4) translate(-5px, 9px);}
+  100% {transform: scale(4) translate(-5px, 0px);}
 }
 
 @keyframes versus-grow {
   0% {transform: scale(1) translate(0, 0);}
-  100% {transform: scale(4) translate(-5px, 9px);}
+  100% {transform: scale(4) translate(-5px, 0px);}
 }
 
 .right-pillar-animation {
