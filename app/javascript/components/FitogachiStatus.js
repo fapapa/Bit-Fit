@@ -49,7 +49,7 @@ export default function FitogachiStatus(props) {
           <ProgressBar
             current_points={properties["current_exp"]}
             daily_goal={500}
-            stretch_goal={500}
+            stretch_goal={0}
           />
         </section>
         <section className="fitogachi-container-level">

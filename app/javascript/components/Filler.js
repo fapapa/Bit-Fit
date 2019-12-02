@@ -22,7 +22,6 @@ export default function Filler(props) {
   };
 
   useEffect(() => {
-    // maybe animationPercentage is too volitile
     animateBar(animationPercentage, percentage);
   }, [percentage]);
 
