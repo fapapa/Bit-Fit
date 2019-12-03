@@ -109,10 +109,9 @@ export default function Battle(props) {
             <section className="battle-content-container">
               <div className="battle-menu-container">
                 <MenuContainer
-                boxType={'Battle'}
-                boxes={[1, 2]}
+                boxType={'Friend'}
+                boxes={[{username: "John", status: "free", color: 90}, {username: "Fabio", status: "busy", color: 225}, {username: "Jackson", status: "pending", color: 315}]}
                 />
-                needs friend boxes
               </div>
             </section>
           )}

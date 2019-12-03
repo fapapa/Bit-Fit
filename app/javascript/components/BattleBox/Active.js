@@ -5,14 +5,14 @@ import versus from '../../../assets/images/versus.png'
 export default function Active(props) {
   return (
     <div className="battle-box-content">
-      <Icon color={'blue'} user={1}/>
+      <Icon color={0}/>
       <a className='bbox-username'>{props.username1}</a>
       <div className="battle-box-center-spot">
         <img className='versus' src={versus}></img>
         <a className="battle-box-center-spot-text">Days Left</a>
       </div>
       <a className='bbox-username'>{props.username2}</a>
-      <Icon color={'blue'} user={2}/>
+      <Icon color={90} mirror={true}/>
     </div>
   );
 }

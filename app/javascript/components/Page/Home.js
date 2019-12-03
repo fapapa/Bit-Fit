@@ -31,10 +31,6 @@ export default function Home(props) {
       onClick: props.onTheGym,
     },
     {
-      title: "Friends",
-      onClick: props.onFriends,
-    },
-    {
       title: "Options",
       onClick: props.onOptions,
     },
