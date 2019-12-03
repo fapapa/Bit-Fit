@@ -57,6 +57,7 @@ export default function Fitness(props) {
 
 
   return (
+    <div className="fitness-background">
     <main className="page">
       <section className="nav-menu-container">
         <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
@@ -78,5 +79,6 @@ export default function Fitness(props) {
         </div>
       </section>
     </main>
+    </div>
   );
 }
