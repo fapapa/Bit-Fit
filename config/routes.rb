@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
     get 'battle', to: 'battles#battle_data'
     get 'battles/notifications', to: 'battles#notifications'
-
+    get 'battle_foe', to: 'battles#battle_foe'
     get 'fitness/:period', to: 'days#show'
   end
   get 'sessions/test', to: 'test#show'

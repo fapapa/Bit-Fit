@@ -8,4 +8,8 @@ class Api::BattlesController < Api::ApiController
   def notifications
     render json: current_user.battle_notifications
   end
+
+  def battle_foe
+    render json: current_user.get_foe(params[:id])
+  end
 end

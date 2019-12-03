@@ -70,4 +70,5 @@ class Battle < ApplicationRecord
     days.each { |day| sum += day['value'].to_i }
     sum
   end
+
 end
