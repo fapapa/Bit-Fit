@@ -23,6 +23,7 @@
     border-radius: 1px;
  }
 
+
 .fitogachi-container-name {
   display:flex;
   justify-content: center;
@@ -50,14 +51,6 @@
   justify-content: flex-end;
   padding-right: 10px;
 
-  .progress-bar {
-    width: 130px;
-    border: 2px solid red;
-  }
-
-  .goal {
-    display: none;
-  }
 }
 
 .fitogachi-container-status-area {
@@ -72,14 +65,33 @@
   padding-top: 15px;
   padding-right: 10px;
 }
-.fitogachi-container-experience-bar .progress-bar {
+
+.exp-bar {
+  position: relative;
+  border-radius: 5px;
   height: 25px;
   border: 4px solid black;
+  box-shadow: 0 8px 6px -6px black;
+  z-index: 2;
 }
 
-.fitogachi-container-experience-bar .goal {
-  display: none
 
+.exp-filler {
+  height: 100%;
+  border-radius: 2px;
+  z-index: 0;
+  position: inherit;
+  width: 100%;
+}
+
+
+.exp-filler-increment {
+  height: 100%;
+  border-radius: 2px;
+  z-index: 0;
+  position: inherit;
+  transition-duration: 2000ms;
+  transition-timing-function: ease-in;
 }
 
 .fitogachi-container-level {

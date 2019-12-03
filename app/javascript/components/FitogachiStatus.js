@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import HeartsBar from "./HeartsBar";
-
-
-
-
-import ProgressBar from "./ProgressBar";
+import ExpBar from "./ExpBar";
 import Fitogachi from "./Fitogachi";
 
 export default function FitogachiStatus(props) {
@@ -23,7 +19,13 @@ export default function FitogachiStatus(props) {
   useEffect(() => {
     fetchFitogachi();
   }, []);
+  
+  const [level, setLevel] = useState(Math.floor(200/ 500) + 1)
+  console.log(level)
 
+  const levelUp = () => {
+    setLevel(level + 1);
+  }
 
   return (
     <section className="fitogachi-container-box">
@@ -38,7 +40,7 @@ export default function FitogachiStatus(props) {
         <section className="fitogachi-container-gif">
           <Fitogachi 
           level={properties["level"] || 6}
-          color={'0deg'}
+          color={0}
           state={"idle"}
           mirror={false}
           />
@@ -46,16 +48,17 @@ export default function FitogachiStatus(props) {
         
       <section className="fitogachi-container-status-area">
         <section className="fitogachi-container-experience-bar">
-          <ProgressBar
-            current_points={properties["current_exp"]}
-            daily_goal={500}
-            stretch_goal={0}
+          <ExpBar
+            current_exp={1300}
+            last_experience={700}
+            goal={500}
+            onChange={() => {levelUp()} }
           />
         </section>
         <section className="fitogachi-container-level">
           level 
           <div className="level-number">
-            6{properties["level"]}
+            {level}
           </div>
         </section>
       </section>
