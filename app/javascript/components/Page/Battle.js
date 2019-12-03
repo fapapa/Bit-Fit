@@ -67,6 +67,10 @@ export default function Battle(props) {
   return (
     <main className="page-container">
       {screenMode === MENU && (
+        <div className="battle-menu-background">
+        <div className="parallax-city-3"></div>
+        <div className="parallax-city-2"></div>
+        <div className="parallax-city-1"></div>
         <div className="page">
         <section className="nav-menu-container">
           <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
@@ -130,6 +134,7 @@ export default function Battle(props) {
             <a>Fitogachi</a>
           </section>
         </section>
+        </div>
         </div>
         )}
       {screenMode === BATTLESIM && (
