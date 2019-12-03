@@ -45,7 +45,7 @@ class User < ApplicationRecord
 
   def get_foe
     fitogachi_list = (Fitogachi.where(died_on: nil).ids && Fitogachi.where.not(user_id: id))
-    fitogachi_list.sample
+    fitogachi_list.sample.user
   end
 
   def steps_taken(date = 'today', period = '1d')

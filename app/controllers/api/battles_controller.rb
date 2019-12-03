@@ -10,7 +10,7 @@ class Api::BattlesController < Api::ApiController
   end
 
   def create_battle
-    battle = current_user.created_battles.build(opponent: current_user.get_foe)
-    render json: battle
+    battle = current_user.created_battles.create(opponent: current_user.get_foe)
+    render json: battle, include: {opponent: {only: :username}}
   end
 end
