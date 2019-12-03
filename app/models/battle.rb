@@ -3,7 +3,21 @@ class Battle < ApplicationRecord
   belongs_to :opponent, class_name: "User"
   belongs_to :winner, class_name: "User", optional: true
 
+  def self.current(user)
+    where(creator: user)
+      .or(where(opponent: user, start_date: nil))
+      .where(winner: nil)
+  end
 
+  def self.history(user)
+    where(creator: user)
+      .or(where(opponent: user))
+      .where.not(winner: nil)
+  end
+
+  def self.challenges(user)
+    where(opponent: user, start_date: nil)
+  end
 
   def battle_results(id)
     @battle = Battle.find(id)

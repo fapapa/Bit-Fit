@@ -1,4 +1,24 @@
 class Api::BattlesController < Api::ApiController
+  def index
+    render json: {
+             current: Battle.current(current_user).to_json(
+               include: {
+                 creator: {include: [:fitogachi]},
+                 opponent: {include: [:fitogachi]}
+               }),
+             history: Battle.history(current_user).to_json(
+               include: {
+                 creator: {include: [:fitogachi]},
+                 opponent: {include: [:fitogachi]}
+               }),
+             challenges: Battle.challenges(current_user).to_json(
+               include: {
+                 creator: {include: [:fitogachi]},
+                 opponent: {include: [:fitogachi]}
+               })
+           }
+  end
+
   def battle_data
     # @battle = Battle.find(params[:id])
     # render json: @battle.battle_results(params[:id])

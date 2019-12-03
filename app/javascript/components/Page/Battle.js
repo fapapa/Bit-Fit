@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import NavMenu from "../NavMenu";
 import MenuContainer from "../MenuContainer";
@@ -67,6 +67,9 @@ export default function Battle(props) {
   }
 
   const [battle, setBattle] = useState([]);
+  const [current, setCurrent] = useState([]);
+  const [history, setHistory] = useState([]);
+  const [challenges, setChallenges] = useState([]);
 
   function createBattle() {
     Axios.post("/api/battles", {})
@@ -78,64 +81,78 @@ export default function Battle(props) {
       .catch(err => console.error("Error:", err));
   }
 
+  useEffect(() => {
+    Promise.resolve(Axios.get("/api/battles"))
+      .then(res => {
+        setCurrent(res.data.current);
+        setHistory(res.data.history);
+        setChallenges(res.data.challenges);
+      })
+      .catch(err => console.error("Error:", err));
+  }, []);
+
   return (
     <main className="page-container">
       {screenMode === MENU && (
         <div className="battle-menu-background">
-        <div className="parallax-city-3"></div>
-        <div className="parallax-city-2"></div>
-        <div className="parallax-city-1"></div>
-        <div className="page">
-        <section className="nav-menu-container">
-          <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
-        </section>
-        <section className="content-container">
-          {buttonMode === CURRENTBATTLES && (
-            <section className="battle-content-container">
-              <div className="battle-menu-container">
-                <MenuContainer
-                  onAccept={() => onAccept(id)}
-                  onComplete={() => onComplete(id)}
-                  boxType={'Battle'}
-                  boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-                />
-              </div>
+          <div className="parallax-city-3"></div>
+          <div className="parallax-city-2"></div>
+          <div className="parallax-city-1"></div>
+          <div className="page">
+            <section className="nav-menu-container">
+              <NavMenu
+                buttons={buttons}
+                username={props.username}
+                currentButton={currentButton}
+              />
             </section>
-          )}
-          {buttonMode === FOEFIND && (
-            <section className="battle-content-container">
-              <FindaFoe />
+            <section className="content-container">
+              {buttonMode === CURRENTBATTLES && (
+                <section className="battle-content-container">
+                  <div className="battle-menu-container">
+                    <MenuContainer
+                      onAccept={() => onAccept(id)}
+                      onComplete={() => onComplete(id)}
+                      boxType={"Battle"}
+                      boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                    />
+                  </div>
+                </section>
+              )}
+              {buttonMode === FOEFIND && (
+                <section className="battle-content-container">
+                  <FindaFoe />
+                </section>
+              )}
+              {buttonMode === FRIENDS && (
+                <section className="battle-content-container">
+                  <div className="battle-menu-container">
+                    <MenuContainer
+                      boxType={"Friend"}
+                      boxes={[
+                        { username: "John", status: "free", color: 90 },
+                        { username: "Fabio", status: "busy", color: 225 },
+                        { username: "Jackson", status: "pending", color: 315 },
+                      ]}
+                    />
+                  </div>
+                </section>
+              )}
+              {buttonMode === FISTORY && (
+                <section className="battle-content-container">
+                  <div className="battle-menu-container">
+                    <MenuContainer
+                      boxType={"Battle"}
+                      boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                    />
+                    needs a data endpoint for only past battles
+                  </div>
+                </section>
+              )}
             </section>
-          )}
-          {buttonMode === FRIENDS && (
-            <section className="battle-content-container">
-              <div className="battle-menu-container">
-                <MenuContainer
-                boxType={'Friend'}
-                boxes={[{username: "John", status: "free", color: 90}, {username: "Fabio", status: "busy", color: 225}, {username: "Jackson", status: "pending", color: 315}]}
-                />
-                </div>
-              </section>
-            )}
-            {buttonMode === FISTORY && (
-              <section className="battle-content-container">
-                <div className="battle-menu-container">
-                  <MenuContainer
-                    boxType={"Battle"}
-                    boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-                  />
-                  needs a data endpoint for only past battles
-                </div>
-              </section>
-            )}
-            <section className="battle-fitigochi-container">
-              <a>Fitogachi</a>
-            </section>
-          )}
-        </section>
+          </div>
         </div>
-        </div>
-        )}
+      )}
       {screenMode === BATTLESIM && (
         <BattleSim battleId={battleSimId} onSimulationEnd={onSimulationEnd} />
       )}
