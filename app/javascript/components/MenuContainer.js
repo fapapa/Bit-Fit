@@ -3,6 +3,7 @@ import BattleBox from "./BattleBox"
 import AwesomeButton from "./AwesomeButton";
 import SwatchBox from "./SwatchBox";
 import DayBox from "./DayBox";
+import FriendBox from "./FriendBox";
 
 export default function MenuContainer(props) {
 
@@ -25,7 +26,7 @@ export default function MenuContainer(props) {
 
   function renderFriendBoxes() {
     return props.boxes.map((box, index) => (
-      <AwesomeButton key={index} title={index} />
+      <FriendBox key={index} status={box.status} username={box.username} color={box.color} />
     ))
   }
 
