@@ -29,9 +29,10 @@ Rails.application.routes.draw do
     get 'friends/search', to: 'friends#search'
 
     get 'battle', to: 'battles#battle_data'
+    post 'battles', to: 'battles#create_battle'
     get 'battles/notifications', to: 'battles#notifications'
-    get 'battle_foe', to: 'battles#battle_foe'
     get 'fitness/:period', to: 'days#show'
+
   end
   get 'sessions/test', to: 'test#show'
 end

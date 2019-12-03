@@ -9,7 +9,8 @@ class Api::BattlesController < Api::ApiController
     render json: current_user.battle_notifications
   end
 
-  def battle_foe
-    render json: current_user.get_foe(params[:id])
+  def create_battle
+    battle = current_user.created_battles.create(opponent: current_user.get_foe)
+    render json: battle, include: {opponent: {only: :username}}
   end
 end
