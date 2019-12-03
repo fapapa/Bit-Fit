@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import NavMenu from "../NavMenu";
 import MenuContainer from "../MenuContainer";
 import BattleSim from "../BattleSim";
+import FindaFoe from "../FindaFoe.js";
 
 export default function Battle(props) {
   const CURRENTBATTLES = "CURRENTBATTLES";
-  const FOEFINDRULES = "FOEFINDRULES";
+  const FOEFIND = "FOEFIND";
   const FOEFINDWAIT = "FORFINDWAIT";
   const FOEFINDFOUND = "FOEFINDFOUND";
   const FRIENDS = "FRIENDS";
@@ -33,7 +34,7 @@ export default function Battle(props) {
     {
       title: "Find a Foe",
       onClick: () => {
-        setButtonMode(FOEFINDRULES);
+        setButtonMode(FOEFIND);
         setCurrentButton("Find a Foe");
       }
     },
@@ -88,25 +89,9 @@ export default function Battle(props) {
               </div>
             </section>
           )}
-          {buttonMode === FOEFINDRULES && (
+          {buttonMode === FOEFIND && (
             <section className="battle-content-container">
-              <div className="battle-menu-container">
-                Need a component with rules and FIND A FOR button.
-              </div>
-            </section>
-          )}
-          {buttonMode === FOEFINDWAIT && (
-            <section className="battle-content-container">
-              <div className="battle-menu-container">
-                NEEDS a simple animation component.. actually you we might be able to just copy guts of BattleSim/Loading
-              </div>
-            </section>
-          )}
-          {buttonMode === FOEFINDFOUND && (
-            <section className="battle-content-container">
-              <div className="battle-menu-container">
-                Simple Message component.
-              </div>
+              <FindaFoe />
             </section>
           )}
           {buttonMode === FRIENDS && (
@@ -130,9 +115,6 @@ export default function Battle(props) {
               </div>
             </section>
           )}
-          <section className="battle-fitigochi-container">
-            <a>Fitogachi</a>
-          </section>
         </section>
         </div>
         </div>
