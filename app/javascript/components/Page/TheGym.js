@@ -78,6 +78,7 @@ export default function TheGym(props) {
   ];
 
   return (
+    <div className="gym-background">
     <main className="page">
       <section className="gym-menu-container">
         <div className="username">{props.username}</div>
@@ -104,12 +105,13 @@ export default function TheGym(props) {
               level={6}
               state={"idle"}
               color={currentColor}
-              mirror={true}
+              mirror={false}
               simulation={false}
             />
           </div>
         </section>
       </section>
     </main>
+    </div>
   );
 }

@@ -1,3 +1,11 @@
+.gym-background {
+  background-image: url("/images/Gym-background-1.png");
+  background-size: 224vh 100vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 .gym-menu-container {
   display: flex;
   flex-direction: column;
@@ -34,4 +42,11 @@
   height: 65vh;
   justify-content: center;
   align-items: center;
+}
+
+.gym-fitogachi {
+  position: relative;
+  left: -21vw;
+  top: 9vh;
+  transform: scale(1.2);
 }
