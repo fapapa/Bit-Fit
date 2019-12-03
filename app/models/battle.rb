@@ -37,7 +37,7 @@ class Battle < ApplicationRecord
 
   def daily_calories(days, maximum)
     day_arr = []
-    days.each { |day| day_arr.push(((day['value'].to_i) * 100 / maximum).floor)}
+    days.each { |day| day_arr.push(((day['value'].to_i) * 100 / maximum).ceil) }
     day_arr
   end
 
