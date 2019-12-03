@@ -3,11 +3,11 @@ import Axios from "axios";
 import NavMenu from "../NavMenu";
 import MenuContainer from "../MenuContainer";
 import BattleSim from "../BattleSim";
-import Button from "../AwesomeButton";
+import FindaFoe from "../FindaFoe.js";
 
 export default function Battle(props) {
   const CURRENTBATTLES = "CURRENTBATTLES";
-  const FOEFINDRULES = "FOEFINDRULES";
+  const FOEFIND = "FOEFIND";
   const FOEFINDWAIT = "FORFINDWAIT";
   const FOEFINDFOUND = "FOEFINDFOUND";
   const FRIENDS = "FRIENDS";
@@ -35,7 +35,7 @@ export default function Battle(props) {
     {
       title: "Find a Foe",
       onClick: () => {
-        setButtonMode(FOEFINDRULES);
+        setButtonMode(FOEFIND);
         setCurrentButton("Find a Foe");
       },
     },
@@ -86,57 +86,30 @@ export default function Battle(props) {
         <div className="parallax-city-2"></div>
         <div className="parallax-city-1"></div>
         <div className="page">
-          <section className="nav-menu-container">
-            <NavMenu
-              buttons={buttons}
-              username={props.username}
-              currentButton={currentButton}
-            />
-          </section>
-          <section className="content-container">
-            {buttonMode === CURRENTBATTLES && (
-              <section className="battle-content-container">
-                <div className="battle-menu-container">
-                  <MenuContainer
-                    onAccept={() => onAccept(id)}
-                    onComplete={() => onComplete(id)}
-                    boxType={"Battle"}
-                    boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-                  />
-                </div>
-              </section>
-            )}
-            {buttonMode === FOEFINDRULES && (
-              <section className="battle-content-container">
-                <div className="battle-menu-container">
-                  When you press the below button, you will immediately issue a
-                  battle challenge to a random person. Once they accept, the
-                  challenge will start at midnight.
-                  <Button onClick={createBattle} title="Go" />
-                </div>
-              </section>
-            )}
-            {buttonMode === FOEFINDWAIT && (
-              <section className="battle-content-container">
-                <div className="battle-menu-container">
-                  NEEDS a simple animation component.. actually you we might be
-                  able to just copy guts of BattleSim/Loading
-                </div>
-              </section>
-            )}
-            {buttonMode === FOEFINDFOUND && (
-              <section className="battle-content-container">
-                <div className="battle-menu-container">
-                  You have issued a challenge to {battle.opponent.username}.
-                  Check the Current Battles page to see when they accept your
-                  challenge. Your challenge will begin at midnight after the
-                  challenge is accepted.
-                </div>
-              </section>
-            )}
-            {buttonMode === FRIENDS && (
-              <section className="battle-content-container">
-                <div className="battle-menu-container">
+        <section className="nav-menu-container">
+          <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
+        </section>
+        <section className="content-container">
+          {buttonMode === CURRENTBATTLES && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
+                <MenuContainer
+                  onAccept={() => onAccept(id)}
+                  onComplete={() => onComplete(id)}
+                  boxType={'Battle'}
+                  boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                />
+              </div>
+            </section>
+          )}
+          {buttonMode === FOEFIND && (
+            <section className="battle-content-container">
+              <FindaFoe />
+            </section>
+          )}
+          {buttonMode === FRIENDS && (
+            <section className="battle-content-container">
+              <div className="battle-menu-container">
                 <MenuContainer
                 boxType={'Friend'}
                 boxes={[{username: "John", status: "free", color: 90}, {username: "Fabio", status: "busy", color: 225}, {username: "Jackson", status: "pending", color: 315}]}
@@ -158,7 +131,8 @@ export default function Battle(props) {
             <section className="battle-fitigochi-container">
               <a>Fitogachi</a>
             </section>
-          </section>
+          )}
+        </section>
         </div>
         </div>
         )}

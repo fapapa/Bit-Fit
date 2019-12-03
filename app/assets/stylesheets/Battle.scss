@@ -18,15 +18,6 @@
   height: 80%;
 }
 
-.battle-fitigochi-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 30%;
-}
-
 .parallax-city-1 {
   background-image: url("/images/city1.png");
   background-repeat: repeat-x;
@@ -55,7 +46,7 @@
   background-size: 300vh 100vh;
   height: 100vh;
   width: 900vw;
-  animation: slide2 120s linear infinite;
+  animation: slide2 180s linear infinite;
 }
 
 
