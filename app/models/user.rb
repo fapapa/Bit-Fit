@@ -32,7 +32,8 @@ class User < ApplicationRecord
   end
 
   def get_friends
-    friends['data']
+    friend_ids = friends['data'].map { |friend| friend['id'] }
+    User.includes(:fitogachi).where(fitbit_id: friend_ids)
   end
 
   def search_friends(name)

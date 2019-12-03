@@ -70,6 +70,7 @@ export default function Battle(props) {
   const [current, setCurrent] = useState([]);
   const [history, setHistory] = useState([]);
   const [challenges, setChallenges] = useState([]);
+  const [friends, setFriends] = useState([]);
 
   function createBattle() {
     Axios.post("/api/battles", {})
@@ -94,6 +95,10 @@ export default function Battle(props) {
         setHistory(res.data.history);
         setChallenges(res.data.challenges);
       })
+      .catch(err => console.error("Error:", err));
+
+    Promise.resolve(Axios.get("/api/friends"))
+      .then(res => setFriends(res.data))
       .catch(err => console.error("Error:", err));
   }, []);
 
@@ -133,14 +138,7 @@ export default function Battle(props) {
               {buttonMode === FRIENDS && (
                 <section className="battle-content-container">
                   <div className="battle-menu-container">
-                    <MenuContainer
-                      boxType={"Friend"}
-                      boxes={[
-                        { username: "John", status: "free", color: 90 },
-                        { username: "Fabio", status: "busy", color: 225 },
-                        { username: "Jackson", status: "pending", color: 315 },
-                      ]}
-                    />
+                    <MenuContainer boxType={"Friend"} boxes={friends} />
                   </div>
                 </section>
               )}

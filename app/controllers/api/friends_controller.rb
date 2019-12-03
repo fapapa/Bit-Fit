@@ -1,7 +1,7 @@
 class Api::FriendsController < Api::ApiController
 
   def index
-    render json: current_user.get_friends
+    render json: current_user.get_friends, include: [:fitogachi]
   end
 
   def search
