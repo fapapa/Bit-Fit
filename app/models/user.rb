@@ -43,7 +43,7 @@ class User < ApplicationRecord
     }
   end
 
-  def get_foe(id = 1)
+  def get_foe
     fitogachi_list = (Fitogachi.where(died_on: nil).ids && Fitogachi.where.not(user_id: id))
     fitogachi_list.sample
   end

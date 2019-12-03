@@ -30,7 +30,7 @@ export default function FitogachiStatus(props) {
   return (
     <section className="fitogachi-container-box">
       <section className="fitogachi-container-name">
-        Fitogachi's Name{properties["name"]}
+        {properties["name"]}
       </section>
       <section className="fitogachi-container-hearts-bar">
         <HeartsBar 
