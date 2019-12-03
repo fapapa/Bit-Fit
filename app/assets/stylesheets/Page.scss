@@ -1,4 +1,68 @@
+.page-background {
+  overflow: hidden;
+
+}
+
+.sliding-background {
+  background-image: url("/images/hills-layer-1.png");
+  background-repeat: repeat-x;
+  background-size: 210vh 100vh;
+  height: 100vh;
+  width: 630vw;
+  animation: slide 180s linear infinite;
+  animation-delay: 4000ms;
+}
+
+.sliding-background-2 {
+  background-image: url("/images/hills-layer-2.png");
+  background-repeat: repeat-x;
+  background-size: 210vh 100vh;
+  height: 100vh;
+  width: 630vh;
+  animation: slide 120s linear infinite;
+  animation-delay: 4000ms;
+  position: absolute;
+  top: 0;
+}
+
+.sliding-background-3 {
+  background-image: url("/images/hills-layer-3.png");
+  background-repeat: repeat-x;
+  background-size: 210vh 100vh;
+  height: 100vh;
+  width: 630vh;
+  animation: slide 90s linear infinite;
+  animation-delay: 4000ms;
+  position: absolute;
+  top: 0;
+}
+
+.sliding-background-4 {
+  background-image: url("/images/hills-layer-4.png");
+  background-repeat: repeat-x;
+  background-size: 210vh 100vh;
+  height: 100vh;
+  width: 630vh;
+  animation: slide 60s linear infinite;
+  animation-delay: 4000ms;
+  position: absolute;
+  top: 0;
+}
+
+@keyframes slide {
+  0% {transform: translate3d(0, 0, 0);}
+  100%{ transform: translate3d(-210vh, 0, 0);}
+}
+
+@-webkit-keyframes slide {
+  0% {transform: translate3d(0, 0, 0);}
+  100%{ transform: translate3d(210vh, 0, 0);}
+}
+
 .page {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   height: 100vh;

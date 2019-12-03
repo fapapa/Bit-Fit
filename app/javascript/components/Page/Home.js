@@ -41,6 +41,11 @@ export default function Home(props) {
   ];
 
   return (
+    <div className="page-background">
+    <div className="sliding-background"></div>
+    <div className="sliding-background-2"></div>
+    <div className="sliding-background-3"></div>
+    <div className="sliding-background-4"></div>
     <main className="page">
       <section className="nav-menu-container">
         <NavMenu buttons={buttons} username={props.username} />
@@ -54,5 +59,6 @@ export default function Home(props) {
         </section>
       </section>
     </main>
+    </div>
   );
 }
