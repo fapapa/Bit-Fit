@@ -81,6 +81,12 @@ export default function Battle(props) {
       .catch(err => console.error("Error:", err));
   }
 
+  function acceptBattle(battleId) {
+    Axios.post("/api/battles/${battleId}", {})
+      .then(res => console.log(res.data))
+      .catch(err => console.error("Error:", err));
+  }
+
   useEffect(() => {
     Promise.resolve(Axios.get("/api/battles"))
       .then(res => {

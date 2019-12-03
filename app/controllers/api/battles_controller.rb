@@ -19,6 +19,14 @@ class Api::BattlesController < Api::ApiController
            }
   end
 
+  def update
+    battle = current_user.opponent_battles.find(params[:id])
+
+    battle.start_date = Date.tomorrow
+    battle.end_date = Date.tomorrow + 2.days
+    render json: battle if battle.save
+  end
+
   def battle_data
     # @battle = Battle.find(params[:id])
     # render json: @battle.battle_results(params[:id])
