@@ -82,6 +82,30 @@ class User < ApplicationRecord
     token.save
   end
 
+  def reap
+    data = HTTParty.get(
+      "https://api.fitbit.com/1/user/-/activities/date/#{Date.yesterday.strftime}.json",
+      headers: headers
+    ).parsed_response["summary"]
+
+    days.create(
+      calories: data["activityCalories"],
+      steps: data["steps"],
+      stats_date: Date.yesterday
+    )
+
+    if data["activityCalories"] < 500
+      fitogachi.current_energy -= 1.0
+    else
+      fitogachi.current_energy += 0.5
+    end
+    fitogachi.save
+  end
+
+  def calorie_total(start_date, end_date)
+    days.where(stats_date: start_date..end_date).sum(&:calories)
+  end
+
   def self.fitbit_auth(code)
     tokens = Fitbit.get_tokens(code)
 

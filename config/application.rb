@@ -31,5 +31,13 @@ module BitFit
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Start the background job that runs every hour to reap Fitogachis, get
+    # their day stats from Fitbit, assign winners for battles, adjust Fitogachi
+    # exp, etc.
+    config.after_initialize do
+      next_job_time = Date.tomorrow.at_midnight + 8.hours
+      ReaperJob.set(wait_until: next_job_time).perform_later
+    end
   end
 end

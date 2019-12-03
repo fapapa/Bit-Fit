@@ -13,4 +13,15 @@ class Fitogachi < ApplicationRecord
     end
     points > 150 ? 150 : points
   end
+
+  def current_energy=(value)
+    if value < 0
+      super(0)
+      self.died_on = Date.today
+    elsif value > 5
+      super(5)
+    else
+      super(value)
+    end
+  end
 end
