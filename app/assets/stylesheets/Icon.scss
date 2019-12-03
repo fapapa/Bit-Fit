@@ -1,6 +1,25 @@
-.icon {
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 85%;
-  align-self: center;
+  overflow: hidden;
   padding-right: 20px;
   padding-left: 20px;
 }
+
+.icon {
+  height: 110%;
+}
+
+.icon-mirror{
+  height: 110%;
+  transform: scaleX(-1);
+}
+
+// .icon-background {
+//   position: relative;
+//   top: 62px;
+//   height: 100%;
+// }
