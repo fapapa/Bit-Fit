@@ -8,21 +8,9 @@ export default function Options(props) {
       onClick: props.onHome,
     },
     {
-      title: "Find a Foe",
+      title: "",
       onClick: () => {
         console.log("Fitness");
-      },
-    },
-    {
-      title: "Fight a Friend",
-      onClick: () => {
-        console.log("The Gym");
-      },
-    },
-    {
-      title: "Fistory",
-      onClick: () => {
-        console.log("Friends");
       },
     },
   ];

@@ -27,6 +27,9 @@ class SessionsController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    render html: 'logout'
+    redirect_to action: :goodbye
+  end
+
+  def goodbye
   end
 end

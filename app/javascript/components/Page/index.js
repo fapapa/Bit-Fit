@@ -13,7 +13,7 @@ export default function HomePage(props) {
   const BATTLE = "BATTLE";
   const FITNESS = "FITNESS";
   const THEGYM = "THEGYM";
-  const OPTIONS = "OPTIONS";
+  
 
   // SELECTOR HOOK
   const { mode, transition, back } = useVisualMode(HOME);
@@ -35,13 +35,12 @@ export default function HomePage(props) {
           onBattle={() => transition(BATTLE)}
           onFitness={() => transition(FITNESS)}
           onTheGym={() => transition(THEGYM)}
-          onOptions={() => transition(OPTIONS)}
-        />
+          onOptions={() => window.location = "sessions/logout"}
+/>
       )}
       {mode === BATTLE && <Battle onHome={() => back() } username={userName || '\u00A0'} />}
       {mode === FITNESS && <Fitness onHome={() => back()} username={userName || '\u00A0'} />}
       {mode === THEGYM && <TheGym onHome={() => back()} username={userName || '\u00A0'} />}
-      {mode === OPTIONS && <Options onHome={() => back()} username={userName || '\u00A0'} />}
     </div>
   );
 }

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/authenticate', to: 'sessions#new'
   get 'sessions/create', to: 'sessions#create'
   get 'sessions/logout', to: 'sessions#logout'
+  get 'sessions/goodbye', to: 'sessions#goodbye'
 
   resource :fitogachi, only: [:new, :create]
 
