@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     get 'profile', to: 'profile#index'
 
+    get 'user', to: 'profile#user_data'
+
     get 'fitogachi', to: 'fitogachi#show'
 
     get 'friends', to: 'friends#index'

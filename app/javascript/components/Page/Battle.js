@@ -8,8 +8,6 @@ import FindaFoe from "../FindaFoe.js";
 export default function Battle(props) {
   const CURRENTBATTLES = "CURRENTBATTLES";
   const FOEFIND = "FOEFIND";
-  const FOEFINDWAIT = "FORFINDWAIT";
-  const FOEFINDFOUND = "FOEFINDFOUND";
   const FRIENDS = "FRIENDS";
   const FISTORY = "FISTORY";
   const MENU = "MENU";
@@ -84,7 +82,7 @@ export default function Battle(props) {
   function createFriendBattle(friendId) {
     Axios.post("/api/battles", { battle: { opponent_id: friendId } })
       .then(res => {
-        setBattle(res.data);
+        updateCurrent();
         setButtonMode(CURRENTBATTLES);
         setCurrentButton("Current Battles");
       })
@@ -92,21 +90,21 @@ export default function Battle(props) {
   }
 
   function acceptBattle(battleId) {
-    Axios.post("/api/battles/${battleId}", {})
+    Axios.post(`/api/battles/${battleId}`, {})
       .then(() => updateCurrent())
       .catch(err => console.error("Error:", err));
   }
 
   function updateHistory() {
     Axios.get("/api/battles/history")
-    .then(res => setHistory(JSON.parse(red.data)))
+    .then(res => setHistory(res.data))
     .catch(err => console.error("Error:", err));
 
   }
 
   function updateCurrent() {
     Axios.get("/api/battles/current")
-    .then(res => setCurrent(JSON.parse(res.data)))
+    .then(res => setCurrent(res.data))
     .catch(err => console.error("Error:", err));
   }
 
