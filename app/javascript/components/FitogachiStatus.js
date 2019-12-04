@@ -21,7 +21,6 @@ export default function FitogachiStatus(props) {
   }, []);
 
   const [level, setLevel] = useState(Math.floor(200/ 500) + 1)
-  console.log(properties)
   const levelUp = () => {
     setLevel(level + 1);
   }
@@ -42,6 +41,7 @@ export default function FitogachiStatus(props) {
           color={properties["color"] || 0}
           state={"idle"}
           mirror={false}
+          died_on={propertiers["died_on"]}
           />
         </section>
         

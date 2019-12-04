@@ -21,7 +21,6 @@ export default function HeartsBar(props) {
       precision={0.5}
       />
     </section>
-
   );
 }
 
