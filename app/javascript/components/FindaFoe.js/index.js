@@ -8,10 +8,14 @@ export default function FindaFoe(props) {
   const SEARCH = "SEARCH";
   const FOUND = "FOUND";
   const [mode, setMode] = useState(RULES);
+  const [battle, setBattle] = useState({});
 
   const foeFind = function() {
     setMode(SEARCH);
-    props.onChallenge().then(() => setMode(FOUND));
+    props.onChallenge().then(res => {
+      setBattle(res.data);
+      setMode(FOUND);
+    });
   };
 
   return (
@@ -28,7 +32,7 @@ export default function FindaFoe(props) {
       )}
       {mode === FOUND && (
         <div className="findafoe-content">
-          <Found username={"opponent"} />
+          <Found username={battle.opponent.username} />
         </div>
       )}
     </div>
