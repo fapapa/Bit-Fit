@@ -3,6 +3,7 @@ import Axios from "axios";
 import Icon from "./Icon";
 
 export default function FriendBox(props) {
+  
   return (
     <div className="friendbox-container">
       <div className="friendbox-content">

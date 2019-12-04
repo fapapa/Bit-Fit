@@ -26,12 +26,13 @@ export default function HomePage(props) {
 
   const fetchUser = () => {
     Axios.get("/api/user")
-      .then((res) => {setUser(res.data)})
+      .then((res) => {setUser(res.data); setFitogachi(res.data.fitogachi);})
       .catch(err => console.error("Error:", err));
   };
   
   const [userName, setUserName] = useState(false);
   const [user, setUser] = useState(false);
+  const [fitogachi, setFitogachi] = useState(false);
 
   useEffect(()=>{
     setUserName(fetchUserName());
@@ -48,6 +49,7 @@ export default function HomePage(props) {
           onFitness={() => transition(FITNESS)}
           onTheGym={() => transition(THEGYM)}
           onOptions={() => transition(OPTIONS)}
+          fitogachi={fitogachi ? [fitogachi.name, fitogachi.color, fitogachi.current_energy, fitogachi.level, fitogachi.died_on, fitogachi.last_experience, fitogachi.current_exp] : null}
         />
       )}
       {mode === BATTLE && <Battle onHome={() => back()} username={userName || '\u00A0'} userid={user.id || null} />}

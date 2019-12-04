@@ -23,7 +23,7 @@ export default function ExpFiller(props) {
   
   useEffect(() => {
     setTimeout((levelsToGo) => {loadBar(levelsToGo)}, 500, levelsToGo)
-  }, []);
+  }, [lastPercentage]);
   
 
   return (
