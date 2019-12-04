@@ -15,7 +15,8 @@ export default function Fitness(props) {
   const getFitnessData = period => {
     Axios.get(`/api/fitness/${period}`)
       .then(res => {
-        setGraphData({ ...graphData, data: res.data });
+        console.log(res.data);
+        setGraphData({ ...graphData, data: res.data, period: period });
       })
       .catch(err => {
         console.error("Error:", err);
@@ -74,7 +75,7 @@ export default function Fitness(props) {
         <div className="daybox-menu">
           <MenuContainer 
             boxType={"Day"}
-            boxes={[1,2,3,4,5]}
+            boxes={graphData.data || []}
           />
         </div>
       </section>
