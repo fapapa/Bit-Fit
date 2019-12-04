@@ -2,7 +2,6 @@ import React from "react";
 import useWindowDimensions from "hooks/useWindowDimensions";
 import {
   XYPlot,
-  LineSeries,
   XAxis,
   YAxis,
   VerticalRectSeries,
@@ -43,7 +42,7 @@ export default function Graph(props) {
         x: day.x,
         y: day.y,
         label: day.label,
-        xOffset: -(width / (data2.length * 4) - 12), //-((day.x-day.x0)/2),
+        xOffset: -(width / (data2.length * 4) - 12),
         yOffset: (height * 0.7 - 50) * (day.y / maxValue) - height * 0.08,
         rotation: 270,
       };

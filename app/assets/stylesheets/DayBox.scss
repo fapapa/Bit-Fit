@@ -32,20 +32,14 @@
   align-items: center;
 
   .daybox-calories {
-    color: black;
-    font-size: 21px;
+    color: greenyellow;
+    font-size: 34px;
     text-shadow: 0 -1px #53606d;
     font-family: 'Kenny';
   }
   .daybox-steps {
-    color: black;
-    font-size: 21px;
-    text-shadow: 0 -1px #53606d;
-    font-family: 'Kenny';
-  }
-  .daybox-avg-heartrate {
-    color: black;
-    font-size: 21px;
+    color: #d0b400;
+    font-size: 34px;
     text-shadow: 0 -1px #53606d;
     font-family: 'Kenny';
   }
@@ -58,19 +52,14 @@
   align-items: center;
 
   .daybox-calories-label {
-    padding-left: 18px;
+    padding-left: 51px;
     color: black;
     font-size: 16px;
     text-shadow: 0 -1px #53606d;
     font-family: 'Kenny';
   }
   .daybox-steps-label {
-    color: black;
-    font-size: 16px;
-    text-shadow: 0 -1px #53606d;
-    font-family: 'Kenny';
-  }
-  .daybox-avg-heartrate-label {
+    padding-right: 8px;
     color: black;
     font-size: 16px;
     text-shadow: 0 -1px #53606d;
