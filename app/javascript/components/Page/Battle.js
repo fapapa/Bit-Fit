@@ -78,12 +78,7 @@ export default function Battle(props) {
   const [friends, setFriends] = useState([]);
 
   function createFoeBattle() {
-    Axios.post("/api/battles", {})
-      .then(res => {
-        setBattle(res.data);
-        setButtonMode(FOEFINDFOUND);
-      })
-      .catch(err => console.error("Error:", err));
+    return Axios.post("/api/battles", {});
   }
 
   function createFriendBattle(friendId) {
@@ -145,7 +140,7 @@ export default function Battle(props) {
               )}
               {buttonMode === FOEFIND && (
                 <section className="battle-content-container">
-                  <FindaFoe />
+                  <FindaFoe onChallenge={() => createFoeBattle()} />
                 </section>
               )}
               {buttonMode === FRIENDS && (
@@ -166,7 +161,7 @@ export default function Battle(props) {
                       boxType={"History Battle"}
                       boxes={history}
                       userid={props.userid}
-                      showAnimation={(id) => showAnimation(id)}
+                      showAnimation={id => showAnimation(id)}
                     />
                   </div>
                 </section>
