@@ -17,7 +17,7 @@ export default function BattleSim(props) {
   );
 
   useEffect(()=> {
-    Promise.resolve(axios.get("/api/battle"))
+    Promise.resolve(axios.get(`/api/battle?id=${props.battleId}`))
     .then(res => {
       setBattleInfo(res.data);
       setTimeout(() => transition(VERSUS), 500);
