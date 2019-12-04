@@ -19,6 +19,22 @@ class Api::BattlesController < Api::ApiController
            }
   end
 
+  def current 
+    render json: Battle.current(current_user).to_json(
+      include: {
+        creator: {include: [:fitogachi]},
+        opponent: {include: [:fitogachi]}
+      })
+  end
+
+  def history
+    render json: Battle.history(current_user).to_json(
+      include: {
+        creator: {include: [:fitogachi]},
+        opponent: {include: [:fitogachi]}
+      })
+  end
+
   def update
     battle = current_user.opponent_battles.find(params[:id])
 

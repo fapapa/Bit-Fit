@@ -53,21 +53,16 @@ export default function Battle(props) {
         setCurrentButton("Fistory");
       },
     },
-    {
-      title: "BattleTest",
-      onClick: () => {
-        setScreenMode(BATTLESIM);
-      },
-    },
   ];
 
   function showAnimation(id) {
     setBattleSimId(id);
     setScreenMode(BATTLESIM);
+    updateHistory();
   }
 
   function onSimulationEnd() {
-    setBattleSimData(null);
+    setBattleSimId(null);
     setScreenMode(MENU);
   }
 
@@ -98,8 +93,21 @@ export default function Battle(props) {
 
   function acceptBattle(battleId) {
     Axios.post("/api/battles/${battleId}", {})
-      .then(res => console.log(res.data))
+      .then(() => updateCurrent())
       .catch(err => console.error("Error:", err));
+  }
+
+  function updateHistory() {
+    Axios.get("/api/battles/history")
+    .then(res => setHistory(JSON.parse(red.data)))
+    .catch(err => console.error("Error:", err));
+
+  }
+
+  function updateCurrent() {
+    Axios.get("/api/battles/current")
+    .then(res => setCurrent(JSON.parse(res.data)))
+    .catch(err => console.error("Error:", err));
   }
 
   useEffect(() => {
@@ -139,6 +147,7 @@ export default function Battle(props) {
                       boxType={"Current Battle"}
                       boxes={current}
                       userid={props.userid}
+                      onAccept={(id) => acceptBattle(id)}
                     />
                   </div>
                 </section>
@@ -155,6 +164,7 @@ export default function Battle(props) {
                       boxType={"Friend"}
                       boxes={friends}
                       onChallenge={friendId => createFriendBattle(friendId)}
+                      userid={props.userid}
                     />
                   </div>
                 </section>

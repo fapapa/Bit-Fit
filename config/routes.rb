@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     post 'battles', to: 'battles#create_battle'
     get 'battles/notifications', to: 'battles#notifications'
     get 'battles', to: 'battles#index'
+    get 'battles/current', to: 'battles#current'
+    get 'battles/history', to: 'battles#history'
     post 'battles/:id', to: 'battles#update'
     get 'fitness/:period', to: 'days#show'
 
