@@ -20,7 +20,7 @@ export default function ExpFiller(props) {
       setWidth(0);
     }
   }
-  console.log(levelsToGo)
+  
   useEffect(() => {
     setTimeout((levelsToGo) => {loadBar(levelsToGo)}, 500, levelsToGo)
   }, []);
@@ -32,7 +32,7 @@ export default function ExpFiller(props) {
           className={"exp-filler-increment"}
           style={{
             width: `${width}%`,
-            background: "blue",
+            background: "#00A6ED",
             transitionDuration: `${transition === 'fast' ? 0 : 2}s`
           }}
       />

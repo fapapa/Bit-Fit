@@ -29,7 +29,7 @@ class Battle < ApplicationRecord
               days: []
               }
 
-    # determines largest calories burned between data by either user
+    # determines largest calories burned-between data by either user
     opponent_max = sum_calories(days_opponent_calories)
     creator_max = sum_calories(days_creator_calories)
     max = creator_max > opponent_max ? creator_max : opponent_max

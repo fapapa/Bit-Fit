@@ -19,14 +19,13 @@ export default function FitogachiStatus(props) {
   useEffect(() => {
     fetchFitogachi();
   }, []);
-  
-  const [level, setLevel] = useState(Math.floor(200/ 500) + 1)
-  console.log(level)
 
+  const [level, setLevel] = useState(Math.floor(200/ 500) + 1)
+  console.log(properties)
   const levelUp = () => {
     setLevel(level + 1);
   }
-
+  
   return (
     <section className="fitogachi-container-box">
       <section className="fitogachi-container-name">
@@ -40,7 +39,7 @@ export default function FitogachiStatus(props) {
         <section className="fitogachi-container-gif">
           <Fitogachi 
           level={properties["level"] || 6}
-          color={0}
+          color={properties["color"] || 0}
           state={"idle"}
           mirror={false}
           />
@@ -49,8 +48,8 @@ export default function FitogachiStatus(props) {
       <section className="fitogachi-container-status-area">
         <section className="fitogachi-container-experience-bar">
           <ExpBar
-            current_exp={1300}
-            last_experience={700}
+            current_exp={properties["current_exp"]}
+            last_experience={properties["last_experience"]}
             goal={500}
             onChange={() => {levelUp()} }
           />

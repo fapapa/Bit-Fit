@@ -12,15 +12,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
   margin: 20px;
-  box-shadow: 
-    0 0 0 10px hsl(0, 0%, 50%),
-    0 0 0 15px hsl(0, 0%, 60%),
-    0 0 0 20px hsl(0, 0%, 70%),
-    0 0 0 25px hsl(0, 0%, 80%),
-    0 0 0 30px hsl(0, 0%, 90%);
-    border-radius: 1px;
+  background-color: lightgoldenrodyellow;
+  border: 6px outset beige;
  }
 
 
@@ -29,12 +23,16 @@
   justify-content: center;
   font-family: "Kenny";
   padding: 20px 80px;
-  font-size: 25px;
+  font-size: 50px;
+  -webkit-text-fill-color: #203037; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 .fitogachi-container-gif {
   display: flex;
   justify-content: center;
+  flex-direction:column-reverse;
   height: 275px;
   width: 400px;
   padding-left: 40px;
@@ -42,7 +40,7 @@
   .fitogachi {
     transform: scale(0.8);
     width: 380px;
-    height: 445px;
+    height: 650px;
   }
 }
 
@@ -70,8 +68,7 @@
   position: relative;
   border-radius: 5px;
   height: 25px;
-  border: 4px solid black;
-  box-shadow: 0 8px 6px -6px black;
+  border: 4px ridge #EFE9F4;
   z-index: 2;
 }
 
@@ -98,6 +95,9 @@
   font-family: "Kenny";
   padding-left: 10px;
   padding-right: 5px;
+  -webkit-text-fill-color: #203037; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 .level-number {
