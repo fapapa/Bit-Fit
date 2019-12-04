@@ -25,9 +25,11 @@ export default function MenuContainer(props) {
     return props.boxes.map((box, index) => (
       <FriendBox
         key={index}
+        id={box.id}
         status={box.status || "free"}
         username={box.username}
         color={box.fitogachi.color}
+        onChallenge={props.onChallenge}
       />
     ));
   }

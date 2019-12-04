@@ -38,7 +38,11 @@ class Api::BattlesController < Api::ApiController
   end
 
   def create_battle
-    battle = current_user.created_battles.create(opponent: current_user.get_foe)
+    opponent = params[:battle][:opponent_id] ?
+                 User.find(params[:battle][:opponent_id]) :
+                 current_user.get_foe
+
+    battle = current_user.created_battles.create(opponent: opponent)
     render json: battle, include: {opponent: {only: :username}}
   end
 end

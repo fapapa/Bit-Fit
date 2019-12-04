@@ -72,14 +72,23 @@ export default function Battle(props) {
   const [challenges, setChallenges] = useState([]);
   const [friends, setFriends] = useState([]);
 
-  function createBattle() {
+  function createFoeBattle() {
     Axios.post("/api/battles", {})
       .then(res => {
         setBattle(res.data);
         setButtonMode(FOEFINDFOUND);
-        console.log(battle);
       })
       .catch(err => console.error("Error:", err));
+  }
+
+  function createFriendBattle(friendId) {
+    Axios.post("/api/battles", { battle: { opponent_id: friendId } })
+      .then(res => {
+        setBattle(res.data);
+        setButtonMode(CURRENTBATTLES);
+        setCurrentButton("Current Battles");
+      })
+      .catch(err => console.error("Error", err));
   }
 
   function acceptBattle(battleId) {
@@ -138,7 +147,11 @@ export default function Battle(props) {
               {buttonMode === FRIENDS && (
                 <section className="battle-content-container">
                   <div className="battle-menu-container">
-                    <MenuContainer boxType={"Friend"} boxes={friends} />
+                    <MenuContainer
+                      boxType={"Friend"}
+                      boxes={friends}
+                      onChallenge={friendId => createFriendBattle(friendId)}
+                    />
                   </div>
                 </section>
               )}
