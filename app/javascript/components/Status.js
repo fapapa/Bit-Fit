@@ -6,17 +6,16 @@ import ProgressBar from "./ProgressBar";
 export default function Status(props) {
   const [currentCalories, setCurrentCalories] = useState(0);
   const [currentSteps, setCurrentSteps] = useState(0);
-
   useEffect(() => {
     Axios.get("/api/calories")
       .then(res => setCurrentCalories(res.data))
+      
       .catch(err => console.error(err));
 
     Axios.get("/api/steps")
       .then(res => setCurrentSteps(res.data))
       .catch(err => console.error(err));
   }, []);
-
   return (
     <section className="status-area">
       <ProgressBar

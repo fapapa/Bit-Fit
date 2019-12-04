@@ -9,7 +9,7 @@
   position: relative;
   height: 40px;
   border-radius: 5px;
-  border: 10px solid rgba(0, 0, 0, 0.76);
+  border: 5px ridge #EFE9F4;
   box-shadow: 0 8px 6px -6px black;
   z-index: 2;
 }
@@ -21,7 +21,6 @@
 .filler {
   height: 100%;
   border-radius: 2px;
-  border: 1px solid rgba(20, 20, 20, 0.781);
   z-index: 0;
   position: absolute;
   width: 100%;
@@ -39,20 +38,15 @@
   z-index: 1;
 }
 
-.current {
-  background: orange;
-  width: 10px
-}
+
 
 .goal {
   position: relative;
-  background: orange;
-  width: 10px;
-  height: 40px;
+  background: #FFB400;
+  border: 5px outset orange;
+  width: 7px;
+  height: 30px;
 }
 
-.done {
-  background: orange;
-  width: 10px
-}
+
 

@@ -3,7 +3,7 @@ class Fitogachi < ApplicationRecord
 
   BONUS_MULTIPLE = 100
   BONUS_POINTS = 10
-  
+
   def current_experience
     points = 0
     calories = user.get_active_calories

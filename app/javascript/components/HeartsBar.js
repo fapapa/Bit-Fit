@@ -5,12 +5,12 @@ import HeartIcon from './HeartIcon';
 
 
 export default function HeartsBar(props) {
-  const [energy, setEnergy] = useState(props.energy)
+  const [energy, setEnergy] = useState(0)
   
   useEffect(() => {
-    setEnergy(2.5)
+    setEnergy(props.energy)
   }, []);
-
+  
   return (
     <section className="heartsBar">
       <Rating
@@ -21,7 +21,6 @@ export default function HeartsBar(props) {
       precision={0.5}
       />
     </section>
-
   );
 }
 
