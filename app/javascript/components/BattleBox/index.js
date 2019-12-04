@@ -33,7 +33,7 @@ export default function BattleBox(props) {
             color2={props.color2}
             username1={props.username1}
             username2={props.username2}
-            time={props.timeLeft}
+            time={props.timeLeft >= 0 ? props.timeLeft+1 : 3}
           />
         )}
         {currentMode === PENDING && (
@@ -56,7 +56,7 @@ export default function BattleBox(props) {
           <Challenge
             color={props.color2}
             username={props.username2}
-            onAccept={props.Accept}
+            onAccept={() => {setCurrentMode(ACTIVE); props.onAccept()}}
           />
         )}
         </div>

@@ -5,20 +5,10 @@ import Status from "../Status";
 import FitogachiStatus from "../FitogachiStatus";
 
 export default function Home(props) {
-  const [notifications, setNotifications] = useState(0);
-  useEffect(() => {
-    Axios.get("/api/battles/notifications")
-      .then(res => {
-        setNotifications(res.data);
-      })
-      .catch(err => {
-        console.error("Error", err);
-      });
-  }, []);
 
   const buttons = [
     {
-      notifications,
+      notifications: props.notifications,
       title: "Battle",
       onClick: props.onBattle,
     },

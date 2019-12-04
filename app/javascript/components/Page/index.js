@@ -33,13 +33,25 @@ export default function HomePage(props) {
       .catch(err => console.error("Error:", err));
   };
 
+  const updateNotifications = () => {
+    Axios.get("/api/battles/notifications")
+      .then(res => {
+        setNotifications(res.data);
+      })
+      .catch(err => {
+        console.error("Error", err);
+      });
+  }
+
   const [userName, setUserName] = useState(false);
   const [user, setUser] = useState(false);
   const [fitogachi, setFitogachi] = useState(false);
+  const [notifications, setNotifications] = useState(0);
 
   useEffect(() => {
     setUserName(fetchUserName());
     setUser(fetchUser());
+    updateNotifications();
   }, []);
 
   return (
@@ -51,6 +63,7 @@ export default function HomePage(props) {
           onFitness={() => transition(FITNESS)}
           onTheGym={() => transition(THEGYM)}
           onOptions={() => (window.location = "sessions/logout")}
+          notifications={notifications}
           fitogachi={
             fitogachi
               ? [
@@ -71,6 +84,7 @@ export default function HomePage(props) {
           onHome={() => back()}
           username={userName || "\u00A0"}
           userid={user.id || null}
+          updateNotifications={() => updateNotifications()}
         />
       )}
       {mode === FITNESS && (

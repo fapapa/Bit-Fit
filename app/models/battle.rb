@@ -5,7 +5,7 @@ class Battle < ApplicationRecord
 
   def self.current(user)
     where(creator: user)
-      .or(where(opponent: user, start_date: nil))
+      .or(where(opponent: user))
       .where(winner: nil)
   end
 

@@ -9,7 +9,7 @@ export default function Active(props) {
       <a className='bbox-username'>{props.username1}</a>
       <div className="battle-box-center-spot">
         <img className='versus' src={versus}></img>
-        <a className="battle-box-center-spot-text">Days Left</a>
+        <a className="battle-box-center-spot-text">{`${props.time} Days Left`}</a>
       </div>
       <a className='bbox-username'>{props.username2}</a>
       <Icon color={props.color2} mirror={true}/>

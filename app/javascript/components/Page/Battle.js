@@ -88,6 +88,7 @@ export default function Battle(props) {
   function acceptBattle(battleId) {
     Axios.post(`/api/battles/${battleId}`, {})
       .then(() => updateCurrent())
+      .then(() => props.updateNotifications())
       .catch(err => console.error("Error:", err));
   }
 
@@ -109,7 +110,6 @@ export default function Battle(props) {
       .then(res => {
         setCurrent(JSON.parse(res.data.current));
         setHistory(JSON.parse(res.data.history));
-        setChallenges(JSON.parse(res.data.challenges));
       })
       .catch(err => console.error("Error:", err));
 
