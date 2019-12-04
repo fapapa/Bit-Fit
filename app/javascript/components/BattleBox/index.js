@@ -24,7 +24,7 @@ export default function BattleBox(props) {
   return (
     <div className='battle-box-container'>
       {container === CURRENT && (
-        <div className="curent-battles">
+        <div className="current-battles">
         {currentMode === ACTIVE && (
           <Active 
             color1={props.color1}
