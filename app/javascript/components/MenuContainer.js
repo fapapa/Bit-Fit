@@ -5,11 +5,12 @@ import SwatchBox from "./SwatchBox";
 import DayBox from "./DayBox";
 import FriendBox from "./FriendBox";
 import Searching from "./FindaFoe.js/Searching";
+import Empty from "./Empty"
 
 export default function MenuContainer(props) {
   function renderHistoryBattleBoxes() {
     if(props.boxes.length < 1){
-      return <Searching />;
+      return <Empty />;
     } else {
     return props.boxes.map((box, index) => {
       const creator = box.creator_id === props.userid;
@@ -29,20 +30,19 @@ export default function MenuContainer(props) {
   }
 
   function renderCurrentBattleBoxes() {
-    function checkTimeLeft(date1, date2) {
+    function checkTimeLeft(date1_ms, date2_ms) {
       var one_day = 1000 * 60 * 60 * 24;
 
-      var date1_ms = date1.getTime();
-      var date2_ms = date2.getTime();
+      // var date1_ms = date1.getTime();
+      // var date2_ms = date2.getTime();
 
       var difference_ms = date2_ms - date1_ms;
 
       return Math.round(difference_ms / one_day);
     }
-    console.log(props.boxes);
-    console.log(props.boxes.length);
+
     if(props.boxes.length < 1){
-      return <Searching />;
+      return <Empty />;
     } else {
     return props.boxes.map((box, index) => {
       const creator = box.creator_id === props.userid;
@@ -54,9 +54,9 @@ export default function MenuContainer(props) {
         color2={creator ? box.opponent.fitogachi.color : box.creator.fitogachi.color || 0}
         username1={creator ? box.creator.username : box.opponent.username}
         username2={creator ? box.opponent.username : box.creator.username}
-        tomorrow={checkTimeLeft(new Date(box.start_date), new Date.now()) < 0}
+        tomorrow={checkTimeLeft(new Date(box.start_date), Date.now()) < 0}
         pending={box.start_date === null ? true : false}
-        timeLeft={checkTimeLeft(new Date.now(), new Date(box.end_date))}
+        timeLeft={checkTimeLeft(Date.now(), new Date(box.end_date).getTime())}
       />
     )});}
   }
