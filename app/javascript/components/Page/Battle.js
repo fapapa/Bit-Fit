@@ -71,6 +71,7 @@ export default function Battle(props) {
   const [friends, setFriends] = useState([]);
 
   function createFoeBattle() {
+    setTimeout(() => updateCurrent(), 1000);
     return Axios.post("/api/battles", {});
   }
 
