@@ -61,6 +61,11 @@ export default function Battle(props) {
     },
   ];
 
+  function showAnimation(id) {
+    Promise.resolve(Axios.get(`/api/battle/${id}`));
+    setScreenMode(BATTLESIM);
+  }
+
   function onSimulationEnd() {
     setBattleSimId(null);
     setScreenMode(MENU);
@@ -90,9 +95,9 @@ export default function Battle(props) {
   useEffect(() => {
     Promise.resolve(Axios.get("/api/battles"))
       .then(res => {
-        setCurrent(res.data.current);
-        setHistory(res.data.history);
-        setChallenges(res.data.challenges);
+        setCurrent(JSON.parse(res.data.current));
+        setHistory(JSON.parse(res.data.history));
+        setChallenges(JSON.parse(res.data.challenges));
       })
       .catch(err => console.error("Error:", err));
   }, []);
@@ -117,10 +122,9 @@ export default function Battle(props) {
                 <section className="battle-content-container">
                   <div className="battle-menu-container">
                     <MenuContainer
-                      onAccept={() => onAccept(id)}
-                      onComplete={() => onComplete(id)}
-                      boxType={"Battle"}
-                      boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                      boxType={"Current Battle"}
+                      boxes={current}
+                      userid={props.userid}
                     />
                   </div>
                 </section>
@@ -148,10 +152,11 @@ export default function Battle(props) {
                 <section className="battle-content-container">
                   <div className="battle-menu-container">
                     <MenuContainer
-                      boxType={"Battle"}
-                      boxes={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                      boxType={"History Battle"}
+                      boxes={history}
+                      userid={props.userid}
+                      showAnimation={(id) => showAnimation(id)}
                     />
-                    needs a data endpoint for only past battles
                   </div>
                 </section>
               )}
