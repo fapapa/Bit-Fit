@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import NavMenu from "../NavMenu";
 import AwesomeButton from "../AwesomeButton";
 import MenuContainer from "../MenuContainer";
 import Fitogachi from "../Fitogachi";
@@ -8,8 +7,8 @@ export default function TheGym(props) {
   const [currentSwatch, setCurrentSwatch] = useState(
     props.color ? props.color / 45 + 1 : 1
   );
-  const [currentColor, setCurrentColor] = useState(props.color || 0);
-  const [savedColor, setSavedColor] = useState(props.color || 0);
+  const [currentColor, setCurrentColor] = useState(props.fitogachi[0] || 0);
+  const [savedColor, setSavedColor] = useState(props.fitogachi[0] || 0);
   const boxes = [
     {
       image: 1,
@@ -90,7 +89,7 @@ export default function TheGym(props) {
           <MenuContainer
             boxType={"Swatch"}
             boxes={boxes}
-            level={5}
+            level={props.fitogachi[1] || 1}
             current={currentSwatch}
           />
         </div>
@@ -102,9 +101,9 @@ export default function TheGym(props) {
         <section className="gym-space">
           <div className="gym-fitogachi">
             <Fitogachi
-              level={6}
+              level={props.fitogachi[1]}
               state={"idle"}
-              color={currentColor}
+              color={currentColor || 0}
               mirror={false}
               simulation={false}
             />
