@@ -45,6 +45,7 @@ export default function MenuContainer(props) {
       return <Empty />;
     } else {
     return props.boxes.map((box, index) => {
+      console.log(box);
       const creator = box.creator_id === props.userid;
       return (
        <BattleBox
@@ -56,7 +57,9 @@ export default function MenuContainer(props) {
         username2={creator ? box.opponent.username : box.creator.username}
         tomorrow={checkTimeLeft(new Date(box.start_date), Date.now()) < 0}
         pending={box.start_date === null ? true : false}
+        challenge={!creator}
         timeLeft={checkTimeLeft(Date.now(), new Date(box.end_date).getTime())}
+        onAccept={() => props.onAccept(box.id)}
       />
     )});}
   }

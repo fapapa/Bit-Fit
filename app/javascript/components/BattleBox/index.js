@@ -5,6 +5,7 @@ import Countdown from "./Countdown";
 import Past from "./Past";
 import Pending from "./Pending";
 import Waiting from "./Waiting";
+import Challenge from "./Challenge";
 
 export default function BattleBox(props) {
   // DIFFERENT MODES FOR MODE SELECTOR
@@ -15,11 +16,12 @@ export default function BattleBox(props) {
   const COUNTDOWN = "COUNTDOWN";
   const PENDING = "PENDING";
   const PAST = "PAST";
+  const CHALLENGE = "CHALLENGE";
 
   // SELECTOR HOOK
   const [container, setContainer] = useState(props.history ? HISTORY : CURRENT);
   const [historyMode, setHistoryMode] = useState(props.viewed ? PAST :COMPLETE);
-  const [currentMode, setCurrentMode] = useState(props.pending ? PENDING : props.tomorrow ? COUNTDOWN : ACTIVE);
+  const [currentMode, setCurrentMode] = useState(props.pending ? (props.challenge ? CHALLENGE : PENDING) : (props.tomorrow ? COUNTDOWN : ACTIVE));
 
   return (
     <div className='battle-box-container'>
@@ -44,10 +46,17 @@ export default function BattleBox(props) {
         )}
         {currentMode === COUNTDOWN && (
           <Countdown 
-          color1={props.color1}
-          color2={props.color2}
-          username1={props.username1}
-          username2={props.username2}
+            color1={props.color1}
+            color2={props.color2}
+            username1={props.username1}
+            username2={props.username2}
+          />
+        )}
+        {currentMode === CHALLENGE && (
+          <Challenge
+            color={props.color2}
+            username={props.username2}
+            onAccept={props.Accept}
           />
         )}
         </div>
