@@ -40,8 +40,7 @@ export default function MenuContainer(props) {
 
       return Math.round(difference_ms / one_day);
     }
-    console.log(props.boxes);
-    console.log(props.boxes.length);
+
     if(props.boxes.length < 1){
       return <Empty />;
     } else {
