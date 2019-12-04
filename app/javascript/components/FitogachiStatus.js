@@ -5,27 +5,16 @@ import ExpBar from "./ExpBar";
 import Fitogachi from "./Fitogachi";
 
 export default function FitogachiStatus(props) {
-  // const fetchFitogachi = () => {
-  //   Axios.get("/api/fitogachi")
-  //     .then(res => {
-  //       setProperties(res.data);
-  //     })
-  //     .then(Axios.put("/api/fitogachi", {}))
-  //     .catch(err => {
-  //       console.error("Error:", err);
-  //     });
-  // };
-  
-  // const [properties, setProperties] = useState({});
-  // useEffect(() => {
-  //   fetchFitogachi();
-  // }, []);
-  
-
-  const [level, setLevel] = useState(Math.floor(props.last_experience/ 500) + 1)
+  const [level, setLevel] = useState(1);
+  console.log(level);
   const levelUp = () => {
     setLevel(level + 1);
   }
+
+  useEffect(() => {
+    setLevel(Math.floor(props.last_experience/ 500) + 1);
+  }, [props.last_experience]);
+  
 
 
   return (

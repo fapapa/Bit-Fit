@@ -1,4 +1,5 @@
 import React, {useState, useEffect } from "react";
+import Axios from "axios";
 
 
 export default function ExpFiller(props) {
@@ -22,7 +23,7 @@ export default function ExpFiller(props) {
   }
   
   useEffect(() => {
-    setTimeout((levelsToGo) => {loadBar(levelsToGo)}, 500, levelsToGo)
+    setTimeout((levelsToGo) => {loadBar(levelsToGo), Axios.put("/api/fitogachi", {});}, 500, levelsToGo)
   }, [lastPercentage]);
   
 
