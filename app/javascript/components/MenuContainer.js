@@ -4,7 +4,6 @@ import AwesomeButton from "./AwesomeButton";
 import SwatchBox from "./SwatchBox";
 import DayBox from "./DayBox";
 import FriendBox from "./FriendBox";
-import Searching from "./FindaFoe.js/Searching";
 import Empty from "./Empty"
 
 export default function MenuContainer(props) {
@@ -32,9 +31,6 @@ export default function MenuContainer(props) {
   function renderCurrentBattleBoxes() {
     function checkTimeLeft(date1_ms, date2_ms) {
       var one_day = 1000 * 60 * 60 * 24;
-
-      // var date1_ms = date1.getTime();
-      // var date2_ms = date2.getTime();
 
       var difference_ms = date2_ms - date1_ms;
 
@@ -65,7 +61,16 @@ export default function MenuContainer(props) {
   }
 
   function renderDayBoxes() {
-    return props.boxes.map((box, index) => <DayBox key={index} />);
+    if(props.boxes.length < 1){
+      return <Empty />;
+    } else {
+    return props.boxes.map((box, index) => {
+    <DayBox
+    key={index}
+    date={box.stats_date}
+    calories={box.calories || 0}
+    steps={box.steps ||0 } 
+    />})};
   }
 
   function renderFriendBoxes() {
