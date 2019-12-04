@@ -9,4 +9,11 @@ class Api::FitogachiController < Api::ApiController
     fitogachi.save
     head :ok, content_type: "application/json"
   end
+
+  def color
+    fitogachi = current_user.fitogachi
+    fitogachi.color = params[:color]
+    fitogachi.save
+    head :ok
+  end
 end

@@ -25,7 +25,8 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
 
     get 'user', to: 'profile#user_data'
-
+    
+    put 'color', to: 'fitogachi#color' 
     get 'fitogachi', to: 'fitogachi#show'
     put 'fitogachi', to: 'fitogachi#update'
     get 'friends', to: 'friends#index'

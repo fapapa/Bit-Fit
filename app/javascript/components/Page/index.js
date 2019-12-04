@@ -43,6 +43,19 @@ export default function HomePage(props) {
       });
   }
 
+  const updateFitogachi = () => {
+    Axios.get("/api/fitogachi")
+      .then((res) => setFitogachi(res.data))
+      .catch(err => console.log("Error:", err));
+  }
+
+  const updateColor = (newColor) => {
+    transition(HOME);
+    Axios.put(`/api/color`, {color: newColor})
+      .then(() => setFitogachi({...fitogachi, color: newColor}))
+      .catch(err => console.error("Error:", err));
+  }
+  
   const [userName, setUserName] = useState(false);
   const [user, setUser] = useState(false);
   const [fitogachi, setFitogachi] = useState(false);
@@ -93,6 +106,7 @@ export default function HomePage(props) {
       {mode === THEGYM && (
         <TheGym
           onHome={() => back()}
+          onSave={(color) => updateColor(color)}
           username={userName || "\u00A0"}
           fitogachi={[user.fitogachi.color, user.fitogachi.level]}
         />

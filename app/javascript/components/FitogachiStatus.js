@@ -5,7 +5,7 @@ import ExpBar from "./ExpBar";
 import Fitogachi from "./Fitogachi";
 
 export default function FitogachiStatus(props) {
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(0);
   console.log(level);
   const levelUp = () => {
     setLevel(level + 1);
@@ -49,7 +49,7 @@ export default function FitogachiStatus(props) {
         <section className="fitogachi-container-level">
           level 
           <div className="level-number">
-            {level}
+            {level === 0 ? '\u00A0' : level}
           </div>
         </section>
       </section>
