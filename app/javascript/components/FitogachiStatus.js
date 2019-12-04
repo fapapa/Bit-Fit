@@ -41,7 +41,7 @@ export default function FitogachiStatus(props) {
           color={properties["color"] || 0}
           state={"idle"}
           mirror={false}
-          died_on={propertiers["died_on"]}
+          died_on={properties["died_on"]}
           />
         </section>
         
