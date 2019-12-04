@@ -64,7 +64,14 @@ class User < ApplicationRecord
     return [] unless %w(week month year).include?(period)
 
     beginning = 1.send(period).ago.to_date
-    days.where(stats_date: beginning..Date.today)
+    if period == "year"
+      days.select("EXTRACT(YEAR FROM stats_date) as year, EXTRACT(MONTH FROM stats_date) as month, SUM(calories) as calories")
+        .where(stats_date: beginning..Date.today)
+        .group("EXTRACT(YEAR from stats_date), EXTRACT(MONTH from stats_date)")
+        .order("year, month")
+    else
+      days.where(stats_date: beginning..Date.today).order("stats_date")
+    end
   end
 
   def fitbit_profile

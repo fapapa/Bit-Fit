@@ -10,8 +10,7 @@ export default function Fitness(props) {
     titleX: "Days",
     titleY: "Calories",
   });
-  
-  
+
   const getFitnessData = period => {
     Axios.get(`/api/fitness/${period}`)
       .then(res => {
@@ -22,7 +21,7 @@ export default function Fitness(props) {
         console.error("Error:", err);
       });
   };
-  
+
   const buttons = [
     {
       title: "Home",
@@ -51,35 +50,33 @@ export default function Fitness(props) {
     },
   ];
 
-
   useEffect(() => {
     getFitnessData("week");
   }, []);
 
-
   return (
     <div className="fitness-background">
-    <main className="page">
-      <section className="nav-menu-container">
-        <NavMenu buttons={buttons} username={props.username} currentButton={currentButton} />
-      </section>
-      <section className="fitness-content-container">
-        <section className="graph-container">
-          <Graph
-            data={graphData.data}
-            maxValue={graphData.maxValue}
-            titleX={graphData.titleX}
-            titleY={graphData.titleY}
+      <main className="page">
+        <section className="nav-menu-container">
+          <NavMenu
+            buttons={buttons}
+            username={props.username}
+            currentButton={currentButton}
           />
         </section>
-        <div className="daybox-menu">
-          <MenuContainer 
-            boxType={"Day"}
-            boxes={graphData.data || []}
-          />
-        </div>
-      </section>
-    </main>
+        <section className="fitness-content-container">
+          <section className="graph-container">
+            <Graph
+              data={graphData.data}
+              titleX={graphData.titleX}
+              titleY={graphData.titleY}
+            />
+          </section>
+          <div className="daybox-menu">
+            <MenuContainer boxType={"Day"} boxes={graphData.data || []} />
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
