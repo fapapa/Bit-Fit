@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
 
     get 'fitogachi', to: 'fitogachi#show'
-
+    put 'fitogachi', to: 'fitogachi#update'
     get 'friends', to: 'friends#index'
     get 'friends/search', to: 'friends#search'
 

@@ -100,6 +100,7 @@ class User < ApplicationRecord
     else
       fitogachi.current_energy += 0.5
     end
+    fitogachi.current_experience
     fitogachi.save
   end
 
