@@ -15,10 +15,6 @@ class Battle < ApplicationRecord
       .where.not(winner: nil)
   end
 
-  def self.challenges(user)
-    where(opponent: user, start_date: nil)
-  end
-
   def battle_results(id, user)
     @battle = Battle.find(id)
     opponent = User.find(@battle.opponent_id)

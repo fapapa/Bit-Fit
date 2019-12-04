@@ -10,16 +10,11 @@ class Api::BattlesController < Api::ApiController
                include: {
                  creator: {include: [:fitogachi]},
                  opponent: {include: [:fitogachi]}
-               }),
-             challenges: Battle.challenges(current_user).to_json(
-               include: {
-                 creator: {include: [:fitogachi]},
-                 opponent: {include: [:fitogachi]}
                })
            }
   end
 
-  def current 
+  def current
     render json: Battle.current(current_user).to_json(
       include: {
         creator: {include: [:fitogachi]},
