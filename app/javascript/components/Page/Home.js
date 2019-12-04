@@ -31,7 +31,7 @@ export default function Home(props) {
       onClick: props.onTheGym,
     },
     {
-      title: "Options",
+      title: "Logout",
       onClick: props.onOptions,
     },
   ];

@@ -13,7 +13,7 @@ export default function HomePage(props) {
   const BATTLE = "BATTLE";
   const FITNESS = "FITNESS";
   const THEGYM = "THEGYM";
-  const OPTIONS = "OPTIONS";
+  
 
   // SELECTOR HOOK
   const { mode, transition, back } = useVisualMode(HOME);
@@ -48,14 +48,14 @@ export default function HomePage(props) {
           onBattle={() => transition(BATTLE)}
           onFitness={() => transition(FITNESS)}
           onTheGym={() => transition(THEGYM)}
-          onOptions={() => transition(OPTIONS)}
+          onOptions={() => window.location = "sessions/logout"}
           fitogachi={fitogachi ? [fitogachi.name, fitogachi.color, fitogachi.current_energy, fitogachi.level, fitogachi.died_on, fitogachi.last_experience, fitogachi.current_exp] : null}
         />
+
       )}
       {mode === BATTLE && <Battle onHome={() => back()} username={userName || '\u00A0'} userid={user.id || null} />}
       {mode === FITNESS && <Fitness onHome={() => back()} username={userName || '\u00A0'} />}
       {mode === THEGYM && <TheGym onHome={() => back()} username={userName || '\u00A0'} fitogachi={[user.fitogachi.color, user.fitogachi.level]}/>}
-      {mode === OPTIONS && <Options onHome={() => back()} username={userName || '\u00A0'} />}
     </div>
   );
 }

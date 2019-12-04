@@ -31,7 +31,7 @@ export default function FitogachiStatus(props) {
           <Fitogachi 
           level={level || 0}
           color={props.color}
-          state={"idle"}
+          state={props.current_energy === 0 ? "dead" : "idle"}
           mirror={false}
           died_on={props.died_on}
           />
