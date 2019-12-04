@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_234553) do
+ActiveRecord::Schema.define(version: 2019_12_04_033634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,15 +46,15 @@ ActiveRecord::Schema.define(version: 2019_11_29_234553) do
   create_table "fitogachis", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.string "color"
-    t.integer "level"
+    t.integer "level", default: 1
     t.integer "current_exp"
-    t.integer "current_energy"
+    t.integer "current_energy", default: 5
     t.date "died_on"
     t.integer "resurrection_days"
     t.integer "last_experience"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "color", default: 0
     t.index ["user_id"], name: "index_fitogachis_on_user_id"
   end
 

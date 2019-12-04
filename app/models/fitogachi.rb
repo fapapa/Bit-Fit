@@ -6,13 +6,15 @@ class Fitogachi < ApplicationRecord
 
   def current_experience
     points = 0
-    calories = user.get_active_calories
+    calories = user.get_active_calories(Date.yesterday)
     if calories >= 500
       points += 100
       points += ((calories - 500) / BONUS_MULTIPLE) * BONUS_POINTS
     end
     points > 150 ? 150 : points
   end
+
+
 
   def current_energy=(value)
     if value < 0

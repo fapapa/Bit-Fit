@@ -10,6 +10,7 @@ export default function FitogachiStatus(props) {
       .then(res => {
         setProperties(res.data);
       })
+      .then(Axios.put("/api/fitogachi", {}))
       .catch(err => {
         console.error("Error:", err);
       });
@@ -19,12 +20,14 @@ export default function FitogachiStatus(props) {
   useEffect(() => {
     fetchFitogachi();
   }, []);
+  
 
   const [level, setLevel] = useState(Math.floor(200/ 500) + 1)
   const levelUp = () => {
     setLevel(level + 1);
   }
-  
+
+
   return (
     <section className="fitogachi-container-box">
       <section className="fitogachi-container-name">

@@ -5,16 +5,17 @@ import HeartIcon from './HeartIcon';
 
 
 export default function HeartsBar(props) {
-  const [energy, setEnergy] = useState(0)
-  
-  useEffect(() => {
-    setEnergy(props.energy)
-  }, []);
+
+  useEffect (() => {
+    setCurrentEnergy(props.energy)
+  })
+
+  const [currentEnergy, setCurrentEnergy] = useState(props.energy)
   
   return (
     <section className="heartsBar">
       <Rating
-      value={energy}
+      value={currentEnergy}
       max={5}
       icon={<HeartIcon viewBox="0 0 240 240" />}
       readOnly={true}

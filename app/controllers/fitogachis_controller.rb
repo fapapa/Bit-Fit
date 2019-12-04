@@ -14,7 +14,7 @@ class FitogachisController < ApplicationController
       render :new, notice: "Something went wrong"
     end
   end
-
+  
   private
 
   def require_authentication
@@ -27,3 +27,4 @@ class FitogachisController < ApplicationController
     @user ||= User.find(session[:user_id])
   end
 end
+

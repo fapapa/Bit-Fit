@@ -23,8 +23,20 @@ export default function HomePage(props) {
       .then((res) => {setUserName(res.data["displayName"])})
       .catch(err => console.error("Error:", err));
   };
+
+  const fetchUser = () => {
+    Axios.get("/api/user")
+      .then((res) => {setUser(res.data)})
+      .catch(err => console.error("Error:", err));
+  };
   
-  const [userName, setUserName] = useState(fetchUserName());
+  const [userName, setUserName] = useState(false);
+  const [user, setUser] = useState(false);
+
+  useEffect(()=>{
+    setUserName(fetchUserName());
+    setUser(fetchUser());
+  }, [])
   
 
   return (
@@ -38,9 +50,9 @@ export default function HomePage(props) {
           onOptions={() => transition(OPTIONS)}
         />
       )}
-      {mode === BATTLE && <Battle onHome={() => back() } username={userName || '\u00A0'} />}
+      {mode === BATTLE && <Battle onHome={() => back()} username={userName || '\u00A0'} userid={user.id || null} />}
       {mode === FITNESS && <Fitness onHome={() => back()} username={userName || '\u00A0'} />}
-      {mode === THEGYM && <TheGym onHome={() => back()} username={userName || '\u00A0'} />}
+      {mode === THEGYM && <TheGym onHome={() => back()} username={userName || '\u00A0'} fitogachi={[user.fitogachi.color, user.fitogachi.level]}/>}
       {mode === OPTIONS && <Options onHome={() => back()} username={userName || '\u00A0'} />}
     </div>
   );
