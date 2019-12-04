@@ -8,7 +8,9 @@ import Searching from "./FindaFoe.js/Searching";
 
 export default function MenuContainer(props) {
   function renderHistoryBattleBoxes() {
-    
+    if(props.boxes.length < 1){
+      return <Searching />;
+    } else {
     return props.boxes.map((box, index) => {
       const creator = box.creator_id === props.userid;
       return (
@@ -23,7 +25,7 @@ export default function MenuContainer(props) {
         winner={box.winner_id === props.userid ? true : false}
         showAnimation={() => props.showAnimation(box.id)}
       />
-    )});
+    )})};
   }
 
   function renderCurrentBattleBoxes() {
@@ -39,7 +41,7 @@ export default function MenuContainer(props) {
     }
     console.log(props.boxes);
     console.log(props.boxes.length);
-    if(props.boxes.length <= 3){
+    if(props.boxes.length < 1){
       return <Searching />;
     } else {
     return props.boxes.map((box, index) => {

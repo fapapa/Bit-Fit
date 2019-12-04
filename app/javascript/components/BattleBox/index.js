@@ -18,7 +18,7 @@ export default function BattleBox(props) {
 
   // SELECTOR HOOK
   const [container, setContainer] = useState(props.history ? HISTORY : CURRENT);
-  const [historyMode, setHistoryMode] = useState(props.viewed ? COMPLETE : PAST);
+  const [historyMode, setHistoryMode] = useState(props.viewed ? PAST :COMPLETE);
   const [currentMode, setCurrentMode] = useState(props.pending ? PENDING : props.tomorrow ? COUNTDOWN : ACTIVE);
 
   return (

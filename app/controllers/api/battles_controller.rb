@@ -29,7 +29,7 @@ class Api::BattlesController < Api::ApiController
 
   def battle_data
      @battle = Battle.find(params[:id])
-     render json: @battle.battle_results(params[:id])
+     render json: @battle.battle_results(params[:id], current_user)
   end
 
   def notifications

@@ -19,7 +19,7 @@ class Battle < ApplicationRecord
     where(opponent: user, start_date: nil)
   end
 
-  def battle_results(id)
+  def battle_results(id, user)
     @battle = Battle.find(id)
     opponent = User.find(@battle.opponent_id)
     creator = User.find(@battle.creator_id)
@@ -46,13 +46,13 @@ class Battle < ApplicationRecord
     results[:users].push(get_fitogachi(creator))
     results[:users].push(get_fitogachi(opponent))
     results[:days] = match_up
-    if current_user === opponent
+    if user === opponent
       @battle.opponent_viewed = true
     else
       @battle.creator_viewed = true
     end
     @battle.save
-    
+
     return results
   end
 
