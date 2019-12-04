@@ -55,7 +55,7 @@ export default function Home(props) {
             name={props.fitogachi ? props.fitogachi[0] : "No Name"}
             color={props.fitogachi ? props.fitogachi[1] : 0}
             current_energy={props.fitogachi ? props.fitogachi[2] : 5}
-            level={props.fitogachi ? props.fitogachi[3] : 1}
+            level={props.fitogachi ? props.fitogachi[3] : 0}
             died_on={props.fitogachi ? props.fitogachi[4] : false}
             last_experience={props.fitogachi ? props.fitogachi[5] : 0}
             current_exp={props.fitogachi ? props.fitogachi[6] : 0}

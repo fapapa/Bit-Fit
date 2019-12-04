@@ -93,7 +93,7 @@ export default function TheGym(props) {
           <MenuContainer
             boxType={"Swatch"}
             boxes={boxes}
-            level={props.fitogachi[1] || 1}
+            level={props.fitogachi[1] || 0}
             current={currentSwatch}
           />
         </div>
@@ -105,7 +105,7 @@ export default function TheGym(props) {
         <section className="gym-space">
           <div className="gym-fitogachi">
             <Fitogachi
-              level={props.fitogachi[1]}
+              level={props.fitogachi[1] || 0}
               state={"idle"}
               color={currentColor || 0}
               mirror={false}
