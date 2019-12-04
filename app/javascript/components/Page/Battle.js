@@ -62,12 +62,12 @@ export default function Battle(props) {
   ];
 
   function showAnimation(id) {
-    Promise.resolve(Axios.get(`/api/battle/${id}`));
+    setBattleSimId(id);
     setScreenMode(BATTLESIM);
   }
 
   function onSimulationEnd() {
-    setBattleSimId(null);
+    setBattleSimData(null);
     setScreenMode(MENU);
   }
 

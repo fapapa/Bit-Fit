@@ -46,6 +46,13 @@ class Battle < ApplicationRecord
     results[:users].push(get_fitogachi(creator))
     results[:users].push(get_fitogachi(opponent))
     results[:days] = match_up
+    if current_user === opponent
+      @battle.opponent_viewed = true
+    else
+      @battle.creator_viewed = true
+    end
+    @battle.save
+    
     return results
   end
 
