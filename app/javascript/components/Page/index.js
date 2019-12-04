@@ -4,7 +4,6 @@ import Home from "./Home";
 import Battle from "./Battle";
 import Fitness from "./Fitness";
 import TheGym from "./TheGym";
-import Options from "./Options";
 import useVisualMode from "hooks/useVisualMode";
 
 export default function HomePage(props) {
@@ -29,6 +28,19 @@ export default function HomePage(props) {
       .then((res) => {setUser(res.data); setFitogachi(res.data.fitogachi);})
       .catch(err => console.error("Error:", err));
   };
+
+  const updateFitogachi = () => {
+    Axios.get("/api/fitogachi")
+      .then((res) => setFitogachi(res.data))
+      .catch(err => console.log("Error:", err));
+  }
+
+  const updateColor = (newColor) => {
+    transition(HOME);
+    Axios.put(`/api/color`, {color: newColor})
+      .then(() => setFitogachi({...fitogachi, color: newColor}))
+      .catch(err => console.error("Error:", err));
+  }
   
   const [userName, setUserName] = useState(false);
   const [user, setUser] = useState(false);
@@ -55,7 +67,7 @@ export default function HomePage(props) {
       )}
       {mode === BATTLE && <Battle onHome={() => back()} username={userName || '\u00A0'} userid={user.id || null} />}
       {mode === FITNESS && <Fitness onHome={() => back()} username={userName || '\u00A0'} />}
-      {mode === THEGYM && <TheGym onHome={() => back()} username={userName || '\u00A0'} fitogachi={[user.fitogachi.color, user.fitogachi.level]}/>}
+      {mode === THEGYM && <TheGym onHome={() => back()} onSave={(color) => updateColor(color)} username={userName || '\u00A0'} fitogachi={[fitogachi.color, fitogachi.level]}/>}
     </div>
   );
 }

@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AwesomeButton from "../AwesomeButton";
 import MenuContainer from "../MenuContainer";
 import Fitogachi from "../Fitogachi";
 
 export default function TheGym(props) {
-  const [currentSwatch, setCurrentSwatch] = useState(
-    props.color ? props.color / 45 + 1 : 1
-  );
-  const [currentColor, setCurrentColor] = useState(props.fitogachi[0] || 0);
-  const [savedColor, setSavedColor] = useState(props.fitogachi[0] || 0);
+  const [currentSwatch, setCurrentSwatch] = useState(0);
+  const [currentColor, setCurrentColor] = useState(0);
+  const [savedColor, setSavedColor] = useState(0);
   const boxes = [
     {
       image: 1,
@@ -76,6 +74,12 @@ export default function TheGym(props) {
     },
   ];
 
+  useEffect(() => {
+    setCurrentColor(props.fitogachi[0])
+    setSavedColor(props.fitogachi[0])
+    setCurrentSwatch(props.fitogachi[0]/ 45 + 1)
+  }, [props.fitogachi[0]])
+
   return (
     <div className="gym-background">
     <main className="page">
@@ -83,7 +87,7 @@ export default function TheGym(props) {
         <div className="username">{props.username}</div>
         <AwesomeButton
           title={currentColor === savedColor ? "Home" : "Save/Home"}
-          onClick={props.onHome}
+          onClick={currentColor === savedColor ? props.onHome : () => props.onSave(currentColor)}
         />
         <div className="swatch-container">
           <MenuContainer
