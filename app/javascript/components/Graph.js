@@ -9,6 +9,23 @@ import {
 } from "react-vis";
 
 export default function Graph(props) {
+
+  const months = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+  }
+
+
   Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
@@ -42,7 +59,7 @@ export default function Graph(props) {
         x0: begin,
         y: record.calories,
         y0: 0,
-        label: `Year: ${record.year}, Month: ${record.month}`,
+        label: `${months[record.month]} - ${record.year}`,
       };
       return monthData;
     });
