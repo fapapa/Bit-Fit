@@ -65,8 +65,9 @@ class User < ApplicationRecord
 
     beginning = 1.send(period).ago.to_date
     if period == "year"
+      ending = 1.month.ago.end_of_month
       days.select("EXTRACT(YEAR FROM stats_date) as year, EXTRACT(MONTH FROM stats_date) as month, SUM(calories) as calories")
-        .where(stats_date: beginning..Date.today)
+        .where(stats_date: beginning..ending)
         .group("EXTRACT(YEAR from stats_date), EXTRACT(MONTH from stats_date)")
         .order("year, month")
     else
