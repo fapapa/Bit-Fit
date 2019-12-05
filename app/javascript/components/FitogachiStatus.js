@@ -6,7 +6,6 @@ import Fitogachi from "./Fitogachi";
 
 export default function FitogachiStatus(props) {
   const [level, setLevel] = useState(0);
-  console.log(level);
   const levelUp = () => {
     setLevel(level + 1);
   }

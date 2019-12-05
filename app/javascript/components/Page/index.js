@@ -46,7 +46,7 @@ export default function HomePage(props) {
   const updateFitogachi = () => {
     Axios.get("/api/fitogachi")
       .then((res) => setFitogachi(res.data))
-      .catch(err => console.log("Error:", err));
+      .catch(err => console.error("Error:", err));
   }
 
   const updateColor = (newColor) => {

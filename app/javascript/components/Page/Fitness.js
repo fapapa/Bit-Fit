@@ -15,7 +15,6 @@ export default function Fitness(props) {
   const getFitnessData = period => {
     Axios.get(`/api/fitness/${period}`)
       .then(res => {
-        console.log(res.data);
         setGraphData({ ...graphData, data: res.data, period: period });
       })
       .catch(err => {
