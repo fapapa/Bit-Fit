@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 monty = User.create(first_name: "monty", last_name: "burns", fitbit_id: "7WYXQM")
-monty.create_fitogachi(name: "gump", current_exp: 600, last_experience: 100)
+monty.create_fitogachi(name: "gump", level: 2, current_exp: 600, last_experience: 100)
 
 john = User.create(first_name: "John", last_name: "Barratt", fitbit_id: "57BJNZ")
 john.create_fitogachi(name: "coke", level: 6, current_exp: 2500, last_experience: 2500, current_energy: 3.5)
