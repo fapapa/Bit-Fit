@@ -45,14 +45,14 @@
 }
 
 .fitness-bg-6 {
-  background-image: url("/images/grass6.png");
+  background-image: url("/images/grass6-2.png");
   background-repeat: repeat-x;
-  background-size: 100vw 100vh;
-  height: 100vh;
+  background-size: 100vw 20.5vh;
+  height: 20.5vh;
   width: 300vw;
   animation: slide3 80s linear infinite;
   position: absolute;
-  top: 0;
+  top: 79.5vh;
 }
 
 @keyframes slide3 {
