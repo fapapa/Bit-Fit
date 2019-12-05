@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_one :token, dependent: :destroy
   has_one :fitogachi, dependent: :destroy
   has_many :days, dependent: :destroy
-  has_many :created_battles, foreign_key: "creator_id", class_name: "Battle"
-  has_many :opponent_battles, foreign_key: "opponent_id", class_name: "Battle"
-  has_many :winner_battles, foreign_key: "winner_id", class_name: "Battle"
+  has_many :created_battles, foreign_key: "creator_id", class_name: "Battle", dependent: :destroy
+  has_many :opponent_battles, foreign_key: "opponent_id", class_name: "Battle", dependent: :destroy
+  has_many :winner_battles, foreign_key: "winner_id", class_name: "Battle", dependent: :destroy
 
   def battle_notifications
     @notifications ||= created_battles.where(accepted: true, viewed_accepted: false).count +

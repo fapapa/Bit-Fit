@@ -13,9 +13,10 @@ export default function Status(props) {
       .catch(err => console.error(err));
 
     Axios.get("/api/steps")
-      .then(res => setCurrentSteps(res.data))
+      .then(res => setCurrentSteps(Math.floor(Math.random() * 12000)))
       .catch(err => console.error(err));
   }, []);
+  
   return (
     <section className="status-area">
       <ProgressBar

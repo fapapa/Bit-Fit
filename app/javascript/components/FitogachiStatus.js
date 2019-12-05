@@ -9,7 +9,7 @@ export default function FitogachiStatus(props) {
   const levelUp = () => {
     setLevel(level + 1);
   }
-
+  
   useEffect(() => {
     setLevel(Math.floor(props.last_experience/ 500) + 1);
   }, [props.last_experience]);
