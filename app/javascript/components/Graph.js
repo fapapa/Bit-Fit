@@ -27,7 +27,6 @@ export default function Graph(props) {
     }, 0);
 
   let data2;
-  console.log("Props in Graph:", props);
   if (props.data && props.period === "year") {
     data2 = props.data.map(record => {
       const begin = new Date(`${record.year}-${record.month}-${1}`);
@@ -38,7 +37,6 @@ export default function Graph(props) {
         )}`
       );
 
-      console.log("Begin:", begin);
       const monthData = {
         x: end,
         x0: begin,

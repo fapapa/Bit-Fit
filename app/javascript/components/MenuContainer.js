@@ -64,7 +64,7 @@ export default function MenuContainer(props) {
       return <Empty />;
     } else {
     return props.boxes.map((box, index) => {
-    <DayBox
+     <DayBox
     key={index}
     date={box.stats_date}
     calories={box.calories || 0}
