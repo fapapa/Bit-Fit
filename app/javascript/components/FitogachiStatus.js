@@ -43,6 +43,7 @@ export default function FitogachiStatus(props) {
             last_experience={props.last_experience}
             goal={500}
             onChange={() => {levelUp()}}
+            onExpSet={props.onExpSet}
           />
         </section>
         <section className="fitogachi-container-level">

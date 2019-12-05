@@ -44,9 +44,12 @@ export default function HomePage(props) {
   }
 
   const updateFitogachi = () => {
-    Axios.get("/api/fitogachi")
-      .then((res) => setFitogachi(res.data))
-      .catch(err => console.error("Error:", err));
+    Axios.put("/api/fitogachi", {})
+    .then(() =>  {
+      Axios.get("/api/fitogachi")
+        .then((res) => setFitogachi(res.data))
+        .catch(err => console.error("Error:", err));
+    });
   }
 
   const updateColor = (newColor) => {
@@ -76,6 +79,7 @@ export default function HomePage(props) {
           onFitness={() => transition(FITNESS)}
           onTheGym={() => transition(THEGYM)}
           onOptions={() => (window.location = "sessions/logout")}
+          onExpSet={() => updateFitogachi()}
           notifications={notifications}
           fitogachi={
             fitogachi

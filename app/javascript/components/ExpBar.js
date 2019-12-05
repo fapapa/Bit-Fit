@@ -13,6 +13,7 @@ export default function ExpBar(props) {
         last_exp={props.last_experience}
         goal={props.goal}
         onChange={props.onChange}
+        onExpSet={props.onExpSet}
         />
     </div>
   );

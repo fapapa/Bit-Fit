@@ -49,6 +49,7 @@ export default function Home(props) {
             died_on={props.fitogachi ? props.fitogachi[4] : false}
             last_experience={props.fitogachi ? props.fitogachi[5] : 0}
             current_exp={props.fitogachi ? props.fitogachi[6] : 0}
+            onExpSet={props.onExpSet}
           />
         </section>
       </section>

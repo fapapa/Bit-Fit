@@ -23,7 +23,7 @@ export default function ExpFiller(props) {
   }
   
   useEffect(() => {
-    setTimeout((levelsToGo) => {loadBar(levelsToGo), Axios.put("/api/fitogachi", {});}, 500, levelsToGo)
+    setTimeout((levelsToGo) => {loadBar(levelsToGo); props.onExpSet()}, 500, levelsToGo)
   }, [lastPercentage]);
   
 
