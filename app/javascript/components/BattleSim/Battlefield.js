@@ -94,6 +94,7 @@ export default function Battlefield(props) {
           <Fitogachi 
            state={gif[0]}
            mirror={false}
+           color={props.users[0][2]}
            level={props.users[0][1]}
            simulation={false}
           />
@@ -102,6 +103,7 @@ export default function Battlefield(props) {
           <Fitogachi
             state={gif[1]}
             mirror={true}
+            color={props.users[1][2]}
             level={props.users[1][1]}
             simulation={false}
           />
