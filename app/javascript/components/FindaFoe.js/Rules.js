@@ -10,7 +10,7 @@ export default function Rules(props) {
           but lack any kind of personal relationship with other humans who work
           out? Challenge a random person to a week of FITNESS where you compete
           to lose the most calories across a three day period and then watch the
-          outcome as your Fitagatchi dukes it out with your opponent's using you
+          outcome as your Fitagotchi dukes it out with your opponent's using you
           calories burned as pure POWER!
         </p>
         <p className="disclaimer">
