@@ -5,16 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-monty = User.create(first_name: "monty", last_name: "burns", fitbit_id: "7WYXQM")
+monty = User.create(first_name: "monty", last_name: "burns", username: "monty b.", fitbit_id: "7WYXQM")
 monty.create_fitogachi(name: "gump", level: 2, current_exp: 600, last_experience: 100)
 
-john = User.create(first_name: "John", last_name: "Barratt", fitbit_id: "57BJNZ")
+john = User.create(first_name: "John", last_name: "Barratt", username: "john b.", fitbit_id: "57BJNZ")
 john.create_fitogachi(name: "coke", level: 6, current_exp: 2500, last_experience: 2500, current_energy: 3.5)
 
-james = User.create(first_name: "James", last_name: "Marshall", fitbit_id: "7WZFJM")
+james = User.create(first_name: "James", last_name: "Marshall", username: "james b.", fitbit_id: "7WZFJM")
 james.create_fitogachi(name: "pepsi", level: 6, current_exp: 2500, last_experience: 2500, current_energy: 2)
 
-fabio = User.create(first_name: "Fabio", last_name: "Papa", fitbit_id: "7WNPS2")
+fabio = User.create(first_name: "Fabio", last_name: "Papa", username: "fabio p.", fitbit_id: "7WNPS2")
 fabio.create_fitogachi(name: "vito gachi", current_energy: 0)
 
 User.all.each  do |u|

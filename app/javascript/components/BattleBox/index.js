@@ -65,7 +65,7 @@ export default function BattleBox(props) {
         <div className="history-battles">
           {historyMode === COMPLETE && (
             <Complete 
-              onClick={props.showAnimation}
+              onClick={() => {props.showAnimation(); setCurrentMode(PAST);}}
             />
           )}
           {historyMode === PAST && (
