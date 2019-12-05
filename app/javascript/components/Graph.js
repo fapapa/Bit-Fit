@@ -25,6 +25,16 @@ export default function Graph(props) {
     12: "December"
   }
 
+  const days = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturdary"
+  }
+
 
   Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
@@ -72,7 +82,7 @@ export default function Graph(props) {
         x0: date,
         y: day.calories,
         y0: 0,
-        label: day.stats_date,
+        label: props.period === "month" ? `${months[date.getMonth() + 1]} - ${date.getDate()}` : `${days[date.getDay()]}`
       };
       return dayData;
     });
@@ -82,6 +92,7 @@ export default function Graph(props) {
   const data3 =
     data2 &&
     data2.map(day => {
+      const date = new Date(day.stats_date);
       const dayLabel = {
         x: day.x,
         y: day.y,
