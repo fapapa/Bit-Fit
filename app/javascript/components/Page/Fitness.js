@@ -55,6 +55,10 @@ export default function Fitness(props) {
 
   return (
     <div className="fitness-background">
+      <div className="fitness-bg-4"></div>
+      <div className="fitness-bg-3"></div>
+      <div className="fitness-bg-5"></div>
+      <div className="fitness-bg-2"></div>
       <main className="page">
         <section className="nav-menu-container">
           <NavMenu
@@ -77,6 +81,7 @@ export default function Fitness(props) {
           </div>
         </section>
       </main>
+      <div className="fitness-bg-6"></div>
     </div>
   );
 }
