@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_033634) do
+ActiveRecord::Schema.define(version: 2019_12_05_050948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_033634) do
     t.string "name"
     t.integer "level", default: 1
     t.integer "current_exp"
-    t.integer "current_energy", default: 5
+    t.float "current_energy", default: 5.0
     t.date "died_on"
     t.integer "resurrection_days"
     t.integer "last_experience"

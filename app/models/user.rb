@@ -23,8 +23,8 @@ class User < ApplicationRecord
     calories.size > 1 ? calories : calories[0]
   end
 
-  def battle_calories(user_id, base_date, end_date)
-    calories = battle_activities(user_id, 'tracker/calories', base_date, end_date)['activities-tracker-calories']
+  def battle_calories(begin_date, end_date)
+    days.where(stats_date: begin_date..end_date).map(&:calories)
   end
 
   def get_active_calories(date = 'today')

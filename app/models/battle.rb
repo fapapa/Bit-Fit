@@ -30,15 +30,16 @@ class Battle < ApplicationRecord
     creator_max = sum_calories(days_creator_calories)
     max = creator_max > opponent_max ? creator_max : opponent_max
 
+
     #gets users calorie percentage for day 
     opponent_daily_score = daily_calories(days_opponent_calories, max)
     creator_daily_score = daily_calories(days_creator_calories, max)
 
     #stacks each day with opponent and creator percentages.
     match_up = day_match_ups(creator_daily_score, opponent_daily_score)
+  
 
-
-    results[:winner].push(is_winner)
+    results[:winner].push(creator_max > opponent_max ? 1 : 2)
     results[:users].push(get_fitogachi(creator))
     results[:users].push(get_fitogachi(opponent))
     results[:days] = match_up
@@ -54,7 +55,7 @@ class Battle < ApplicationRecord
 
   def daily_calories(days, maximum)
     day_arr = []
-    days.each { |day| day_arr.push(((day['value'].to_i) * 100 / maximum).ceil) }
+    days.each { |day| day_arr.push((day * 100 / maximum).ceil) }
     day_arr
   end
 
@@ -75,16 +76,18 @@ class Battle < ApplicationRecord
   end
 
   def days_creator_calories
-    creator.battle_calories(creator.fitbit_id, @battle.start_date, @battle.end_date)
+    creator.battle_calories(@battle.start_date, @battle.end_date)
   end
 
   def days_opponent_calories
-    opponent.battle_calories(opponent.fitbit_id, @battle.start_date, @battle.end_date)
+    opponent.battle_calories(@battle.start_date, @battle.end_date)
   end
 
   def sum_calories(days)
     sum = 0
-    days.each { |day| sum += day['value'].to_i }
+    days.each { |day| sum += day }
+    puts "sum value"
+    puts sum
     sum
   end
 

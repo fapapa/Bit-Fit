@@ -19,7 +19,9 @@ export default function Battlefield(props) {
       playDead();
     } else {
       const day = days.pop();
-      if(props.winner === 1){
+      console.log(day);
+      console.log(props.winner[0])
+      if(props.winner[0] === 1){
         setTimeout((day) => {attack2(day)}, 1000, day);
       } else {
         setTimeout((day) => {attack1(day)}, 2000, day);
@@ -36,7 +38,7 @@ export default function Battlefield(props) {
 
   function healthChange1(day) {
     setHealthTwo(prev => prev-day[0])
-    if(props.winner === 1){
+    if(props.winner[0] === 1){
       setTimeout(() => {playDays()}, 1000);
     } else {
       setTimeout((day) => {attack2(day)}, 2000, day);
@@ -50,8 +52,8 @@ export default function Battlefield(props) {
   }
 
   function healthChange2(day) {
-    setHealthOne(prev => prev-day[1])
-    if(props.winner === 1){
+    setHealthOne(prev => prev - day[1])
+    if(props.winner[0] === 1){
       setTimeout((day) => {attack1(day)}, 2000, day);
     }else{
       setTimeout(() => {playDays()}, 1000);
@@ -59,7 +61,7 @@ export default function Battlefield(props) {
   }
 
   function playDead() {
-    setGif(props.winner === 1 ? LOSS2 : LOSS1);
+    setGif(props.winner[0] === 1 ? LOSS2 : LOSS1);
     setTimeout((props) => props.onSimulationEnd(), 2000, props);
   }
 
