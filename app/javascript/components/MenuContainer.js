@@ -41,7 +41,6 @@ export default function MenuContainer(props) {
       return <Empty />;
     } else {
     return props.boxes.map((box, index) => {
-      console.log(box);
       const creator = box.creator_id === props.userid;
       return (
        <BattleBox

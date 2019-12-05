@@ -44,6 +44,45 @@
   }
 }
 
+.fitogachi-dead {
+  display: flex;
+  justify-content: center;
+}
+
+.fitogachi-ghost {
+  position: relative;
+  height: 600px;
+  width: 480px;
+  top: 50px;
+  left: 228px;
+}
+
+.fitogachi-body {
+  position: relative;
+  left: -260px;
+  height: 600px;
+  width: 480px;
+  top: -37px;
+}
+
+.fitogachi-ghost-mirror {
+  position: relative;
+  height: 600px;
+  width: 480px;
+  top: 50px;
+  left: 228px;
+  transform: scaleX(-1)
+}
+
+.fitogachi-body-mirror {
+  position: relative;
+  left: -260px;
+  height: 600px;
+  width: 480px;
+  top: -37px;
+  transform: scaleX(-1);
+}
+
 .fitogachi-container-hearts-bar {
   display: flex;
   justify-content: flex-end;
